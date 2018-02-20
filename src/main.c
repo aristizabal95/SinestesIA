@@ -23,7 +23,7 @@
 // Declare threads
 pthread_t kinect_streaming_thread;
 pthread_t server_thread;
-pthread_t command_handler_thread;
+pthread_t move_servo_thread;
 
 // Mutex for handling servo position update
 pthread_mutex_t servo_pos_mutex = PTHREAD_MUTEX_INITIALIZER
@@ -33,25 +33,40 @@ volatile int die = 0;
 int g_argc;
 char **g_argv;
 
+/******************************************************************
+ *                     FUNCTION DECLARATION                       *
+ ******************************************************************/
+int freenect_config();
+int freenect_stream();
+void *freenect_main();
+
+int server_config();
+int server_run();
+void *server_main();
+
+int issueCommand();
+int moveServo();
+void *servo_main()
+
 int main(int argc, char *argv[]){
 	int rc;
 
 	//Create kinect thread
-	rc = pthread_create(&kinect_streaming_thread, NULL, TODO, TODO);
+	rc = pthread_create(&kinect_streaming_thread, NULL, freenect_main, TODO);
 	if (rc){
 		printf("ERROR creating kinect streaming thread. Code is %d\n", rc);
 		exit(-1);
 	}
 
 	//Create server_thread
-	rc = pthread_create(&server_thread, NULL, TODO, TODO);
+	rc = pthread_create(&server_thread, NULL, server_main, TODO);
 	if(rc){
 		printf("ERROR creating server thread. Code is %d\n", rc);
 		exit(-1);
 	}
 
 	//Create command handler thread
-	rc = pthread_create(&command_handler_thread, NULL, TODO, TODO);
+	rc = pthread_create(&move_servo_thread, NULL, moveServo, TODO);
 	if(rc){
 		printf("Error creating command handler thread. Code is %d\n", rc);
 		exit(-1);
