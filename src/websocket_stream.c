@@ -15,20 +15,25 @@
 #endif
 
 int streaming_connect_cb(libwebsock_client_state *state) {
-	frpintf(stderr, "New connection with socket descriptor: %d\n", state->sockfd);
+	fprintf(stderr, "New connection with socket descriptor: %d\n", state->sockfd);
 	while(1){
 		libwebsock_send_text(state, "streaming!\n");
 	}
 }
 
-int createWebSocket(char* ip, char* port){
+void createWebSocket(char* ip, char* port){
 	libwebsock_context *ctx = NULL;
 	ctx = libwebsock_init();
 	if(ctx == NULL){
-		print(stderr, "Error during libwebsock_init.\n");
+		fprintf(stderr, "Error during libwebsock_init.\n");
 		exit(1);
 	}
 	ctx->onopen = streaming_connect_cb;
 	libwebsock_bind(ctx, ip, port);
 	libwebsock_wait(ctx);
+}
+
+int main(){
+	createWebSocket("0.0.0.0", "8080");
+	return 0;
 }
