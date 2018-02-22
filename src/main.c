@@ -17,6 +17,7 @@
 #include <pigpio.h>
 #include <string.h>
 #include "libfreenect.h"
+#include <websock/websock.h>
 #include <pthread.h>
 #include <math.h>
 
@@ -29,9 +30,9 @@ pthread_t server_thread;
 pthread_t move_servo_thread;
 
 // Mutex for handling servo position update
-pthread_mutex_t servo_pos_mutex = PTHREAD_MUTEX_INITIALIZER
+pthread_mutex_t servo_pos_mutex = PTHREAD_MUTEX_INITIALIZER;
 // Mutex for handling message preparation vs message send
-pthread_mutex_t streaming_mutex = PTHREAD_MUTEX_INITIALIZER
+pthread_mutex_t streaming_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 volatile int die = 0;
 
@@ -55,31 +56,33 @@ void *server_main();
 
 int issueCommand();
 int moveServo();
-void *servo_main()
+void *servo_main();
 
 int main(int argc, char *argv[]){
 	int rc;
 
 	//Create kinect thread
-	rc = pthread_create(&kinect_streaming_thread, NULL, freenect_main, TODO);
-	if (rc){
-		printf("ERROR creating kinect streaming thread. Code is %d\n", rc);
-		exit(-1);
-	}
+	// rc = pthread_create(&kinect_streaming_thread, NULL, freenect_main, TODO);
+	// if (rc){
+	// 	printf("ERROR creating kinect streaming thread. Code is %d\n", rc);
+	// 	exit(-1);
+	// }
 
-	//Create server_thread
-	rc = pthread_create(&server_thread, NULL, server_main, TODO);
-	if(rc){
-		printf("ERROR creating server thread. Code is %d\n", rc);
-		exit(-1);
-	}
+	// //Create server_thread
+	// rc = pthread_create(&server_thread, NULL, server_main, TODO);
+	// if(rc){
+	// 	printf("ERROR creating server thread. Code is %d\n", rc);
+	// 	exit(-1);
+	// }
 
-	//Create command handler thread
-	rc = pthread_create(&move_servo_thread, NULL, moveServo, TODO);
-	if(rc){
-		printf("Error creating command handler thread. Code is %d\n", rc);
-		exit(-1);
-	}
-	pthread_exit(NULL);
+	// //Create command handler thread
+	// rc = pthread_create(&move_servo_thread, NULL, moveServo, TODO);
+	// if(rc){
+	// 	printf("Error creating command handler thread. Code is %d\n", rc);
+	// 	exit(-1);
+	// }
+	// pthread_exit(NULL);
+	createWebSocket("0.0.0.0", "8080");
+	return 0;
 }
 
