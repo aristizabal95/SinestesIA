@@ -39,6 +39,7 @@ void createWebSocket(char* ip, char* port){
 	}
 	ctx->onopen = streaming_connect_cb;
 	libwebsock_bind(ctx, ip, port);
+	printf("Socket created! Waiting for connection\n");
 	libwebsock_wait(ctx);
 }
 
