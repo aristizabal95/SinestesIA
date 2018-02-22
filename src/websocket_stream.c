@@ -16,17 +16,18 @@
 
 #endif
 
-void streaming_connect_cb(libwebsock_client_state *state) {
-	fprintf(stderr, "New connection with socket descriptor: %d\n", state->sockfd);
-	while(!die){
-		send_streaming(state, &messageBuffer);
-	}
-}
-
-void send_streaming(libwebsock_client_state *state, char **messageBuff) {
+void send_streaming(libwebsock_client_state *state, char *messageBuff) {
 	pthread_mutex_lock(&streaming_mutex);
 	libwebsock_send_text(state, messageBuff); // TODO: send binary instead of text
 	pthread_mutex_unlock(&streaming_mutex);
+}
+
+int streaming_connect_cb(libwebsock_client_state *state) {
+	fprintf(stderr, "New connection with socket descriptor: %d\n", state->sockfd);
+	while(!die){
+		send_streaming(state, (char *)messageBuffer);
+	}
+	return 0;
 }
 
 void createWebSocket(char* ip, char* port){
