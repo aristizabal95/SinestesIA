@@ -9,16 +9,31 @@
 
 #include <stdio.h>
 #include <websock/websock.h>
+#include <pthread.h>
+#include <string.h>
 
 #endif
 
-int createWebSocket(char* ip, char* port){
+int streaming_connect_cb(libwebsock_client_state *state) {
+	fprintf(stderr, "New connection with socket descriptor: %d\n", state->sockfd);
+	while(1){
+		libwebsock_send_text(state, "streaming!\n");
+	}
+}
+
+void createWebSocket(char* ip, char* port){
 	libwebsock_context *ctx = NULL;
 	ctx = libwebsock_init();
 	if(ctx == NULL){
-		fprint(stderr, "Error during libwebsock_init.\n");
+		fprintf(stderr, "Error during libwebsock_init.\n");
 		exit(1);
 	}
+	ctx->onopen = streaming_connect_cb;
 	libwebsock_bind(ctx, ip, port);
 	libwebsock_wait(ctx);
+}
+
+int main(){
+	createWebSocket("0.0.0.0", "8080");
+	return 0;
 }
