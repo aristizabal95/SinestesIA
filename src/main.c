@@ -20,6 +20,9 @@
 #include <pthread.h>
 #include <math.h>
 
+#include "globals.h"
+#include "websocket_stream.h"
+
 // Declare threads
 pthread_t kinect_streaming_thread;
 pthread_t server_thread;
@@ -27,8 +30,14 @@ pthread_t move_servo_thread;
 
 // Mutex for handling servo position update
 pthread_mutex_t servo_pos_mutex = PTHREAD_MUTEX_INITIALIZER
+// Mutex for handling message preparation vs message send
+pthread_mutex_t streaming_mutex = PTHREAD_MUTEX_INITIALIZER
 
 volatile int die = 0;
+
+uint8_t *depth_mid, *depth_front;
+uint8_t *rgb_back, *rgb_mid, *rgb_front;
+uint8_t *messageBuffer;
 
 int g_argc;
 char **g_argv;
