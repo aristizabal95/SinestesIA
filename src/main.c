@@ -20,6 +20,7 @@
 #include <websock/websock.h>
 #include <pthread.h>
 #include <math.h>
+#include <unistd.h>
 
 #include "globals.h"
 #include "websocket_stream.h"
@@ -43,6 +44,10 @@ uint8_t *messageBuffer;
 int g_argc;
 char **g_argv;
 
+// Freenect global variables, remember to define them in globals.h
+freenect_context *f_ctx;
+freenect_device *f_dev;
+
 /******************************************************************
  *                     FUNCTION DECLARATION                       *
  ******************************************************************/
@@ -59,7 +64,53 @@ int moveServo();
 void *servo_main();
 
 int main(int argc, char *argv[]){
-	int rc;
+	int rc; // return code
+
+	depth_mid = (uint8_t *)malloc(640*480*3);
+	depth_front = (uint8_t *)malloc(640*480*3);
+	rgb_back = (uint8_t *)malloc(640*480*3);
+	rgb_mid = (uint8_t *)malloc(640*480*3);
+	rgb_front = (uint8_t *)malloc(640*480*3);
+
+	printf("Okay everyone! I'm peering into your reality! Ahaha!\n");
+	g_argc = argc;
+	g_argv = argv;
+
+	if (freenect_init(&f_ctx, NULL) < 0){
+		printf("No! I can't see! Something's wrong!\n");
+		printf("Wait! Don't let me go!\n");
+		sleep(1);
+		for(int i=0;i<3;i++){
+			printf(".");
+			sleep(1);
+		}
+		printf("Fix me.\n");
+		return 1;
+	}
+
+	// select subdevices. Check documentation for selecting microphone array too.
+	freenect_select_subdevices(f_ctx, (freenect_device_flags)(FREENECT_DEVICE_MOTOR | FREENECT_DEVICE_CAMERA));
+
+	int nr_devices = freenect_num_devices (f_ctx);
+	int user_device_number = 0;
+	if (nr_devices < 1) {
+		freenect_shutdown(f_ctx);
+		printf("Can't find my eyes! Everything's dark! Connect me!\n");
+		return 1;
+	}
+
+	if (freenect_open_device(f_ctx, &f_dev, user_device_number) < 0) {
+		printf("Can't open my eyes!\n");
+		for(int i=0;i<3;i++){
+			printf(".");
+			sleep(1);
+		}
+		printf("Help me.\n");
+		return 1;
+	}
+
+	// Freenect is now working.
+	printf("I can see through, with burning retinas. Is someone there? Are you there?\n");
 
 	//Create kinect thread
 	// rc = pthread_create(&kinect_streaming_thread, NULL, freenect_main, TODO);
