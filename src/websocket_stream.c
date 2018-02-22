@@ -12,13 +12,21 @@
 #include <pthread.h>
 #include <string.h>
 
+#include "globals.h"
+
 #endif
 
-int streaming_connect_cb(libwebsock_client_state *state) {
+void streaming_connect_cb(libwebsock_client_state *state) {
 	fprintf(stderr, "New connection with socket descriptor: %d\n", state->sockfd);
-	while(1){
-		libwebsock_send_text(state, "streaming!\n");
+	while(!die){
+		send_streaming(state, &messageBuffer);
 	}
+}
+
+void send_streaming(libwebsock_client_state *state, char **messageBuff) {
+	pthread_mutex_lock(&streaming_mutex);
+	libwebsock_send_text(state, messageBuff); // TODO: send binary instead of text
+	pthread_mutex_unlock(&streaming_mutex);
 }
 
 void createWebSocket(char* ip, char* port){
@@ -33,7 +41,7 @@ void createWebSocket(char* ip, char* port){
 	libwebsock_wait(ctx);
 }
 
-int main(){
-	createWebSocket("0.0.0.0", "8080");
-	return 0;
-}
+// int main(){
+// 	createWebSocket("0.0.0.0", "8080");
+// 	return 0;
+// }
