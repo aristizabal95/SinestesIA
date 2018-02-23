@@ -24,6 +24,7 @@
 
 #include "globals.h"
 #include "websocket_stream.h"
+#include "kinect_stream.h"
 
 // Declare threads
 pthread_t kinect_streaming_thread;
@@ -102,7 +103,7 @@ int main(int argc, char *argv[]){
 	// Freenect is now working.
 	printf("I can see through, with burning retinas. Is someone there? Are you there?\n");
 
-	reate kinect thread
+	// Create kinect thread
 	rc = pthread_create(&kinect_streaming_thread, NULL, freenect_threadfunc, NULL);
 	if (rc){
 		printf("ERROR creating kinect streaming thread. Code is %d\n", rc);
@@ -123,7 +124,7 @@ int main(int argc, char *argv[]){
 	// 	exit(-1);
 	// }
 	// pthread_exit(NULL);
-	createWebSocket("0.0.0.0", "8080");
+	sleep(200); // Add delay to allow threads to do something for now
 	return 0;
 }
 
