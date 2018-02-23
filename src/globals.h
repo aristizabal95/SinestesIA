@@ -5,5 +5,10 @@ extern pthread_mutex_t streaming_mutex;
 extern pthread_mutex_t servo_pos_mutex;
 extern volatile int die;
 
-uint8_t *messageBuffer;
+extern uint8_t *messageBuffer;
+extern freenect_video_format requested_format;
+extern freenect_video_format current_format;
+
+extern freenect_context *f_ctx;
+extern freenect_device *f_dev;
 #endif

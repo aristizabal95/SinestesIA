@@ -7,4 +7,6 @@ void send_streaming(libwebsock_client_state *state, char **messageBuff);
 
 void createWebSocket(char* ip, char* port);
 
+void *websocket_threadfunc(void *arg);
+
 #endif

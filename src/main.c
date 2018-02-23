@@ -37,10 +37,6 @@ pthread_mutex_t streaming_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 volatile int die = 0;
 
-uint8_t *depth_mid, *depth_front;
-uint8_t *rgb_back, *rgb_mid, *rgb_front;
-uint8_t *messageBuffer;
-
 int g_argc;
 char **g_argv;
 
@@ -65,12 +61,6 @@ void *servo_main();
 
 int main(int argc, char *argv[]){
 	int rc; // return code
-
-	depth_mid = (uint8_t *)malloc(640*480*3);
-	depth_front = (uint8_t *)malloc(640*480*3);
-	rgb_back = (uint8_t *)malloc(640*480*3);
-	rgb_mid = (uint8_t *)malloc(640*480*3);
-	rgb_front = (uint8_t *)malloc(640*480*3);
 
 	printf("Okay everyone! I'm peering into your reality! Ahaha!\n");
 	g_argc = argc;
@@ -112,19 +102,19 @@ int main(int argc, char *argv[]){
 	// Freenect is now working.
 	printf("I can see through, with burning retinas. Is someone there? Are you there?\n");
 
-	//Create kinect thread
-	// rc = pthread_create(&kinect_streaming_thread, NULL, freenect_main, TODO);
-	// if (rc){
-	// 	printf("ERROR creating kinect streaming thread. Code is %d\n", rc);
-	// 	exit(-1);
-	// }
+	reate kinect thread
+	rc = pthread_create(&kinect_streaming_thread, NULL, freenect_threadfunc, NULL);
+	if (rc){
+		printf("ERROR creating kinect streaming thread. Code is %d\n", rc);
+		exit(-1);
+	}
 
-	// //Create server_thread
-	// rc = pthread_create(&server_thread, NULL, server_main, TODO);
-	// if(rc){
-	// 	printf("ERROR creating server thread. Code is %d\n", rc);
-	// 	exit(-1);
-	// }
+	//Create server_thread
+	rc = pthread_create(&server_thread, NULL, websocket_threadfunc, NULL);
+	if(rc){
+		printf("ERROR creating server thread. Code is %d\n", rc);
+		exit(-1);
+	}
 
 	// //Create command handler thread
 	// rc = pthread_create(&move_servo_thread, NULL, moveServo, TODO);

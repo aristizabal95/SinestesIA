@@ -7,6 +7,7 @@
 #ifndef WEBSOCKET_STREAM
 #define WEBSOCKET_STREAM
 
+
 #include <stdio.h>
 #include <websock/websock.h>
 #include <pthread.h>
@@ -41,6 +42,11 @@ void createWebSocket(char* ip, char* port){
 	libwebsock_bind(ctx, ip, port);
 	printf("Socket created! Waiting for connection\n");
 	libwebsock_wait(ctx);
+}
+
+void *websocket_threadfunc(void *arg) {
+	createWebSocket("0.0.0.0", "8080");
+	return;
 }
 
 // int main(){
