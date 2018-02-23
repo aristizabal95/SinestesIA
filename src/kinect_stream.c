@@ -16,6 +16,9 @@
 
 #endif
 
+freenect_video_format requested_format = FREENECT_VIDEO_RGB;
+freenect_video_format current_format = FREENECT_VIDEO_RGB;
+
 pthread_cond_t freenect_frame_cond = PTHREAD_COND_INITIALIZER;
 pthread_t message_thread;
 
@@ -70,6 +73,7 @@ void prepareMessage() {
 
 void *message_threadfunc(void *arg) {
 	prepareMessage();
+	return NULL;
 }
 
 void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp) {

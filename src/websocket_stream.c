@@ -46,7 +46,7 @@ void createWebSocket(char* ip, char* port){
 
 void *websocket_threadfunc(void *arg) {
 	createWebSocket("0.0.0.0", "8080");
-	return;
+	return NULL;
 }
 
 // int main(){
