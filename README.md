@@ -14,10 +14,15 @@ This is just a little project of mine, trying to create a smart-home (or may I s
   
   # Dependencies:
   This project currently depends on:
+  Server Side
   - [LibWebsock](https://github.com/payden/libwebsock)
   - Pthread (`sudo apt-get install libpthread-stubs0-dev`)
   - [Libfreenect](https://github.com/OpenKinect/libfreenect)
-  - Python3+
+  
+  Client Side
+  - Python3.4+
+  - Numpy
+  - [pypng](https://github.com/drj11/pypng)
 
 # Installation
 
