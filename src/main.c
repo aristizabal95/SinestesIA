@@ -59,6 +59,7 @@ void *server_main();
 int issueCommand();
 int moveServo();
 void *servo_main();
+void handler(int signal);
 
 int main(int argc, char *argv[]){
 	int rc; // return code
@@ -124,7 +125,6 @@ int main(int argc, char *argv[]){
 	// 	exit(-1);
 	// }
 	// pthread_exit(NULL);
-	sleep(200); // Add delay to allow threads to do something for now
+	pause()	;
 	return 0;
 }
-

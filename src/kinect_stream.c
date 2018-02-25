@@ -67,12 +67,15 @@ void prepareMessage() {
 
 	// For now only transmit data from the rgb data, later on transmit also depth
 	messageBuffer = rgb_front;
+	printf("Message Buffer set to %p\n", messageBuffer);
 
 	pthread_mutex_unlock(&streaming_mutex);
 }
 
 void *message_threadfunc(void *arg) {
-	prepareMessage();
+	while(!die){
+		prepareMessage();
+	}
 	return NULL;
 }
 

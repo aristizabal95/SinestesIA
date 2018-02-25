@@ -19,7 +19,10 @@
 
 void send_streaming(libwebsock_client_state *state, char *messageBuff) {
 	pthread_mutex_lock(&streaming_mutex);
-	libwebsock_send_text(state, messageBuff); // TODO: send binary instead of text
+	// libwebsock_send_text(state, messageBuff); // TODO: send binary instead of text
+	int n = 640*480*3;
+	printf("Size of message: %d\n", n);
+	libwebsock_send_binary(state, messageBuff, n);
 	pthread_mutex_unlock(&streaming_mutex);
 }
 
