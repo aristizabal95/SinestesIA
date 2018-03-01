@@ -26,6 +26,10 @@
 #include "websocket_stream.h"
 #include "kinect_stream.h"
 
+#ifndef SIGQUIT
+#define SIGQUIT SIGTERM
+#endif
+
 // Declare threads
 pthread_t kinect_streaming_thread;
 pthread_t server_thread;
@@ -63,12 +67,14 @@ void handler(int signal);
 
 int main(int argc, char *argv[]){
 	int rc; // return code
+	signal(SIGINT, handler);
 
 	printf("Okay everyone! I'm peering into your reality! Ahaha!\n");
 	g_argc = argc;
 	g_argv = argv;
 
-	if (freenect_init(&f_ctx, NULL) < 0){
+	rc = freenect_init(&f_ctx, NULL);
+	if (rc < 0){
 		printf("No! I can't see! Something's wrong!\n");
 		printf("Wait! Don't let me go!\n");
 		sleep(1);
@@ -91,13 +97,15 @@ int main(int argc, char *argv[]){
 		return 1;
 	}
 
-	if (freenect_open_device(f_ctx, &f_dev, user_device_number) < 0) {
+	rc = freenect_open_device(f_ctx, &f_dev, user_device_number);
+	if (rc < 0) {
 		printf("Can't open my eyes!\n");
 		for(int i=0;i<3;i++){
 			printf(".");
 			sleep(1);
 		}
 		printf("Help me.\n");
+		freenect_shutdown(f_ctx);
 		return 1;
 	}
 
@@ -127,4 +135,12 @@ int main(int argc, char *argv[]){
 	// pthread_exit(NULL);
 	pause()	;
 	return 0;
+}
+
+void handler(int sig){
+	if (sig == SIGINT || sig == SIGTERM || sig == SIGQUIT){
+		die = 1;
+		printf("Wait, not yet!\n");
+		signal(sig, handler);
+	}
 }
