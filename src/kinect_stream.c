@@ -24,6 +24,7 @@ pthread_t message_thread;
 
 int got_rgb = 0;
 int got_depth = 0;
+int messageReady = 0;
 
 uint8_t *depth_mid, *depth_front;
 uint8_t *rgb_back, *rgb_mid, *rgb_front;
@@ -67,7 +68,8 @@ void prepareMessage() {
 
 	// For now only transmit data from the rgb data, later on transmit also depth
 	messageBuffer = rgb_front;
-	printf("Message Buffer set to %p\n", messageBuffer);
+	// printf("Message Buffer set to %p\n", messageBuffer); // debugging only
+	messageReady = 1;
 
 	pthread_mutex_unlock(&streaming_mutex);
 }
@@ -145,6 +147,11 @@ void *freenect_threadfunc(void *arg) {
 
 	freenect_close_device(f_dev);
 	freenect_shutdown(f_ctx);
+	free(depth_mid);
+	free(depth_front);
+	free(rgb_back);
+	free(rgb_mid);
+	free(rgb_front);
 
 	printf("--done!\n");
 	return NULL;

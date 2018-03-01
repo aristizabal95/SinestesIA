@@ -59,10 +59,11 @@ void *server_main();
 int issueCommand();
 int moveServo();
 void *servo_main();
-void handler(int signal);
+void handler(int sig);
 
 int main(int argc, char *argv[]){
 	int rc; // return code
+	signal(SIGINT, handler);
 
 	printf("Okay everyone! I'm peering into your reality! Ahaha!\n");
 	g_argc = argc;
@@ -127,4 +128,11 @@ int main(int argc, char *argv[]){
 	// pthread_exit(NULL);
 	pause()	;
 	return 0;
+}
+
+void handler(int sig){
+	if(sig == SIGINT || sig == SIGTERM || sig == SIGQUIT){
+	die = 1;
+	printf("Wait, not yet!\n");
+	}
 }
