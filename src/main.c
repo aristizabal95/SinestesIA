@@ -63,7 +63,7 @@ void *server_main();
 int issueCommand();
 int moveServo();
 void *servo_main();
-void handler(int signal);
+void handler(int sig);
 
 int main(int argc, char *argv[]){
 	int rc; // return code
@@ -138,9 +138,15 @@ int main(int argc, char *argv[]){
 }
 
 void handler(int sig){
+<<<<<<< HEAD
+	if(sig == SIGINT || sig == SIGTERM || sig == SIGQUIT){
+	die = 1;
+	printf("Wait, not yet!\n");
+=======
 	if (sig == SIGINT || sig == SIGTERM || sig == SIGQUIT){
 		die = 1;
 		printf("Wait, not yet!\n");
 		signal(sig, handler);
+>>>>>>> 6933539516117c45b33bf60d41e38b28034228d7
 	}
 }
