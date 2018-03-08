@@ -13,4 +13,6 @@ extern freenect_video_format current_format;
 
 extern freenect_context *f_ctx;
 extern freenect_device *f_dev;
+
+extern int messageReady;
 #endif
