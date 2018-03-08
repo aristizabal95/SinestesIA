@@ -29,7 +29,11 @@ void send_streaming(libwebsock_client_state *state, char *messageBuff) {
 int streaming_connect_cb(libwebsock_client_state *state) {
 	fprintf(stderr, "New connection with socket descriptor: %d\n", state->sockfd);
 	while(!die){
-		send_streaming(state, (char *)messageBuffer);
+		if(messageReady){
+			// This will only allow the server to send a message when it is created, and not resend the same multiple times
+			send_streaming(state, (char *)messageBuffer);
+			messageReady = 0;
+		}
 	}
 	return 0;
 }
