@@ -2,6 +2,7 @@
 #define GLOBALS_H_
 
 #include "libfreenect.h"
+#define MESSAGE_LEN 640*480*3
 
 extern pthread_mutex_t streaming_mutex;
 extern pthread_mutex_t servo_pos_mutex;

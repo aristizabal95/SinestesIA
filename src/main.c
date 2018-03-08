@@ -23,8 +23,8 @@
 #include <unistd.h>
 
 #include "globals.h"
-#include "websocket_stream.h"
 #include "kinect_stream.h"
+#include "srtp_stream.h"
 
 #ifndef SIGQUIT
 #define SIGQUIT SIGTERM
@@ -120,7 +120,7 @@ int main(int argc, char *argv[]){
 	}
 
 	//Create server_thread
-	rc = pthread_create(&server_thread, NULL, websocket_threadfunc, NULL);
+	rc = pthread_create(&server_thread, NULL, srtp_threadfunc, NULL);
 	if(rc){
 		printf("ERROR creating server thread. Code is %d\n", rc);
 		exit(-1);
@@ -138,15 +138,9 @@ int main(int argc, char *argv[]){
 }
 
 void handler(int sig){
-<<<<<<< HEAD
-	if(sig == SIGINT || sig == SIGTERM || sig == SIGQUIT){
-	die = 1;
-	printf("Wait, not yet!\n");
-=======
 	if (sig == SIGINT || sig == SIGTERM || sig == SIGQUIT){
 		die = 1;
 		printf("Wait, not yet!\n");
 		signal(sig, handler);
->>>>>>> 6933539516117c45b33bf60d41e38b28034228d7
 	}
 }
