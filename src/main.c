@@ -24,7 +24,7 @@
 
 #include "globals.h"
 #include "kinect_stream.h"
-#include "srtp_stream.h"
+#include "ffmpeg_stream.h"
 
 #ifndef SIGQUIT
 #define SIGQUIT SIGTERM
@@ -119,8 +119,8 @@ int main(int argc, char *argv[]){
 		exit(-1);
 	}
 
-	//Create server_thread
-	rc = pthread_create(&server_thread, NULL, srtp_threadfunc, NULL);
+	// ffmpeg thread
+	rc = pthread_create(&server_thread, NULL, ffmpeg_threadfunc, NULL);
 	if(rc){
 		printf("ERROR creating server thread. Code is %d\n", rc);
 		exit(-1);

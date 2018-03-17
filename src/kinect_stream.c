@@ -24,7 +24,7 @@ pthread_t message_thread;
 
 int got_rgb = 0;
 int got_depth = 0;
-int messageReady = 0;
+volatile int messageReady = 0;
 
 uint8_t *depth_mid, *depth_front;
 uint8_t *rgb_back, *rgb_mid, *rgb_front;
@@ -38,6 +38,7 @@ void prepareMessage() {
 	if (current_format == FREENECT_VIDEO_YUV_RGB) {
 		while(!got_depth && !got_rgb) {
 			pthread_cond_wait(&freenect_frame_cond, &streaming_mutex);
+			printf("YUV waiting\n");
 		}
 	}
 	else {
@@ -63,14 +64,11 @@ void prepareMessage() {
 		tmp = rgb_front;
 		rgb_front = rgb_mid;
 		rgb_mid = tmp;
+		// For now only transmit data from the rgb data, later on transmit also depth
+		memcpy(messageBuffer, rgb_front, (640*480*3));
 		got_rgb = 0;
+		messageReady = 1;
 	}
-
-	// For now only transmit data from the rgb data, later on transmit also depth
-	messageBuffer = rgb_front;
-	// printf("Message Buffer set to %p\n", messageBuffer); // debugging only
-	messageReady = 1;
-
 	pthread_mutex_unlock(&streaming_mutex);
 }
 
