@@ -17,7 +17,7 @@
 #include <pigpio.h>
 #include <string.h>
 #include "libfreenect.h"
-#include <websock/websock.h>
+// #include <libfreenect/libfreenect.h>
 #include <pthread.h>
 #include <math.h>
 #include <unistd.h>
@@ -25,6 +25,7 @@
 #include "globals.h"
 #include "kinect_stream.h"
 #include "ffmpeg_stream.h"
+#include "command_handler.h"
 
 #ifndef SIGQUIT
 #define SIGQUIT SIGTERM
@@ -87,6 +88,7 @@ int main(int argc, char *argv[]){
 	}
 
 	// select subdevices. Check documentation for selecting microphone array too.
+	freenect_set_log_level(f_ctx, FREENECT_LOG_WARNING);
 	freenect_select_subdevices(f_ctx, (freenect_device_flags)(FREENECT_DEVICE_MOTOR | FREENECT_DEVICE_CAMERA));
 
 	int nr_devices = freenect_num_devices (f_ctx);
@@ -102,6 +104,7 @@ int main(int argc, char *argv[]){
 		printf("Can't open my eyes!\n");
 		for(int i=0;i<3;i++){
 			printf(".");
+			fflush(stdout);
 			sleep(1);
 		}
 		printf("Help me.\n");
@@ -126,12 +129,12 @@ int main(int argc, char *argv[]){
 		exit(-1);
 	}
 
-	// //Create command handler thread
-	// rc = pthread_create(&move_servo_thread, NULL, moveServo, TODO);
-	// if(rc){
-	// 	printf("Error creating command handler thread. Code is %d\n", rc);
-	// 	exit(-1);
-	// }
+	//Create command handler thread
+	rc = pthread_create(&move_servo_thread, NULL, tcp_threadfunc, NULL);
+	if(rc){
+		printf("Error creating command handler thread. Code is %d\n", rc);
+		exit(-1);
+	}
 	// pthread_exit(NULL);
 	pause()	;
 	return 0;
