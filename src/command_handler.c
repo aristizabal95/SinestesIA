@@ -106,8 +106,7 @@ void *servo_threadfunc(void *arg) {
 				current_pos++;
 			}
 			// Convert pos from angle to pulse
-			current_width = (current_pos - MIN_POS)/(MAX_POS - MIN_POS)*(MAX_WIDTH - MIN_WIDTH) + MIN_WIDTH;
-			printf("width: %d\n", current_width);
+			current_width = (int)(((float)current_pos - MIN_POS)/(MAX_POS - MIN_POS)*(MAX_WIDTH - MIN_WIDTH) + MIN_WIDTH);
 			gpioServo(SERVO_PIN, current_width);
 			usleep(time);
 		}
