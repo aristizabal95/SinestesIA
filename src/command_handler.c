@@ -50,12 +50,12 @@ struct command_t issueCommand(struct command_t cmd, struct command_t current_cmd
 	}
 	if(cmd.yaw != current_cmd.yaw){
 		pthread_mutex_lock(&servo_pos_mutex);
-		desired_pos = cmd.yaw;
+		desired_pos = cmd.yaw - 90;
 		current_cmd.yaw = current_pos;
 		pthread_mutex_unlock(&servo_pos_mutex);
 	}
 		if(cmd.led != current_cmd.led){
-			switch((int)current_cmd.led){
+			switch((int)cmd.led){
 				case 0:
 					freenect_set_led(f_dev, LED_OFF);
 					break;
@@ -84,6 +84,7 @@ struct command_t issueCommand(struct command_t cmd, struct command_t current_cmd
 					freenect_set_led(f_dev, LED_BLINK_GREEN);
 					break;
 			}
+			current_cmd.led = cmd.led;
 		}
 
 	return current_cmd;
@@ -105,7 +106,8 @@ void *servo_threadfunc(void *arg) {
 				current_pos++;
 			}
 			// Convert pos from angle to pulse
-			current_width = (current_pos - MIN_POS)/(MAX_POS - MIN_POS)*(MAX_WIDTH - MIN_WIDTH) - MIN_WIDTH;
+			current_width = (current_pos - MIN_POS)/(MAX_POS - MIN_POS)*(MAX_WIDTH - MIN_WIDTH) + MIN_WIDTH;
+			printf("width: %d\n", current_width);
 			gpioServo(SERVO_PIN, current_width);
 			usleep(time);
 		}
@@ -127,7 +129,7 @@ void *tcp_threadfunc(void *arg) {
 	cmd.idle = 0;
 	cmd.format = 1;
 	cmd.tilt = 0;
-	cmd.yaw = 90;
+	cmd.yaw = 0;
 	cmd.led = 0;
 	cmd.brightness = 31;
 	current_cmd = cmd;
