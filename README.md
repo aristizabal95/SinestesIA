@@ -15,13 +15,15 @@ This is just a little project of mine, trying to create a smart-home (or may I s
   # Dependencies:
   This project currently depends on:
   Server Side
-  - [LibWebsock](https://github.com/payden/libwebsock)
+  - Ffmpeg
   - Pthread (`sudo apt-get install libpthread-stubs0-dev`)
   - [Libfreenect](https://github.com/OpenKinect/libfreenect)
   
   Client Side
   - Python3.4+
+  - Ffmpeg
   - Numpy
+  - OpenCV2
   - [pypng](https://github.com/drj11/pypng)
 
 # Installation
@@ -31,6 +33,6 @@ First clone this repo:
 
 For the server side, you must compile the source code
 `cd M.O.N.I.K.A`
-`gcc -Wall -o bin/main src/*.c -lpthread -lfreenect -lwebsock`
+`gcc -Wall -o bin/main src/*.c -lpthread -lfreenect`
 
 For the client side, there's no need to have any C code, and just use the python programs inside the `client-side` folder
