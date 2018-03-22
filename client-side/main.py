@@ -3,6 +3,7 @@ import numpy as np
 import cv2
 import face_recognition
 from socket import *
+import math
 
 
 FFMPEG_BIN = "ffmpeg"
@@ -17,6 +18,10 @@ command = [ FFMPEG_BIN,
             ]
 pipe = sp.Popen(command, stdout = sp.PIPE, bufsize=10**8)
 process_this = True
+start_move_count = 0
+y_dist_array = []
+x_dist_array = []
+div_epsilon = 0.0000001
 cmd = 0b000000000000000000000000
 current_tilt = 0
 current_yaw = 0
@@ -91,8 +96,8 @@ while(True):
         # get the center of the face for positioning kinect
         y_pos = (top + bottom) / 2
         x_pos = (left + right) / 2
-        x_dist = (x_pos - 640/2)/10
-        y_dist = -(y_pos - 480/2)/10
+        x_dist = (x_pos - 640/2)/4
+        y_dist = -(y_pos - 480/2)/4
 
         cv2.rectangle(show_image, (right, bottom), (left, top), (0,0,255), 2)
         cv2.rectangle(show_image, (left, bottom - 35), (right, bottom), (0,0,255), cv2.FILLED)
@@ -100,12 +105,28 @@ while(True):
         cv2.putText(show_image, (str(x_dist)+","+str(y_dist)), (left + 6, bottom - 6), font, 1.0, (255,255,255), 1)
 
     cv2.imshow('MONIKA', show_image)
+    led = 0
+    if not face_locations:
+        led = 2
+    else:
+        led = 1
 
-    if process_this:
-        cmd, current_tilt, current_yaw = generateCommand(1, 1, current_tilt + int(y_dist), current_yaw + int(x_dist), 1, 0)
+    if start_move_count == 3:
+        y_mean_dist = sum(y_dist_array) /3.0
+        x_mean_dist = sum(x_dist_array) /3.0
+        y_mean_dist = math.tanh(abs(y_dist))*math.tanh(y_mean_dist/3)*3
+        x_mean_dist = math.tanh(abs(x_dist))*math.tanh(x_mean_dist/3)*3
+        y_dist_array = []
+        x_dist_array = []
+        cmd, current_tilt, current_yaw = generateCommand(1, 1, current_tilt + int(y_mean_dist), current_yaw + int(x_mean_dist), led, 0)
         sent = s.send(cmd)
         if sent == 0:
             raise RuntimeError("Socket connection broken")
+        start_move_count = 0
+    else:
+        y_dist_array.append(y_dist)
+        x_dist_array.append(x_dist)
+    start_move_count += 1
 
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
