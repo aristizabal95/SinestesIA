@@ -25,7 +25,6 @@
 #include "globals.h"
 #include "kinect_stream.h"
 #include "ffmpeg_stream.h"
-#include "command_handler.h"
 
 #ifndef SIGQUIT
 #define SIGQUIT SIGTERM
@@ -34,10 +33,10 @@
 // Declare threads
 pthread_t kinect_streaming_thread;
 pthread_t server_thread;
-pthread_t move_servo_thread;
+//pthread_t move_servo_thread;
 
 // Mutex for handling servo position update
-pthread_mutex_t servo_pos_mutex = PTHREAD_MUTEX_INITIALIZER;
+//thread_mutex_t servo_pos_mutex = PTHREAD_MUTEX_INITIALIZER;
 // Mutex for handling message preparation vs message send
 pthread_mutex_t streaming_mutex = PTHREAD_MUTEX_INITIALIZER;
 
@@ -130,11 +129,11 @@ int main(int argc, char *argv[]){
 	}
 
 	//Create command handler thread
-	rc = pthread_create(&move_servo_thread, NULL, tcp_threadfunc, NULL);
-	if(rc){
-		printf("Error creating command handler thread. Code is %d\n", rc);
-		exit(-1);
-	}
+	// rc = pthread_create(&move_servo_thread, NULL, tcp_threadfunc, NULL);
+	// if(rc){
+	// 	printf("Error creating command handler thread. Code is %d\n", rc);
+	// 	exit(-1);
+	// }
 	// pthread_exit(NULL);
 	pause()	;
 	return 0;
