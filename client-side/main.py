@@ -57,21 +57,25 @@ current_yaw = 0
 #     cmd = byte1.to_bytes(1, byteorder='little') + byte2.to_bytes(1, byteorder="little") + byte3.to_bytes(1, byteorder="little") 
 #     return cmd, (tilt - 30), (yaw - 90)
 
-s = socket(AF_INET, SOCK_STREAM)
-s.connect(("192.168.0.101", 6666))
+# s = socket(AF_INET, SOCK_STREAM)
+# s.connect(("192.168.0.101", 6666))
 
 while(True):
-    raw_image = pipe.stdout.read(480*640*3)
+    raw_image = pipe.stdout.read(480*640*3*2)
     image = np.fromstring(raw_image, dtype='uint8')
 
     # OpenCV interprets images inverted
-    cv_image = image.reshape((480,640,3))
+    cv_image = image[0:480*640*3].reshape((480,640,3))
+    depth_image = image[(480*640*3):].reshape((480,640,3))
+    depth_image = np.flip(depth_image, 1)
     cv_image = np.flip(cv_image, 1)
 
     # Also need to invert the order of colors
     cv_image = cv_image[...,::-1]
+    depth_image = depth_image[...,::-1]
     # image = np.swapaxes(image, 0, 1)
     show_image = cv_image.astype(np.uint8).copy()
+    # show_image = depth_image.astype(np.uint8).copy()
 
     # resize for fast face recognition
     # little_image = cv2.resize(cv_image, (0,0), fx=0.5, fy=0.5)
@@ -105,7 +109,6 @@ while(True):
     #     cv2.putText(show_image, (str(x_dist)+","+str(y_dist)), (left + 6, bottom - 6), font, 1.0, (255,255,255), 1)
 
     cv2.imshow('MONIKA', show_image)
-    led = 3
     # if not face_locations:
     #     led = 2
     # else:
