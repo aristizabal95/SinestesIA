@@ -2,7 +2,7 @@
 #define GLOBALS_H_
 
 #include "libfreenect.h"
-#define MESSAGE_LEN 640*480*3
+#define MESSAGE_LEN 640*480*3*2
 
 struct command_t {
 	unsigned int idle:1; // Idle defines wether the cam is on or off
@@ -26,5 +26,6 @@ extern freenect_video_format current_format;
 extern freenect_context *f_ctx;
 extern freenect_device *f_dev;
 
-extern volatile int messageReady;
+extern volatile int rgbReady;
+extern volatile int depthReady;
 #endif

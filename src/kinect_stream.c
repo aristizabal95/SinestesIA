@@ -12,6 +12,8 @@
 #include <string.h>
 #include <pthread.h>
 
+#include <math.h>
+
 #include "globals.h"
 
 #endif
@@ -24,7 +26,8 @@ pthread_t message_thread;
 
 int got_rgb = 0;
 int got_depth = 0;
-volatile int messageReady = 0;
+volatile int rgbReady = 0;
+volatile int depthReady = 0;
 
 uint8_t *depth_mid, *depth_front;
 uint8_t *rgb_back, *rgb_mid, *rgb_front;
@@ -58,16 +61,17 @@ void prepareMessage() {
 		tmp = depth_front;
 		depth_front = depth_mid;
 		depth_mid = tmp;
+		memcpy(messageBuffer + 640*480*3, depth_front, (640*480*3)); // copy depth to message shifted so as to leave space for rgb
+		depthReady = 1;
 		got_depth = 0;
 	}
 	if (got_rgb) {
 		tmp = rgb_front;
 		rgb_front = rgb_mid;
 		rgb_mid = tmp;
-		// For now only transmit data from the rgb data, later on transmit also depth
 		memcpy(messageBuffer, rgb_front, (640*480*3));
+		rgbReady = 1;
 		got_rgb = 0;
-		messageReady = 1;
 	}
 	pthread_mutex_unlock(&streaming_mutex);
 }
@@ -79,11 +83,56 @@ void *message_threadfunc(void *arg) {
 	return NULL;
 }
 
+uint16_t t_gamma[2048];
+
 void depth_cb(freenect_device *dev, void *v_depth, uint32_t timestamp) {
+
 	int i;
 	uint16_t *depth = (uint16_t*)v_depth;
 
 	pthread_mutex_lock(&streaming_mutex);
+	for (i=0; i<640*480; i++) {
+		int pval = t_gamma[depth[i]];
+		int lb = pval & 0xff;
+		switch (pval>>8) {
+			case 0:
+				depth_mid[3*i+0] = 255;
+				depth_mid[3*i+1] = 255-lb;
+				depth_mid[3*i+2] = 255-lb;
+				break;
+			case 1:
+				depth_mid[3*i+0] = 255;
+				depth_mid[3*i+1] = lb;
+				depth_mid[3*i+2] = 0;
+				break;
+			case 2:
+				depth_mid[3*i+0] = 255-lb;
+				depth_mid[3*i+1] = 255;
+				depth_mid[3*i+2] = 0;
+				break;
+			case 3:
+				depth_mid[3*i+0] = 0;
+				depth_mid[3*i+1] = 255;
+				depth_mid[3*i+2] = lb;
+				break;
+			case 4:
+				depth_mid[3*i+0] = 0;
+				depth_mid[3*i+1] = 255-lb;
+				depth_mid[3*i+2] = 255;
+				break;
+			case 5:
+				depth_mid[3*i+0] = 0;
+				depth_mid[3*i+1] = 0;
+				depth_mid[3*i+2] = 255-lb;
+				break;
+			default:
+				depth_mid[3*i+0] = 0;
+				depth_mid[3*i+1] = 0;
+				depth_mid[3*i+2] = 0;
+				break;
+		}
+	}
+
 	got_depth++;
 	pthread_cond_signal(&freenect_frame_cond);
 	pthread_mutex_unlock(&streaming_mutex);
@@ -111,7 +160,14 @@ void *freenect_threadfunc(void *arg) {
 	rgb_back = (uint8_t*)malloc(640*480*3);
 	rgb_mid = (uint8_t*)malloc(640*480*3);
 	rgb_front = (uint8_t*)malloc(640*480*3);
-	messageBuffer = (uint8_t*)malloc(640*480*3); // Later increase the size for full payload
+	messageBuffer = (uint8_t*)malloc(640*480*3*2); // Increased messageBuffer size for both depth and rgb
+
+	int i;
+	for (i=0; i<2048; i++) {
+		float v = i/2048.0;
+		v = powf(v, 3)* 6;
+		t_gamma[i] = v*6*256;
+	}
 
 	freenect_set_depth_callback(f_dev, depth_cb);
 	freenect_set_video_callback(f_dev, rgb_cb);
