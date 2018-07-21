@@ -16,7 +16,7 @@ void *ffmpeg_threadfunc(void *arg) {
 	while(!die) {
 		pthread_mutex_lock(&streaming_mutex);
 		if(rgbReady && depthReady) {
-			fwrite(messageBuffer, 1, 640*480*3*2, pipeout);
+			fwrite(messageBuffer, 1, 640*480*4, pipeout);
 			fflush(pipeout);
 			rgbReady = 0;
 			depthReady = 0;
