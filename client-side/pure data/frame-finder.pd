@@ -1,0 +1,39 @@
+#N canvas 333 82 436 272 10;
+#X obj 305 44 inlet;
+#X obj 305 65 l;
+#X obj 317 86 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 317 103 0;
+#X obj 305 125 list-extend;
+#X obj 368 105 inlet;
+#X obj 260 43 inlet;
+#X obj 260 147 listfind;
+#X obj 260 168 list-len;
+#X obj 260 188 >= 1;
+#X obj 260 208 sel 1;
+#X obj 260 228 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 260 246 outlet;
+#X text -102 6 Inlet 1: current time frame \, specified by;
+#X text -99 22 [compass_val beat_val subdiv_val(;
+#X text -103 46 Inlet 2: one or multiple lists to be compared with
+the time frame;
+#X text -101 90 Inlet 3: memory reset \, required in every update of
+the lists to be compared;
+#X text -100 164 Outlet: a bang is triggered when a match is found
+between the current time frame and the specified list;
+#X obj 309 209 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 7 1;
+#X connect 5 0 4 1;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 9 0 18 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;

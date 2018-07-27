@@ -1,0 +1,130 @@
+#N canvas 691 188 1022 687 10;
+#X text 8 4 FRAME CONSTRUCTOR;
+#X text 9 68 INPUTS;
+#X text 9 89 Inlet 1: Arguments for bars;
+#X text 9 105 Inlet 2: Arguments for beats;
+#X text 9 121 Inlet 3: Arguments for subdivisions;
+#X text 10 145 Allowed arguments;
+#X text 9 208 List: A lsit will be iterated to be broadcasted along
+the other inlets;
+#X text 10 163 float: when a single float is received \, it will be
+used as a constant for the specified inlet \, being broadcasted to
+any other specifications in the other inlets.;
+#X text 9 248 OUTPUTS:;
+#X text 8 264 This abstarction will generate a single list containing
+all the time frames divided by zeros. e.g.;
+#X msg 47 293 1 2 3 0 4 2 3 0 6 5 5 0 8 7 8;
+#X obj 762 198 list-dripslow;
+#X obj 762 159 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 768 240 list-dripslow;
+#X obj 843 273 spigot;
+#X msg 877 241 1;
+#X msg 910 242 0;
+#X obj 702 293 f;
+#X obj 701 274 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 768 220 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 702 314 pack f f;
+#X msg 866 200 1;
+#X obj 837 147 l;
+#X obj 702 388 list-extend;
+#X obj 702 339 appent 0;
+#X obj 848 171 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 687 413 l;
+#X obj 802 126 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 702 365 prepent;
+#X floatatom 804 340 5 0 0 0 - - -;
+#X obj 658 396 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 854 314 del 1;
+#X obj 469 272 f;
+#X obj 400 244 list-dripslow;
+#X obj 447 440 list-extend;
+#X obj 510 380 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 475 222 l;
+#X obj 400 224 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 402 299 spigot;
+#X obj 387 273 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 435 277 1;
+#X msg 445 298 0;
+#X obj 432 466 l;
+#X obj 431 415 del 1;
+#X obj 888 117 list prepend set;
+#X obj 888 139 list trim;
+#X obj 887 162 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 888 92 l;
+#X obj 888 70 inlet;
+#X obj 838 124 inlet;
+#X obj 475 201 inlet;
+#X obj 432 488 outlet;
+#X text 8 17 receives parameters for each argument in a time frame
+and constructs a list including every time frame. Useful when desiring
+to broadcast complex behaviours along bars or beats;
+#X connect 11 0 17 1;
+#X connect 11 0 19 0;
+#X connect 11 1 16 0;
+#X connect 11 1 31 0;
+#X connect 12 0 21 0;
+#X connect 12 0 15 0;
+#X connect 12 0 11 0;
+#X connect 13 0 20 1;
+#X connect 13 0 18 0;
+#X connect 13 1 21 0;
+#X connect 13 1 14 0;
+#X connect 14 0 12 0;
+#X connect 15 0 14 1;
+#X connect 16 0 14 1;
+#X connect 17 0 20 0;
+#X connect 18 0 17 0;
+#X connect 19 0 13 0;
+#X connect 20 0 19 0;
+#X connect 20 0 24 0;
+#X connect 21 0 13 1;
+#X connect 22 0 11 1;
+#X connect 22 0 12 0;
+#X connect 22 0 25 0;
+#X connect 23 0 26 1;
+#X connect 24 0 28 0;
+#X connect 25 0 23 1;
+#X connect 26 0 34 0;
+#X connect 27 0 23 1;
+#X connect 27 0 22 0;
+#X connect 28 0 23 0;
+#X connect 29 0 27 0;
+#X connect 30 0 26 0;
+#X connect 31 0 30 0;
+#X connect 32 0 28 1;
+#X connect 32 0 27 0;
+#X connect 33 0 32 0;
+#X connect 33 1 41 0;
+#X connect 33 1 43 0;
+#X connect 34 0 39 0;
+#X connect 34 0 42 1;
+#X connect 35 0 34 1;
+#X connect 36 0 35 0;
+#X connect 36 0 33 1;
+#X connect 36 0 40 0;
+#X connect 36 0 37 0;
+#X connect 37 0 33 0;
+#X connect 38 0 37 0;
+#X connect 39 0 38 0;
+#X connect 40 0 38 1;
+#X connect 41 0 38 1;
+#X connect 42 0 51 0;
+#X connect 43 0 42 0;
+#X connect 44 0 45 0;
+#X connect 45 0 46 0;
+#X connect 45 0 21 0;
+#X connect 46 0 21 0;
+#X connect 47 0 44 0;
+#X connect 48 0 47 0;
+#X connect 49 0 22 0;
+#X connect 50 0 36 0;
