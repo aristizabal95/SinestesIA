@@ -32,7 +32,7 @@ is_pressed = False
 current_timestamp = ''
 
 batch_size = 200
-actions_size = 4
+actions_size = 174
 
 video_buffer = np.zeros(shape=(batch_size,4,240,320))
 video_storage = np.empty(shape=(batch_size,4,240,320))
@@ -81,7 +81,7 @@ while(True):
     cv2.imshow('ImprovAI', show_image)
     if(recording):
         video_buffer[recording_count] = np.moveaxis(cv_image, -1, 0)
-        actions_buffer[recording_count] = np.array(global_vars.g_current_state)[:4]
+        actions_buffer[recording_count] = np.array(global_vars.g_current_state)[:174]
         bar.update(recording_count + 1)
         if recording_count >= 199: #reached the end of the buffer, execute store callback and reset counter
             video_storage = np.copy(video_buffer)

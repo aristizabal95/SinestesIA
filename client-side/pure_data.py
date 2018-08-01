@@ -13,11 +13,11 @@ def pdreceive():
     conn, addr = s.accept()
     print("Connected by", addr)
     while True:
-        data = conn.recv(1024)
+        data = conn.recv(2048)
         string = data.decode('utf-8')
         string = string.replace(';\n','') # Remove the semicolon at the end of the string
         string_list = string.split(" ") # transform the string into an array
-        global_vars.g_current_state = list(map(int, string_list)) # transform the list of strings to ints
+        global_vars.g_current_state = list(map(float, string_list)) # transform the list of strings to ints
 
 
 
