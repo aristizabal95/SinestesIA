@@ -1,7 +1,7 @@
 import subprocess as sp
 import numpy as np
 import cv2
-import face_recognition
+# import face_recognition
 from socket import *
 import math
 
@@ -11,7 +11,7 @@ command = [ FFMPEG_BIN,
             '-loglevel', 'quiet',
             '-srtp_in_suite', 'AES_CM_128_HMAC_SHA1_80',
             '-srtp_in_params', '00108310518720928b30d38f41149351559761969b71d79f8218a39259a7',
-            '-i', 'srtp://192.168.0.101:1234',
+            '-i', 'srtp://localhost:1234',
             '-f', 'image2pipe',
             '-vcodec', 'rawvideo',
             '-pix_fmt', 'rgb24', '-'
@@ -72,7 +72,7 @@ while(True):
 
     # Also need to invert the order of colors
     cv_image = cv_image[...,::-1]
-    depth_image = depth_image[...,::-1]
+    # depth_image = depth_image[...,::-1]
     # image = np.swapaxes(image, 0, 1)
     show_image = cv_image.astype(np.uint8).copy()
     # show_image = depth_image.astype(np.uint8).copy()
