@@ -1,1 +1,3 @@
 *.hdf5
+client_side/__pycache__/*
+bin/*
