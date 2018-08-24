@@ -1,4 +1,4 @@
-#N canvas 250 61 1364 969 10;
+#N canvas 612 42 1364 969 10;
 #X text 32 11 freq;
 #X obj 23 345 +~;
 #X obj 38 324 *~;
