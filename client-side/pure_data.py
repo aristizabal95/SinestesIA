@@ -20,7 +20,5 @@ def pdreceive():
         global_vars.g_current_state = list(map(float, string_list)) # transform the list of strings to ints
         print(global_vars.g_current_state)
 
-
-
 def send2Pd(message=''):
     os.system("echo '" + message + "' | pdsend 3000")
