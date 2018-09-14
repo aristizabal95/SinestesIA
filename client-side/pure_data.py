@@ -5,7 +5,7 @@ import socket
 import global_vars
 
 def pdreceive():
-    HOST = ''
+    HOST = 'localhost'
     PORT = 6000
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((HOST, PORT))

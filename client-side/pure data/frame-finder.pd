@@ -1,4 +1,4 @@
-#N canvas 333 82 436 272 10;
+#N canvas 333 82 509 269 10;
 #X obj 305 44 inlet;
 #X obj 305 65 l;
 #X obj 317 86 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -22,8 +22,9 @@ the time frame;
 the lists to be compared;
 #X text -100 164 Outlet: a bang is triggered when a match is found
 between the current time frame and the specified list;
-#X obj 309 209 outlet;
+#X obj 319 224 outlet;
 #X msg 368 103 0;
+#X obj 319 205 change;
 #X connect 0 0 1 0;
 #X connect 1 0 4 0;
 #X connect 1 0 2 0;
@@ -35,7 +36,8 @@ between the current time frame and the specified list;
 #X connect 7 0 8 0;
 #X connect 8 0 9 0;
 #X connect 9 0 10 0;
-#X connect 9 0 18 0;
+#X connect 9 0 20 0;
 #X connect 10 0 11 0;
 #X connect 11 0 12 0;
 #X connect 19 0 4 1;
+#X connect 20 0 18 0;
