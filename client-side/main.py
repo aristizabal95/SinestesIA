@@ -41,9 +41,7 @@ def getVideoData():
     FFMPEG_BIN = "ffmpeg"
     command = [ FFMPEG_BIN,
                 '-loglevel', 'quiet',
-                '-srtp_in_suite', 'AES_CM_128_HMAC_SHA1_80',
-                '-srtp_in_params', '00108310518720928b30d38f41149351559761969b71d79f8218a39259a7',
-                '-i', 'srtp://localhost:1234',
+                '-i', 'udp://localhost:1234',
                 '-f', 'image2pipe',
                 '-vcodec', 'rawvideo',
                 '-pix_fmt', 'rgb24', '-'
@@ -92,6 +90,7 @@ while(True):
         
     #with frame_lock:
     show_image = global_vars.g_current_frame.astype(np.uint8).copy()
+    print(global_vars.g_current_state)
 
     cv2.imshow('ImprovAI', show_image)
     if(recording):
@@ -123,5 +122,4 @@ while(True):
         time.sleep(desired_elapsed - elapsed) #Sleep enough time to make each loop take the desired time
     end_time = time.time()
     fps = 1/(end_time - start_time)
-    print("fps: " + str(fps))
     start_time = time.time()
