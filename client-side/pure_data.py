@@ -18,7 +18,12 @@ def pdreceive():
         string = string.replace(';\n','') # Remove the semicolon at the end of the string
         string_list = string.split(" ") # transform the string into an array
         global_vars.g_current_state = list(map(float, string_list)) # transform the list of strings to ints
-        print(global_vars.g_current_state)
+        # print(global_vars.g_current_state)
 
 def send2Pd(message=''):
     os.system("echo '" + message + "' | pdsend 3000")
+
+def stream_data(action_arr):
+    for action in action_arr:
+        msg = ' '.join(map(str,action)) + ';'
+        send2Pd(msg)

@@ -1,4 +1,5 @@
 from data_man import *
+from multiprocessing import Process
 import subprocess as sp
 from pure_data import *
 from socket import *
@@ -22,7 +23,7 @@ current_timestamp = ''
 
 batch_size = 200
 actions_size = 174
-desired_fps = 20
+desired_fps = 44
 
 video_buffer = np.zeros(shape=(batch_size,4,240,320))
 video_storage = np.empty(shape=(batch_size,4,240,320))
@@ -41,6 +42,7 @@ def getVideoData():
     FFMPEG_BIN = "ffmpeg"
     command = [ FFMPEG_BIN,
                 '-loglevel', 'quiet',
+                # '-benchmark',
                 '-i', 'udp://localhost:1234',
                 '-f', 'image2pipe',
                 '-vcodec', 'rawvideo',
@@ -58,6 +60,7 @@ def getVideoData():
         cv_image = np.flip(cv_image, 1)
         cv_image = np.dstack((cv_image, depth_image))
         cv_image = cv2.resize(cv_image, dsize=(320,240), interpolation=cv2.INTER_NEAREST)
+        # cv_image = cv2.resize(cv_image, dsize=(128,128), interpolation=cv2.INTER_NEAREST)
         #with frame_lock:
         global_vars.g_current_frame = cv_image.astype(np.uint8).copy()
 
@@ -87,22 +90,17 @@ while(True):
                 print("Recording on dataset " + str(current_timestamp))
                 bar.start()
             is_pressed = False
-        
-    #with frame_lock:
-    show_image = global_vars.g_current_frame.astype(np.uint8).copy()
-    print(global_vars.g_current_state)
 
+    show_image = global_vars.g_current_frame.astype(np.uint8).copy()
     cv2.imshow('ImprovAI', show_image)
     if(recording):
         video_buffer[recording_count] = np.moveaxis(global_vars.g_current_frame, -1, 0)
         actions_buffer[recording_count] = np.array(global_vars.g_current_state)[:174]
         bar.update(recording_count + 1)
-        if recording_count >= 199: #reached the end of the buffer, execute store callback and reset counter
-            video_storage = np.copy(video_buffer)
-            actions_storage = np.copy(actions_buffer)
+        if recording_count >= batch_size-1: #reached the end of the buffer, execute store callback and reset counter
             try:
-                t = threading.Thread(target=store_raw, args=(current_timestamp,video_storage,actions_storage))
-                t.start()
+                p = Process(target=store_raw, args=(current_timestamp,video_buffer,actions_buffer))
+                p.start()
             except:
                 print("Could not create storage thread!!!!")
             recording_count = 0
@@ -116,9 +114,7 @@ while(True):
     end_time = time.time()
     elapsed = end_time - start_time
     desired_elapsed = 1/desired_fps
-    if (elapsed > desired_elapsed):
-        print("Process is running slower than desired! Check your fps limit and lower it.")
-    else:
+    if (elapsed < desired_elapsed):
         time.sleep(desired_elapsed - elapsed) #Sleep enough time to make each loop take the desired time
     end_time = time.time()
     fps = 1/(end_time - start_time)
