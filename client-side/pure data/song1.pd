@@ -43,7 +43,11 @@
 #X obj 759 119 s m1a;
 #X obj 961 119 s m2a;
 #X obj 1166 119 s mea;
+<<<<<<< HEAD
 #N canvas 52 132 397 579 percussive-fx-1-actions 0;
+=======
+#N canvas 23 471 397 579 percussive-fx-1-actions 1;
+>>>>>>> 8fa155ab4f7676c670900b6d3a78c9cb228fa98e
 #X obj 5 -17 inlet;
 #N canvas 493 102 922 292 action-arrangement 0;
 #X obj 6 6 inlet;
@@ -183,7 +187,11 @@
 #X obj 182 527 outlet~;
 #X obj 194 547 outlet~;
 #X msg 5 39 127;
+<<<<<<< HEAD
 #N canvas 586 121 578 506 notes 0;
+=======
+#N canvas 491 116 578 506 notes 0;
+>>>>>>> 8fa155ab4f7676c670900b6d3a78c9cb228fa98e
 #X obj 26 189 outlet;
 #X obj 408 88 outlet;
 #X obj 25 21 loadbang;
@@ -706,7 +714,11 @@
 #N canvas 352 144 922 292 action-arrangement 0;
 #X obj 6 6 inlet;
 #X text 44 6 vel;
+<<<<<<< HEAD
 #X msg 99 148 523.251;
+=======
+#X msg 99 148 391.995;
+>>>>>>> 8fa155ab4f7676c670900b6d3a78c9cb228fa98e
 #X msg 204 148 0;
 #X msg 445 148 0;
 #X msg 534 148 0;
@@ -1837,8 +1849,13 @@ instruments;
 #X floatatom 84 692 5 0 0 0 - - -;
 #X obj 5 -46 metronome 75 4/4 16 8;
 #X floatatom 195 -23 5 0 0 0 - - -;
+<<<<<<< HEAD
 #X obj 187 484 print;
 #X obj 9 313 del 0;
+=======
+#X obj 248 248 print;
+#X obj 9 313 del 1;
+>>>>>>> 8fa155ab4f7676c670900b6d3a78c9cb228fa98e
 #X connect 1 0 54 0;
 #X connect 1 0 113 0;
 #X connect 2 0 3 0;
@@ -2029,6 +2046,10 @@ instruments;
 #X connect 96 0 108 0;
 #X connect 97 0 108 1;
 #X connect 98 0 100 1;
+<<<<<<< HEAD
+=======
+#X connect 98 0 115 0;
+>>>>>>> 8fa155ab4f7676c670900b6d3a78c9cb228fa98e
 #X connect 99 0 108 1;
 #X connect 100 0 112 0;
 #X connect 101 0 100 0;
