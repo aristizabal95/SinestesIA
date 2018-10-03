@@ -25,8 +25,8 @@ batch_size = 200
 actions_size = 174
 desired_fps = 44
 
-video_buffer = np.zeros(shape=(batch_size,4,240,320))
-video_storage = np.empty(shape=(batch_size,4,240,320))
+video_buffer = np.zeros(shape=(batch_size,4,128,128))
+video_storage = np.empty(shape=(batch_size,4,128,128))
 actions_buffer = np.zeros(shape=(batch_size,actions_size))
 actions_storage= np.empty(shape=(batch_size,actions_size))
 
@@ -59,8 +59,8 @@ def getVideoData():
         depth_image = np.flip(depth_image, 1)
         cv_image = np.flip(cv_image, 1)
         cv_image = np.dstack((cv_image, depth_image))
-        cv_image = cv2.resize(cv_image, dsize=(320,240), interpolation=cv2.INTER_NEAREST)
-        # cv_image = cv2.resize(cv_image, dsize=(128,128), interpolation=cv2.INTER_NEAREST)
+        # cv_image = cv2.resize(cv_image, dsize=(320,240), interpolation=cv2.INTER_NEAREST)
+        cv_image = cv2.resize(cv_image, dsize=(128,128), interpolation=cv2.INTER_NEAREST)
         #with frame_lock:
         global_vars.g_current_frame = cv_image.astype(np.uint8).copy()
 

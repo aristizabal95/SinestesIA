@@ -27,3 +27,13 @@ def store_raw(timestamp, video, actions):
     # print("actions saved")
 
     f.close()
+
+def combine_video_dataset():
+    dset = h5py.File('video_dataset', 'w')
+    f = h5py.File(hdf5_path, 'r')
+    for timestamp in list(f['video'].keys()):
+        if not 'video' in dset:
+            dset.create_dataset('video', f['video'][timestamp].shape, maxshape=(None,f['video'][timestamp].shape[1],f['video'][timestamp].shape[2],f['video'][timestamp].shape[3]),dtype=np.int8,chunks=True,data=f['video'][timestamp][:])
+        else:
+            dset['video'].resize((dset['video'].shape[0] + f['video'][timestamp].shape[0]), axis=0)
+            dset['video'][-f['video'][timestamp].shape[0]:] = f['video'][timestamp][:]
