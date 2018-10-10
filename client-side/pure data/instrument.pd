@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #N canvas 56 23 1364 799 10;
-=======
-#N canvas 114 23 1364 799 10;
->>>>>>> 8fa155ab4f7676c670900b6d3a78c9cb228fa98e
 #X text 32 11 freq;
 #X obj -26 288 +~;
 #X obj -11 267 *~;
@@ -114,7 +110,6 @@
 #X obj 165 29 inlet;
 #X text 165 13 GlissT;
 #X obj 165 49 s \$0-glissT;
-<<<<<<< HEAD
 #X obj 87 220 spigot;
 #X obj 120 181 > 0;
 #X obj 604 530 r \$0-vel;
@@ -147,40 +142,6 @@
 #X obj 995 539 r~ \$0-Vol;
 #X obj 1010 598 vtof;
 #X obj 1010 579 r~ \$0-Bal;
-=======
-#X obj 136 277 spigot;
-#X obj 169 238 > 0;
-#X obj 597 770 r \$0-vel;
-#X obj 618 789 r \$0-EnvParams;
-#X obj 790 887 pack f f f f f f f f f f f f f f f f;
-#X obj 790 860 bondo 16 unused_param_to_ellongate_o;
-#X obj 818 430 r \$0-glissT;
-#X obj 832 451 r~ \$0-FMR;
-#X obj 832 472 vtof;
-#X obj 846 494 r~ \$0-FMQ;
-#X obj 846 513 vtof;
-#X obj 597 856 list;
-#X msg 629 830 0 0 0 0 0 0 0 0 0 0 0 0;
-#X obj 629 810 loadbang;
-#X obj 861 533 r~ \$0-FMT;
-#X obj 861 554 vtof;
-#X obj 875 574 r \$0-Comp;
-#X obj 889 594 r \$0-Hip;
-#X obj 903 614 r \$0-Lop;
-#X obj 917 635 r~ \$0-DelT;
-#X obj 917 655 vtof;
-#X obj 932 675 r~ \$0-DelQ;
-#X obj 932 694 vtof;
-#X obj 946 714 r \$0-Damp;
-#X obj 960 736 r \$0-Romm;
-#X obj 974 757 r \$0-DW;
-#X obj 597 904 list;
-#X obj 597 925 outlet;
-#X obj 988 800 vtof;
-#X obj 988 779 r~ \$0-Vol;
-#X obj 1003 838 vtof;
-#X obj 1003 819 r~ \$0-Bal;
->>>>>>> 8fa155ab4f7676c670900b6d3a78c9cb228fa98e
 #X connect 1 0 15 0;
 #X connect 2 0 1 1;
 #X connect 3 0 2 0;
