@@ -1,3 +1,8 @@
 *.hdf5
 client_side/__pycache__/*
 bin/*
+*.hdf5*
+logs/*
+logs_bak/*
+checkpoints/*
+client-side/video_dataset
