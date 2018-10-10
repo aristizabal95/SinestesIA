@@ -42,10 +42,7 @@ def getVideoData():
     FFMPEG_BIN = "ffmpeg"
     command = [ FFMPEG_BIN,
                 '-loglevel', 'quiet',
-<<<<<<< HEAD
                 # '-benchmark',
-=======
->>>>>>> 8fa155ab4f7676c670900b6d3a78c9cb228fa98e
                 '-i', 'udp://localhost:1234',
                 '-f', 'image2pipe',
                 '-vcodec', 'rawvideo',
@@ -93,13 +90,6 @@ while(True):
                 print("Recording on dataset " + str(current_timestamp))
                 bar.start()
             is_pressed = False
-<<<<<<< HEAD
-=======
-        
-    #with frame_lock:
-    show_image = global_vars.g_current_frame.astype(np.uint8).copy()
-    print(global_vars.g_current_state)
->>>>>>> 8fa155ab4f7676c670900b6d3a78c9cb228fa98e
 
     show_image = global_vars.g_current_frame.astype(np.uint8).copy()
     cv2.imshow('ImprovAI', show_image)
