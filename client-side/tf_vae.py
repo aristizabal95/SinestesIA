@@ -39,53 +39,53 @@ with tf.name_scope('input'):
     tf.summary.histogram('x_input', x)
 
 # Encoder
-l1 = tf.layers.conv2d(inputs=x, filters=32, kernel_size=(5,5), padding='same', activation=tf.nn.relu)
+l1 = tf.layers.conv2d(inputs=x, filters=32, kernel_size=(3,3), padding='same', activation=tf.nn.relu)
 # now 128x128x32
 l2 = tf.layers.max_pooling2d(l1, pool_size=(2,2), strides=(2,2), padding='same')
 # now 64x64x32
-l3 = tf.layers.conv2d(inputs=l2, filters=16, kernel_size=(5,5), padding='same', activation=tf.nn.relu)
+l3 = tf.layers.conv2d(inputs=l2, filters=16, kernel_size=(3,3), padding='same', activation=tf.nn.relu)
 # now 64x64x16
 l4 = tf.layers.max_pooling2d(l3, pool_size=(2,2), strides=(2,2), padding='same')
 # now 32x32x16
-l5 = tf.layers.conv2d(inputs=l4, filters=16, kernel_size=(5,5), padding='same', activation=tf.nn.relu)
+l5 = tf.layers.conv2d(inputs=l4, filters=16, kernel_size=(3,3), padding='same', activation=tf.nn.relu)
 # now 32x32x16
 l6 = tf.layers.max_pooling2d(l5, pool_size=(2,2), strides=(2,2), padding='same')
 # now 16x16x16
-l7 = tf.layers.conv2d(inputs=l6, filters=16, kernel_size=(5,5), padding='same', activation=tf.nn.relu)
+l7 = tf.layers.conv2d(inputs=l6, filters=16, kernel_size=(3,3), padding='same', activation=tf.nn.relu)
 # now 16x16x16
 l8 = tf.layers.max_pooling2d(l7, pool_size=(2,2), strides=(2,2), padding='same')
 # now 8x8x16
-l9 = tf.layers.conv2d(inputs=l8, filters=8, kernel_size=(5,5), padding='same', activation=tf.nn.relu)
+l9 = tf.layers.conv2d(inputs=l8, filters=8, kernel_size=(3,3), padding='same', activation=tf.nn.relu)
 # now 8x8x8
 l10 = tf.layers.max_pooling2d(l9, pool_size=(4,4), strides=(4,4), padding='same')
 # now 2x2x8
-l11 = tf.layers.conv2d(inputs=l10, filters=4, kernel_size=(5,5), padding='same', activation=tf.nn.relu)
-# now 2x2x4
+l11 = tf.layers.conv2d(inputs=l10, filters=5, kernel_size=(3,3), padding='same', activation=tf.nn.relu)
+# now 2x2x5
 
 tf.summary.histogram('encoding',l11)
 
 #Decoder
-l12 = tf.layers.conv2d(inputs=l11, filters=8, kernel_size=(5,5), padding='same', activation=tf.nn.relu)
+l12 = tf.layers.conv2d(inputs=l11, filters=8, kernel_size=(3,3), padding='same', activation=tf.nn.relu)
 # now 2x2x8
 l13 = tf.image.resize_images(l12, size=(8,8), method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
 # now 8x8x8
-l14 = tf.layers.conv2d(inputs=l13, filters=16, kernel_size=(5,5), padding='same', activation=tf.nn.relu)
+l14 = tf.layers.conv2d(inputs=l13, filters=16, kernel_size=(3,3), padding='same', activation=tf.nn.relu)
 # now 8x8x16
 l15 = tf.image.resize_images(l14, size=(16,16), method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
 # now 16x16x4
-l16 = tf.layers.conv2d(inputs=l15, filters=16, kernel_size=(5,5), padding='same', activation=tf.nn.relu)
+l16 = tf.layers.conv2d(inputs=l15, filters=16, kernel_size=(3,3), padding='same', activation=tf.nn.relu)
 # now 16x16x16
 l17 = tf.image.resize_images(l16, size=(32,32), method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
 # now 32x32x16
-l18 = tf.layers.conv2d(inputs=l17, filters=16, kernel_size=(5,5), padding='same', activation=tf.nn.relu)
+l18 = tf.layers.conv2d(inputs=l17, filters=16, kernel_size=(3,3), padding='same', activation=tf.nn.relu)
 # now 32x32x16
 l19 = tf.image.resize_images(l18, size=(64,64), method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
 # now 64x64x16
-l20 = tf.layers.conv2d(inputs=l19, filters=32, kernel_size=(5,5), padding='same', activation=tf.nn.relu)
+l20 = tf.layers.conv2d(inputs=l19, filters=32, kernel_size=(3,3), padding='same', activation=tf.nn.relu)
 # now 64x64x32
 l21 = tf.image.resize_images(l20, size=(128,128), method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
 # now 128x128x32
-logits = tf.layers.conv2d(inputs=l21, filters=1, kernel_size=(5,5), padding='same', activation=None)
+logits = tf.layers.conv2d(inputs=l21, filters=1, kernel_size=(3,3), padding='same', activation=None)
 # now 128x128x1
 
 # pass logits through sigmoid to get reconstructed images
@@ -94,12 +94,12 @@ tf.summary.histogram("decoded", decoded)
 
 #pass logits through sigmoid and calculate the cross-entropy loss
 loss = tf.nn.sigmoid_cross_entropy_with_logits(labels=y,logits=logits)
-# loss = tf.losses.mean_squared_error(labels=y,predictions=decoded)
+# loss = tf.losses.mean_squared_error(labels=y,predictions=decoded)
 
 # learning params
-learning_rate = 0.0001
+learning_rate = 0.000001
 tf.summary.scalar('learning_rate', learning_rate)
-batch_size = 200
+batch_size = 20
 epochs = 25
 # Get the cost and define the optimizer
 cost = tf.reduce_mean(loss)
@@ -128,7 +128,6 @@ label = None
 count = 0
 for e in range(epochs):
     for batch_i in range(train_dset.shape[0]//batch_size):
-        print(count)
         batch = train_dset[batch_i*batch_size:batch_i*batch_size+batch_size]
         test_index = np.random.randint(test_dset.shape[0], size=1)[0]
         result = sess.run(decoded, feed_dict={x: test_dset[[test_index]]})
@@ -152,3 +151,4 @@ for e in range(epochs):
         print('Epoch: '+ str(e) + '/' + str(epochs) + ', batch: '+ str(batch_i) + ', batch_cost: ' + str(batch_cost))
     save_path = saver.save(sess, "checkpoints/cae.ckpt")
     learning_rate /= 3
+    print("Learning rate: " + str(learning_rate))

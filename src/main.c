@@ -1,5 +1,5 @@
 /***************************************************************
- *                       M.O.N.I.K.Av2                         * 
+ *                       M.O.N.I.K.Av2                         *
  * Motirized, Omniscient, Network Independent Kinect Assistant *
  *                                                             *
  *                      HARDWARE SERVER                        *

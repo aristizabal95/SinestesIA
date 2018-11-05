@@ -8,9 +8,9 @@ def replay_data(video,actions):
     for i in range(video.shape[0]):
         frame = video[i]
         if img is None:
-            img = plt.imshow(frame)
+            img = plt.imshow(np.squeeze(frame))
         else:
-            img.set_data(frame)
+            img.set_data(np.squeeze(frame))
         plt.pause(.0025)
         plt.draw()
 
