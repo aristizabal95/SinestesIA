@@ -25,8 +25,8 @@ batch_size = 200
 actions_size = 174
 desired_fps = 44
 
-video_buffer = np.zeros(shape=(batch_size,4,128,128))
-video_storage = np.empty(shape=(batch_size,4,128,128))
+video_buffer = np.zeros(shape=(batch_size,1,128,128))
+video_storage = np.empty(shape=(batch_size,1,128,128))
 actions_buffer = np.zeros(shape=(batch_size,actions_size))
 actions_storage= np.empty(shape=(batch_size,actions_size))
 
@@ -42,27 +42,27 @@ def getVideoData():
     FFMPEG_BIN = "ffmpeg"
     command = [ FFMPEG_BIN,
                 '-loglevel', 'quiet',
-                # '-benchmark',
+                '-benchmark',
                 '-i', 'udp://localhost:1234',
                 '-f', 'image2pipe',
                 '-vcodec', 'rawvideo',
-                '-pix_fmt', 'rgb24', '-'
+                '-pix_fmt', 'gray', '-'
                 ]
     pipe = sp.Popen(command, stdout = sp.PIPE, bufsize=10**8)
     while True:
-        raw_image = pipe.stdout.read(480*640*4)
+        raw_image = pipe.stdout.read(480*640)
         image = np.fromstring(raw_image, dtype='uint8')
 
         # OpenCV interprets images inverted
-        cv_image = image[0:480*640*3].reshape((480,640,3))
-        depth_image = image[(480*640*3):].reshape((480,640))
+        # cv_image = image[0:480*640*3].reshape((480,640,3))
+        depth_image = image.reshape((480,640))
         depth_image = np.flip(depth_image, 1)
-        cv_image = np.flip(cv_image, 1)
-        cv_image = np.dstack((cv_image, depth_image))
-        # cv_image = cv2.resize(cv_image, dsize=(320,240), interpolation=cv2.INTER_NEAREST)
-        cv_image = cv2.resize(cv_image, dsize=(128,128), interpolation=cv2.INTER_NEAREST)
+        # cv_image = np.flip(cv_image, 1)
+        # cv_image = np.dstack((cv_image, depth_image))
+        depth = cv2.resize(depth_image, dsize=(128,128), interpolation=cv2.INTER_NEAREST)
+        # cv_image = cv2.resize(cv_image, dsize=(128,128), interpolation=cv2.INTER_NEAREST)
         #with frame_lock:
-        global_vars.g_current_frame = cv_image.astype(np.uint8).copy()
+        global_vars.g_current_frame = depth.astype(np.uint8).copy()
 
 # Create the video stream thread
 try:
@@ -92,9 +92,11 @@ while(True):
             is_pressed = False
 
     show_image = global_vars.g_current_frame.astype(np.uint8).copy()
-    cv2.imshow('ImprovAI', show_image)
+    cv2.namedWindow('SinestesIA', cv2.WINDOW_NORMAL)
+    cv2.resizeWindow('SinestesIA', 800,800)
+    cv2.imshow('SinestesIA', show_image)
     if(recording):
-        video_buffer[recording_count] = np.moveaxis(global_vars.g_current_frame, -1, 0)
+        video_buffer[recording_count] = np.moveaxis(global_vars.g_current_frame, -1, 0) TODO # creo que aquí se esta rotando la imagen
         actions_buffer[recording_count] = np.array(global_vars.g_current_state)[:174]
         bar.update(recording_count + 1)
         if recording_count >= batch_size-1: #reached the end of the buffer, execute store callback and reset counter
