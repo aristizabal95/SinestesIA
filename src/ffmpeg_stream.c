@@ -13,15 +13,15 @@ void *ffmpeg_threadfunc(void *arg) {
 	FILE *pipeout; // This will be the pipe that will write to ffmpeg
 
 	// pipeout = popen("ffmpeg -r 25 -f rawvideo -vcodec rawvideo -pix_fmt rgb24 -s 1280x480 -i - -preset ultrafast -vcodec libx264 -tune zerolatency -crf 40 -b 5000k -f mpegts udp://localhost:1234", "w");
-	pipeout = popen("ffmpeg -r 25 -f rawvideo -vcodec rawvideo\
-	 -pix_fmt rgb24 -s 1280x480 -i - -c:v mpeg2video\
+	pipeout = popen("ffmpeg -r 50 -f rawvideo -vcodec rawvideo\
+	 -pix_fmt gray -s 640x480 -i - -preset ultrafast -c:v mpeg2video\
 	 -f image2pipe udp://localhost:1234", "w");
 	while(!die) {
 		pthread_mutex_lock(&streaming_mutex);
-		if(rgbReady && depthReady) {
-			fwrite(messageBuffer, 1, 640*480*4, pipeout);
+		if(depthReady) {
+			fwrite(messageBuffer, 1, 640*480, pipeout);
 			fflush(pipeout);
-			rgbReady = 0;
+			// rgbReady = 0;
 			depthReady = 0;
 		}
 		pthread_mutex_unlock(&streaming_mutex);
