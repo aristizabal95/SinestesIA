@@ -1,6 +1,6 @@
-#N canvas 150 50 1210 780 10;
+#N canvas 70 55 1210 780 10;
 #X obj 811 546 dac~;
-#X obj 5 -69 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 5 -69 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
 ;
 #X obj 57 -22 unpack f f f;
 #X floatatom 57 -1 5 0 0 0 - - -;
@@ -11,7 +11,7 @@
 #X obj 811 520 *~;
 #X obj 852 520 *~;
 #X obj 940 417 vsl 30 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2600 1;
+-1 -1 4752 1;
 #X obj 10 123 s~ p1l;
 #X obj 85 122 s~ p1r;
 #X obj 811 216 r~ p1l;
@@ -932,12 +932,12 @@
 #X connect 37 0 36 0;
 #X restore 404 67 pd harmony-perc-fx-actions;
 #X obj 600 45 r frame;
-#N canvas 51 23 900 794 multifacet_harm_1-action 1;
+#N canvas 51 23 900 794 multifacet_harm_1-action 0;
 #X obj 5 3 inlet;
 #N canvas 829 253 922 292 action-arrangement 0;
 #X obj 6 6 inlet;
 #X text 44 6 vel;
-#X msg 99 148 554.365;
+#X msg 99 148 369.994;
 #X msg 445 148 0;
 #X msg 638 148 0.3;
 #X msg 685 148 0.3;
@@ -2282,6 +2282,8 @@
 #X obj 204 125 frame-finder;
 #X obj 304 125 frame-finder;
 #X obj 404 125 frame-finder;
+#X floatatom 37 37 5 0 0 0 - - -;
+#X floatatom 37 37 5 0 0 0 - - -;
 #X connect 0 0 10 0;
 #X connect 4 0 38 1;
 #X connect 4 1 38 2;
@@ -3222,7 +3224,7 @@
 #X obj 106 647 list;
 #X obj 142 571 r mea;
 #X obj 73 670 pysend;
-#X obj 73 651 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 73 651 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 58 628 r start;
 #X obj 127 320 l;
@@ -3244,18 +3246,31 @@ instruments;
 #X obj 334 240 key 32;
 #X obj 334 260 == 32;
 #X obj 334 281 sel 1;
-#X obj 334 303 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 334 303 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 122 -67 95;
 #X obj 790 565 writesf~ 2;
 #X msg 752 486 start;
 #X msg 714 529 stop;
-#X obj 344 353 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
 #X msg 683 452 open flotar.wav;
-#X obj 347 330 sel 1;
-#X obj 391 357 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 361 305 metronome 50 4/4 1 1;
+#X obj 361 368 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
+#X obj 361 488 click~;
+#X obj 372 386 counter;
+#X obj 391 346 sel 0;
+#X floatatom 372 407 5 0 0 0 - - -;
+#X msg 391 367 1;
+#X obj 372 427 <= 4;
+#X obj 361 449 spigot;
+#X obj 402 473 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 409 427 sel 5;
+#X msg 409 447 1;
+#X msg 420 366 0;
+#X floatatom 945 527 5 0 0 0 - - -;
+#X obj 940 373 loadbang;
+#X msg 940 394 0.48;
 #X connect 1 0 54 0;
 #X connect 1 0 116 0;
 #X connect 2 0 3 0;
@@ -3267,6 +3282,7 @@ instruments;
 #X connect 9 0 122 1;
 #X connect 10 0 9 1;
 #X connect 10 0 8 1;
+#X connect 10 0 139 0;
 #X connect 13 0 8 0;
 #X connect 14 0 9 0;
 #X connect 17 0 8 0;
@@ -3468,14 +3484,27 @@ instruments;
 #X connect 117 0 118 0;
 #X connect 118 0 119 0;
 #X connect 119 0 120 0;
-#X connect 120 0 1 0;
-#X connect 120 0 127 0;
+#X connect 120 0 126 0;
+#X connect 120 0 130 0;
 #X connect 121 0 116 3;
 #X connect 123 0 122 0;
 #X connect 124 0 122 0;
-#X connect 125 0 126 0;
-#X connect 125 0 123 0;
-#X connect 126 0 122 0;
-#X connect 127 0 125 0;
-#X connect 127 1 128 0;
-#X connect 128 0 124 0;
+#X connect 125 0 122 0;
+#X connect 126 0 127 0;
+#X connect 127 0 129 0;
+#X connect 127 0 134 0;
+#X connect 128 0 8 0;
+#X connect 129 0 131 0;
+#X connect 130 0 132 0;
+#X connect 130 0 138 0;
+#X connect 131 0 133 0;
+#X connect 131 0 136 0;
+#X connect 132 0 129 2;
+#X connect 133 0 134 1;
+#X connect 134 0 128 0;
+#X connect 134 0 135 0;
+#X connect 136 0 137 0;
+#X connect 137 0 1 0;
+#X connect 138 0 1 0;
+#X connect 140 0 141 0;
+#X connect 141 0 10 0;

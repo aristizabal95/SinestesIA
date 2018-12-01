@@ -29,7 +29,7 @@ def store_raw(timestamp, video, actions):
     f.close()
 
 def combine_video_dataset():
-    dset = h5py.File('video_dataset', 'w')
+    dset = h5py.File('video_dataset.hdf5', 'w')
     f = h5py.File(hdf5_path, 'r')
     for timestamp in list(f['video'].keys()):
         if not 'video' in dset:

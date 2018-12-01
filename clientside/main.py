@@ -52,7 +52,6 @@ def getVideoData():
     while True:
         raw_image = pipe.stdout.read(480*640)
         image = np.fromstring(raw_image, dtype='uint8')
-
         # OpenCV interprets images inverted
         # cv_image = image[0:480*640*3].reshape((480,640,3))
         depth_image = image.reshape((480,640))
@@ -60,6 +59,10 @@ def getVideoData():
         # cv_image = np.flip(cv_image, 1)
         # cv_image = np.dstack((cv_image, depth_image))
         depth = cv2.resize(depth_image, dsize=(128,128), interpolation=cv2.INTER_NEAREST)
+        mask = np.abs(np.floor(depth/127).astype(bool).astype(np.uint8)-1)
+        depth = depth*mask
+        depth = (depth/127.0*255.0).astype(np.uint8)
+        depth = cv2.GaussianBlur(depth, (5,5), 5)
         # cv_image = cv2.resize(cv_image, dsize=(128,128), interpolation=cv2.INTER_NEAREST)
         #with frame_lock:
         global_vars.g_current_frame = depth.astype(np.uint8).copy()
@@ -94,9 +97,11 @@ while(True):
     show_image = global_vars.g_current_frame.astype(np.uint8).copy()
     cv2.namedWindow('SinestesIA', cv2.WINDOW_NORMAL)
     cv2.resizeWindow('SinestesIA', 800,800)
+    show_image = cv2.applyColorMap(show_image, cv2.COLORMAP_RAINBOW)
     cv2.imshow('SinestesIA', show_image)
     if(recording):
-        video_buffer[recording_count] = np.moveaxis(global_vars.g_current_frame, -1, 0) TODO # creo que aquí se esta rotando la imagen
+        # video_buffer[recording_count] = np.moveaxis(global_vars.g_current_frame, -1, 0) #TODO # creo que aquí se esta rotando la imagen
+        video_buffer[recording_count] = global_vars.g_current_frame
         actions_buffer[recording_count] = np.array(global_vars.g_current_state)[:174]
         bar.update(recording_count + 1)
         if recording_count >= batch_size-1: #reached the end of the buffer, execute store callback and reset counter
