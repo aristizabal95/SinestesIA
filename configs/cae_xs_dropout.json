@@ -1,0 +1,12 @@
+{
+  "exp_name": "cae_xs_reg_low_dropout",
+  "num_epochs": 1200,
+  "num_iter_per_epoch": 20,
+  "learning_rate": 0.001,
+  "keep_prob": 0.82,
+  "reg_constant": 1.5,
+  "noise_percent": 1,
+  "batch_size": 20,
+  "state_size": [128,128,1],
+  "max_to_keep": 5
+}

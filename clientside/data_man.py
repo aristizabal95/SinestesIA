@@ -37,3 +37,31 @@ def combine_video_dataset():
         else:
             dset['video'].resize((dset['video'].shape[0] + f['video'][timestamp].shape[0]), axis=0)
             dset['video'][-f['video'][timestamp].shape[0]:] = f['video'][timestamp][:]
+
+def split_datasets(data, noise_percent=15, filename="dataset.hdf5", percents=[0.8,0.1,0.1]):
+    # This function will split a list of data into train, cross_val and test datasets
+    # It will also preprocess the deisred results and store them in train, cv and test labels
+    assert (type(percents) is list and len(percents) is 3), "percents must be a list of length 3"
+    dset = h5py.File(filename, 'w')
+    data_size = data.shape[0]
+    data_max = data.max()
+    print(data_max)
+    train_idx = int(data_size*percents[0])
+    cross_idx = train_idx + int(data_size*percents[1])
+    test_idx = cross_idx + int(data_size*percents[2])
+    np.random.shuffle(data)
+    labels = np.clip((data/data_max-(noise_percent/100)), 0, 1)
+    labels = labels/labels.max()
+    train_data = data[0:train_idx]
+    train_labels = labels[0:train_idx]
+    cross_val_data = data[train_idx+1:cross_idx]
+    cross_val_labels = labels[train_idx+1:cross_idx]
+    test_data = data[cross_idx+1:test_idx]
+    test_labels = labels[cross_idx+1:test_idx]
+    dset.create_dataset('train_data',data=train_data)
+    dset.create_dataset('train_labels',data=train_labels)
+    dset.create_dataset('cross_val_data',data=cross_val_data)
+    dset.create_dataset('cross_val_labels',data=cross_val_labels)
+    dset.create_dataset('test_data',data=test_data)
+    dset.create_dataset('test_labels',data=test_labels)
+    dset.close()

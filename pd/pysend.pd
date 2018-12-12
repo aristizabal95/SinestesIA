@@ -1,0 +1,44 @@
+#N canvas 900 140 450 300 10;
+#X obj 227 138 list prepend;
+#X msg 296 117 send;
+#X obj 296 96 loadbang;
+#X obj 206 158 list;
+#X obj 206 179 list trim;
+#X obj 143 100 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 39 225 netsend;
+#X floatatom 39 249 5 0 0 0 - - -;
+#X obj 97 224 spigot;
+#X obj 39 167 spigot;
+#X obj 72 144 != 1;
+#X msg 39 192 connect localhost 6000;
+#X obj 227 117 inlet;
+#X obj 143 73 inlet;
+#X obj 39 270 outlet;
+#X text 15 10 Abstraction designed to send data to python \, it receives
+a boolean for starting/stopping transmission and a list containing
+every action to be sent.;
+#X obj 143 119 metro 15;
+#X obj 88 167 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj -21 225 loadbang;
+#X connect 0 0 3 1;
+#X connect 1 0 0 1;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 8 0;
+#X connect 5 0 16 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 1;
+#X connect 7 0 10 0;
+#X connect 7 0 14 0;
+#X connect 8 0 6 0;
+#X connect 9 0 11 0;
+#X connect 10 0 9 1;
+#X connect 10 0 17 0;
+#X connect 11 0 6 0;
+#X connect 12 0 0 0;
+#X connect 13 0 5 0;
+#X connect 16 0 3 0;
+#X connect 16 0 9 0;
+#X connect 18 0 7 0;
