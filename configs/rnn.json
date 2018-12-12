@@ -1,0 +1,13 @@
+{
+  "exp_name": "18_12_11_rnn",
+  "num_epochs": 1200,
+  "num_iter_per_epoch": 20,
+  "learning_rate": 0.003,
+  "reg_constant": 0,
+  "keep_prob": 0.5,
+  "batch_size": 20,
+  "state_size": [190],
+  "timesteps": 20,
+  "lstm_sizes": [128],
+  "max_to_keep": 5
+}

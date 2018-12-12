@@ -1,0 +1,11 @@
+{
+  "exp_name": "18_12_08_cae_noise_reg",
+  "num_epochs": 100000,
+  "num_iter_per_epoch": 50,
+  "learning_rate": 0.006,
+  "reg_constant": 0.02,
+  "noise_percent":0.9,
+  "batch_size": 1,
+  "state_size": [128,128,1],
+  "max_to_keep": 5
+}
