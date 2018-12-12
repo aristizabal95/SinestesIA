@@ -1,0 +1,11 @@
+{
+  "exp_name": "cae_xs_noise_dropout",
+  "num_epochs": 1200,
+  "num_iter_per_epoch": 20,
+  "learning_rate": 0.003,
+  "keep_prob": 0.6,
+  "noise_percent":0.7,
+  "batch_size": 100,
+  "state_size": [128,128,1],
+  "max_to_keep": 5
+}

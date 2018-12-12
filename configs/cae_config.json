@@ -1,0 +1,11 @@
+{
+  "exp_name": "18_12_06_cae_with_randomly_applied_noise",
+  "num_epochs": 100000,
+  "num_iter_per_epoch": 20,
+  "learning_rate": 0.001,
+  "reg_constant": 0.05,
+  "noise_percent":0.8,
+  "batch_size": 5,
+  "state_size": [128,128,1],
+  "max_to_keep": 5
+}
