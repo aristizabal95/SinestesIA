@@ -1,14 +1,14 @@
 {
-  "exp_name": "rnn_continuum",
+  "exp_name": "dance_rnn_dropout",
   "num_epochs": 120000,
   "num_iter_per_epoch": 100,
   "learning_rate": 0.0003,
   "reg_constant": 0.03,
-  "keep_prob": 0.9,
+  "keep_prob": 0.65,
   "batch_size": 14,
-  "state_size": [190],
+  "state_size": [16],
   "timesteps": 80,
   "lstm_layers": 2,
-  "hidden_size": 1024,
+  "hidden_size": 256,
   "max_to_keep": 5
 }

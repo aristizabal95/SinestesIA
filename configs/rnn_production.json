@@ -5,10 +5,10 @@
   "learning_rate": 0.0003,
   "reg_constant": 0.03,
   "keep_prob": 1,
-  "batch_size": 1,
+  "batch_size": 14,
   "state_size": [190],
-  "timesteps": 40,
+  "timesteps": 80,
   "lstm_layers": 2,
-  "hidden_size": 256,
+  "hidden_size": 1024,
   "max_to_keep": 5
 }
