@@ -9,7 +9,7 @@ class CAEModel(BaseModel):
 
     def build_model(self):
         self.is_training = tf.placeholder(tf.bool, name="training")
-        if (self.config.keep_prob > 0):
+        if (self.config.keep_prob < 1):
             print("REMEMBER THAT DROPOUT SHOULD ONLY BE USED FOR TRAINING")
 
         self.x = tf.placeholder(tf.float32, shape=[None] + self.config.state_size, name="X")

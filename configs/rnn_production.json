@@ -1,10 +1,10 @@
 {
   "exp_name": "rnn_continuum",
   "num_epochs": 120000,
-  "num_iter_per_epoch": 100,
+  "num_iter_per_epoch": 200,
   "learning_rate": 0.0003,
   "reg_constant": 0.03,
-  "keep_prob": 0.9,
+  "keep_prob": 1,
   "batch_size": 14,
   "state_size": [190],
   "timesteps": 80,
