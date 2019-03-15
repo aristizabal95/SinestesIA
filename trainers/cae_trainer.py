@@ -32,5 +32,5 @@ class CAETrainer(BaseTrain):
         _, loss = self.sess.run([self.model.train_step, self.model.cross_entropy], feed_dict=feed_dict)
         input, expected = next(self.data.cv_batch())
         encoding, pred, accuracy = self.sess.run([self.model.encoded, self.model.decoded, self.model.cross_entropy], feed_dict={self.model.x: input, self.model.y: expected})
-        encoding = np.reshape(encoding,(-1,2,2,3))
+        encoding = np.reshape(encoding,(-1,16,8,4))
         return loss, input, expected, encoding, pred, accuracy

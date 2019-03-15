@@ -1,6 +1,6 @@
 import h5py
 import numpy as np
-from models.cae_xs_dropout import CAEModel
+from models.cae_l_high import CAEModel
 from utils.config import process_config
 import tensorflow as tf
 
@@ -12,7 +12,7 @@ class RNNData:
         self.video = f['video']
         self.cae_g = tf.Graph()
         self.sess = tf.Session(graph=self.cae_g)
-        cae_config = process_config('configs/cae_xs_dropout.json')
+        cae_config = process_config('configs/cae_l_high_receptive_field.json')
         with self.cae_g.as_default():
             self.model = CAEModel(cae_config)
         with self.sess.as_default():

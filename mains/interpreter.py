@@ -60,6 +60,7 @@ class Interpreter:
 
     def load_models(self, c_c, r_c, a_c):
         # Load the models on separate sessions
+        print("Loading the models")
         c_g = tf.Graph()
         with c_g.as_default():
             cae = CAEModel(c_c)
