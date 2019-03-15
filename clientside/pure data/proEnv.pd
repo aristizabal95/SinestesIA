@@ -1,11 +1,11 @@
-#N canvas 578 181 1086 743 10;
+#N canvas 440 27 1086 743 10;
 #X obj 101 103 cnv 15 350 154 empty empty empty 20 12 0 14 -191407
 -262144 0;
 #X obj 110 118 cnv 15 280 70 empty empty empty 20 12 0 14 -262144 -66577
 0;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array \$0-Envolvente 5 float 1;
-#A 0 0 1 0.3 0.3 0;
+#A 0 0 1 1 1 0;
 #X coords 0 1 4 0 280 70 1 0 0;
 #X restore 110 118 graph;
 #X text 102 212 A;
@@ -148,7 +148,7 @@
 #X obj 26 24 inlet;
 #X obj 71 23 inlet;
 #X msg 26 48 set \$1;
-#X msg 26 90 0.3;
+#X msg 26 90 1;
 #X obj 26 112 outlet;
 #X obj 35 70 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -211,7 +211,7 @@
 #X obj 410 -41 inlet;
 #X msg 53 51 1;
 #X msg 69 73 0.3;
-#N canvas 1335 488 561 470 NormalEnvelope 0;
+#N canvas 714 84 561 470 NormalEnvelope 0;
 #X msg 37 70 0;
 #X obj 37 50 loadbang;
 #X obj 12 3 inlet;
@@ -220,7 +220,7 @@
 #X obj 62 113 inlet;
 #X obj 12 158 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#N canvas 1336 101 600 469 curveGen 0;
+#N canvas 74 87 600 469 curveGen 0;
 #X obj 12 6 inlet;
 #X text 49 5 Trigger;
 #X obj 233 5 inlet;
@@ -244,7 +244,7 @@
 #X obj 166 46 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 233 69 pack f f;
-#X msg 233 110 19 19;
+#X msg 233 110 20 20;
 #X msg 233 90 set \$1 \$2;
 #X obj 233 131 line~;
 #X obj 233 152 /~;
@@ -271,7 +271,7 @@
 #X obj 415 225 < 0;
 #X obj 323 232 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 415 244 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 415 244 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 101 75 f;
 #X obj 284 252 spigot~;
@@ -280,6 +280,7 @@
 #X obj 376 195 expr~ (1-$v1);
 #X obj 376 148 *~ -10;
 #X obj 284 191 *~ 10;
+#X msg 492 54 stop;
 #X connect 0 0 25 0;
 #X connect 2 0 9 1;
 #X connect 4 0 6 0;
@@ -332,6 +333,7 @@
 #X connect 38 0 39 0;
 #X connect 39 0 22 0;
 #X connect 40 0 41 0;
+#X connect 40 0 53 0;
 #X connect 41 0 22 0;
 #X connect 42 0 44 0;
 #X connect 43 0 45 0;
@@ -345,13 +347,14 @@
 #X connect 50 0 48 0;
 #X connect 51 0 49 0;
 #X connect 52 0 29 0;
+#X connect 53 0 34 0;
 #X restore 112 147 pd curveGen;
 #X obj 124 38 inlet;
 #X obj 149 101 inlet;
 #X obj 162 123 inlet;
 #X obj 112 168 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#N canvas 1336 101 600 469 curveGen 0;
+#N canvas 129 126 600 469 curveGen 0;
 #X obj 12 6 inlet;
 #X text 49 5 Trigger;
 #X obj 233 5 inlet;
@@ -376,7 +379,7 @@
 #X obj 166 66 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 233 69 pack f f;
-#X msg 233 110 12 12;
+#X msg 233 110 600 600;
 #X msg 233 90 set \$1 \$2;
 #X obj 233 131 line~;
 #X obj 342 131 line;
@@ -419,6 +422,8 @@
 #X obj 166 26 f;
 #X obj 233 281 +~;
 #X obj 98 25 f;
+#X msg 502 64 stop;
+#X connect 0 0 63 0;
 #X connect 0 0 34 0;
 #X connect 2 0 9 1;
 #X connect 4 0 6 0;
@@ -503,6 +508,7 @@
 #X connect 60 0 12 0;
 #X connect 61 0 43 0;
 #X connect 62 0 14 0;
+#X connect 63 0 52 0;
 #X restore 12 137 pd curveGen;
 #X obj 69 221 +~;
 #X text 182 6 BUG: si se presiona rapido \, hay click hacer que inicie
@@ -515,7 +521,7 @@ la envolvente en el valor que sonaba anteriormente;
 #X obj 236 106 inlet;
 #X obj 221 165 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#N canvas 1336 101 600 469 curveGen 0;
+#N canvas 79 123 600 469 curveGen 0;
 #X obj 12 6 inlet;
 #X text 49 5 Trigger;
 #X obj 233 5 inlet;
@@ -539,7 +545,7 @@ la envolvente en el valor que sonaba anteriormente;
 #X obj 166 46 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 233 69 pack f f;
-#X msg 233 110 58 58;
+#X msg 233 110 800 800;
 #X msg 233 90 set \$1 \$2;
 #X obj 233 131 line~;
 #X obj 233 152 /~;
@@ -559,9 +565,9 @@ la envolvente en el valor que sonaba anteriormente;
 #X msg 414 31 1;
 #X obj 414 10 loadbang;
 #X msg 52 92 set \$1;
-#X msg 52 112 0.3;
+#X msg 52 112 1;
 #X obj 486 13 inlet;
-#X msg 486 33 0;
+#X msg 486 43 0;
 #X obj 323 213 > 0;
 #X obj 415 225 < 0;
 #X obj 323 232 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
@@ -575,6 +581,9 @@ la envolvente en el valor que sonaba anteriormente;
 #X obj 376 195 expr~ (1-$v1);
 #X obj 376 148 *~ -10;
 #X obj 284 191 *~ 10;
+#X msg 502 64 stop;
+#X obj 532 35 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
 #X connect 0 0 25 0;
 #X connect 2 0 9 1;
 #X connect 4 0 6 0;
@@ -626,7 +635,9 @@ la envolvente en el valor que sonaba anteriormente;
 #X connect 37 0 36 0;
 #X connect 38 0 39 0;
 #X connect 39 0 22 0;
+#X connect 40 0 53 0;
 #X connect 40 0 41 0;
+#X connect 40 0 54 0;
 #X connect 41 0 22 0;
 #X connect 42 0 44 0;
 #X connect 43 0 45 0;
@@ -640,6 +651,7 @@ la envolvente en el valor que sonaba anteriormente;
 #X connect 50 0 48 0;
 #X connect 51 0 49 0;
 #X connect 52 0 29 0;
+#X connect 53 0 34 0;
 #X restore 260 158 pd curveGen;
 #X msg 272 131 0;
 #X obj 272 74 loadbang;
@@ -654,12 +666,15 @@ la envolvente en el valor que sonaba anteriormente;
 #X obj 473 108 != 1;
 #X obj 390 130 spigot;
 #X obj 386 84 inlet;
+#X obj 79 22 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
 #X connect 0 0 12 2;
 #X connect 1 0 0 0;
 #X connect 2 0 12 0;
 #X connect 2 0 29 0;
 #X connect 2 0 22 5;
 #X connect 2 0 7 5;
+#X connect 2 0 35 0;
 #X connect 3 0 12 1;
 #X connect 3 0 7 2;
 #X connect 4 0 12 3;
