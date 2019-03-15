@@ -1,0 +1,14 @@
+{
+  "exp_name": "high_rnn_dropout",
+  "num_epochs": 120000,
+  "num_iter_per_epoch": 100,
+  "learning_rate": 0.0003,
+  "reg_constant": 0.03,
+  "keep_prob": 1,
+  "batch_size": 1,
+  "state_size": [512],
+  "timesteps": 80,
+  "lstm_layers": 2,
+  "hidden_size": 256,
+  "max_to_keep": 5
+}
