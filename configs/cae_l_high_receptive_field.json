@@ -1,12 +1,13 @@
 {
-  "exp_name": "cae_l_high",
-  "num_epochs": 30000,
-  "num_iter_per_epoch": 30,
-  "learning_rate": 0.000001,
-  "keep_prob": 1,
-  "reg_constant": 0,
-  "noise_percent": 0,
-  "batch_size": 200,
+  "exp_name": "cae_l_new_data",
+  "num_epochs": 3000000,
+  "num_iter_per_epoch": 8,
+  "learning_rate": 0.0003,
+  "keep_prob": 0.95,
+  "reg_constant": 0.0,
+  "noise_percent": 0.2,
+  "background_percent": 0.1,
+  "batch_size": 800,
   "state_size": [128,128,1],
   "max_to_keep": 5
 }
