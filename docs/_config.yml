@@ -4,7 +4,7 @@ subtitle:           .IA
 bio:                'Música, danza e Inteligencia Artificial'
 description:        "Música, danza e Inteligencia Artificial"
 locale:             es_US
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "SinestesIA" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
 
 # Comments
