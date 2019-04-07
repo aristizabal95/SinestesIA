@@ -17,6 +17,11 @@
 			display: block;
 		}
 
+		p {
+			color: gray;
+			font-size: 80%;
+		}
+
 		&.left,
 		&.right {
 			max-width: 40%;

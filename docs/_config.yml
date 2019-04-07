@@ -1,10 +1,10 @@
 # Site
 title:              Sinestes
 subtitle:           .IA
-bio:                'Jekyll version of the Massively theme by HTML5UP'
-description:        "Jekyll version of the Massively theme by HTML5UP"
+bio:                'Música, danza e Inteligencia Artificial'
+description:        "Música, danza e Inteligencia Artificial"
 locale:             es_US
-baseurl: "/SinestesIA" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
 
 # Comments

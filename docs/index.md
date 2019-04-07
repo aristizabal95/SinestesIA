@@ -32,11 +32,29 @@ sitemap:
     <p><a href="#title" class="scrolly">Volver al inicio</a></p>
   </header>
   <p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eleifend donec pretium vulputate sapien nec. Convallis aenean et tortor at risus. Id cursus metus aliquam eleifend mi in nulla posuere sollicitudin. A arcu cursus vitae congue. Urna neque viverra justo nec. Massa tempor nec feugiat nisl. Leo duis ut diam quam. Congue quisque egestas diam in arcu cursus euismod. Commodo nulla facilisi nullam vehicula ipsum. Dui faucibus in ornare quam. Viverra nibh cras pulvinar mattis nunc. Aliquam purus sit amet luctus venenatis lectus magna fringilla. Laoreet suspendisse interdum consectetur libero id faucibus.
+  Pocos fenómenos sensoriales son atribuidos tanto misterio y tanto arte como la sinestesia. Sinestesia es un fenómeno poco comprendido, que se describe como <em><i>"la confusión de sensaciones, donde la exitación de un sentido genera estimulación en otra modalidad sensorial completamente diferente". (Ternaux, 2003, p. 1)</i></em>. Historias de artistas como <i><a target="_blank" href="https://es.wikipedia.org/wiki/Arthur_Rimbaud">Rimbaud</a>, <a target="_blank" href="https://es.wikipedia.org/wiki/Charles_Baudelaire">Baudelaire</a> y <a target="_blank" href="https://es.wikipedia.org/wiki/Vasili_Kandinski">Kandinsky</a></i>, quienes mencionan su capacidad de comprender la realidad a través de experiencias sensoriales únicas, generan asombro y envidia. Estos artistas tuvieron la suerte de comprender medios artísticos por fuera de sus capacidades, y expresarlos a través de sus habilidades.
   </p>
   <p>
-  Euismod in pellentesque massa placerat duis. Hac habitasse platea dictumst vestibulum. Faucibus nisl tincidunt eget nullam non. Eget nunc scelerisque viverra mauris. Sit amet consectetur adipiscing elit. Faucibus pulvinar elementum integer enim neque volutpat ac tincidunt vitae. Integer quis auctor elit sed vulputate mi sit amet. Elit duis tristique sollicitudin nibh sit amet. Arcu non sodales neque sodales ut etiam. Viverra vitae congue eu consequat ac felis donec et odio. Eros donec ac odio tempor.
+  Lamentablemente, la sinestesia es un fenómeno poco común, razón por la cual el arte de Kandinsky, o los poemas de Baudelaire se destacan del común. Sinestesia, como herramienta artística, tiene una característica interesante, y es que reduce la brecha entre la habilidad y la creatividad, permitiendo a escritores expresarse en términos de luz, a pintores expresarse en términos de sonido, entre otros. Si este fenómeno pudiera replicarse, ¿cuántas personas disfrutarían de la capacidad de expresarse en medios que desconocen?.
   </p>
+  <p>
+  Se han realizado diversos estudios, con el objetivo de comprender las razones por las que este tipo de fenómenos se dan, y en qué manera se expresan, y si bien se han llegado a conclusiones sobre la causa física, los mecanismos cerebrales relacionadas a su expresión siguen siendo desconocidos (Ternaux, 2003, p. 2). Uno de los esfuerzos más reconocibles de comprender la asociación artística entre percepciones en un artista ha sido con Kandinsky, quien logró especificar una teoría bajo la cual su percepción musical se relacionaba con su expresividad visual. Por desgracia, esta descripción es bastante subjetiva y única, no extendiéndose a una generalidad del fenómeno.
+  </p>
+  <span class="image fit">
+    <img src="{{'/images/kandinsky-01.jpg' | absolute_url}}" alt>
+    <p><i>Composición V, pieza sinestética realizada por Wassily Kandinsky (Di Marco & Spadaccini, 2015, p. 33).</i></p>
+  </span>
+  <blockquote>
+  "El azul [...] es comparable con el sonido de una flauta. El rojo es calido, [...] comparable con el sonido de una tuba. El naranja [...] sonido de una campana..." (Di Marco & Spadaccini, 2015, p. 25)
+  </blockquote>
+  <p>
+  Todo pareciera indicar que estamos lejos de comprender este fenómeno, mucho menos de replicarlo. Pero, hoy en día, tenemos herramientas tecnológicas que podrían permitirnos cerrar la brecha entre la habilidad y la creatividad. El aprendizaje de máquina es una de esas herramientas. Esta área de la inteligencia artificial, desarrollada desde los años 50, permite hallar patrones entre una gran cantidad de datos, sean estos patrones conocidos previamente o no. Esta capacidad computacional, que a primera instancia suena sencilla, ha permitido una expansión acelerada al uso de la tecnología en el día a día. Cosas como reconocimiento facial, reconocimiento de voz, procesamiento de lenguaje natural, y mucho más; son algunos ejemplos de aprendizaje de máquina siendo usado en la cotidianidad.
+  </p>
+  <div class="box">
+  <p>
+  <b>Es probable que no podamos comprender con totalidad la expresión de la sinestesia, pero podemos generar herramientas que busquen replicarla.</b>
+  </p>
+  </div>
   <!-- /INTRODUCTION -->
   <!-- CONTEXT -->
   <header>
@@ -44,7 +62,7 @@ sitemap:
     <p><a href="#title" class="scrolly">Volver al inicio</a></p>
   </header>
   <p>
-  Sit amet purus gravida quis blandit turpis. Sagittis orci a scelerisque purus semper. Facilisis sed odio morbi quis commodo odio aenean. In ante metus dictum at tempor commodo ullamcorper a. Amet justo donec enim diam vulputate. Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Tellus in metus vulputate eu. Augue mauris augue neque gravida in fermentum et sollicitudin ac. Amet nulla facilisi morbi tempus iaculis. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Eros donec ac odio tempor orci dapibus ultrices in iaculis. Enim nulla aliquet porttitor lacus luctus accumsan. Pellentesque habitant morbi tristique senectus et netus. Facilisi etiam dignissim diam quis enim lobortis.
+
   </p>
   <p>
   <span class="image left">
@@ -157,5 +175,7 @@ class CAEData:
   <ul>
     <li><a href="https://www.yamaha.com/en/news_release/2018/18013101/
 " target="_blank" >Peters, G. (2012). The philosophy of improvisation. Chicago, IL: University of Chicago Press.</a></li>
+    <li>Ternaux, J. (2003). Synesthesia: A Multimodal Combination of Senses. Leonardo, 36(4), 321-322. doi:10.1162/002409403322258790</li>
+    <li><a target="_blank" href="https://alessiaspadaccini.com/wp-content/uploads/2015/05/Wassily-Kandinsky-y-la-Música-Visual.pdf" >Di Marco, P., & Spadaccini, A. (2015). Wassily Kandinsky y la sinestesia que lo condujo a la música visual. 25-33. Retrieved April 6, 2019.</a></li>
   </ul>
 </article>
