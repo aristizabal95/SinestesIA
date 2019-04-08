@@ -3,7 +3,7 @@ layout: submain
 title: Sinestes
 alt_title: .IA
 subtitle: Música, Danza e Inteligencia Artificial
-description: Every great website starts with a great homepage. The homepage tells your viewers what your site is all about and gives your viewers a place to come back to.
+description: Sinestes.IA es un proyecto artistico realizado por Alejandro Aristizábal con la intención de explorar las utilidades del aprendizaje profundo como instrumento de creación musical.
 sitemap:
     priority: 1.0
     lastmod: 2019-02-04
@@ -32,13 +32,13 @@ sitemap:
     <p><a href="#title" class="scrolly">Volver al inicio</a></p>
   </header>
   <p>
-  Pocos fenómenos sensoriales son atribuidos tanto misterio y tanto arte como la sinestesia. Sinestesia es un fenómeno poco comprendido, que se describe como <em><i>"la confusión de sensaciones, donde la exitación de un sentido genera estimulación en otra modalidad sensorial completamente diferente". (Ternaux, 2003, p. 1)</i></em>. Historias de artistas como <i><a target="_blank" href="https://es.wikipedia.org/wiki/Arthur_Rimbaud">Rimbaud</a>, <a target="_blank" href="https://es.wikipedia.org/wiki/Charles_Baudelaire">Baudelaire</a> y <a target="_blank" href="https://es.wikipedia.org/wiki/Vasili_Kandinski">Kandinsky</a></i>, quienes mencionan su capacidad de comprender la realidad a través de experiencias sensoriales únicas, generan asombro y envidia. Estos artistas tuvieron la suerte de comprender medios artísticos por fuera de sus capacidades, y expresarlos a través de sus habilidades.
+  A pocos fenómenos sensoriales se les ha atribuido tanto misterio y tanto potencial artístico como a la sinestesia. Esta es una condición poco comprendida, que se describe como <em><i>"la confusión de sensaciones, donde la exitación de un sentido genera estimulación en otra modalidad sensorial completamente diferente". (Ternaux, 2003, p. 1)</i></em>. Historias de artistas como <i><a target="_blank" href="https://es.wikipedia.org/wiki/Arthur_Rimbaud">Rimbaud</a>, <a target="_blank" href="https://es.wikipedia.org/wiki/Charles_Baudelaire">Baudelaire</a> y <a target="_blank" href="https://es.wikipedia.org/wiki/Vasili_Kandinski">Kandinsky</a></i>, quienes mencionan su capacidad de comprender la realidad a través de experiencias sensoriales únicas, generan asombro y envidia. Estos artistas tuvieron la suerte de comprender medios artísticos por fuera de sus capacidades, y expresarlos a través de sus habilidades.
   </p>
   <p>
-  Lamentablemente, la sinestesia es un fenómeno poco común, razón por la cual el arte de Kandinsky, o los poemas de Baudelaire se destacan del común. Sinestesia, como herramienta artística, tiene una característica interesante, y es que reduce la brecha entre la habilidad y la creatividad, permitiendo a escritores expresarse en términos de luz, a pintores expresarse en términos de sonido, entre otros. Si este fenómeno pudiera replicarse, ¿cuántas personas disfrutarían de la capacidad de expresarse en medios que desconocen?.
+  Lamentablemente, la sinestesia es una condición poco común, razón por la cual el arte de Kandinsky, o los poemas de Baudelaire se destacan del común. La sinestesia, como herramienta artística, tiene una característica interesante, y es que reduce la brecha entre la habilidad y la creatividad, permitiendo a escritores expresarse en términos de luz, a pintores expresarse en términos de sonido, entre otros. Si esta capacidad pudiera replicarse, ¿cuántas personas disfrutarían de la capacidad de expresarse en medios que desconocen?.
   </p>
   <p>
-  Se han realizado diversos estudios, con el objetivo de comprender las razones por las que este tipo de fenómenos se dan, y en qué manera se expresan, y si bien se han llegado a conclusiones sobre la causa física, los mecanismos cerebrales relacionadas a su expresión siguen siendo desconocidos (Ternaux, 2003, p. 2). Uno de los esfuerzos más reconocibles de comprender la asociación artística entre percepciones en un artista ha sido con Kandinsky, quien logró especificar una teoría bajo la cual su percepción musical se relacionaba con su expresividad visual. Por desgracia, esta descripción es bastante subjetiva y única, no extendiéndose a una generalidad del fenómeno.
+  Se han realizado diversos estudios, con el objetivo de comprender las razones por las que este tipo de habilidades cognitivas se dan y en qué manera se expresan; y si bien se han llegado a conclusiones sobre la causa física, <em><i>"los mecanismos cerebrales relacionadas a su expresión siguen siendo desconocidos"</i></em> (Ternaux, 2003, p. 2). Uno de los esfuerzos más destacados de comprender la sinestesia como herramienta artística fueron las reflexiones y análisis de Kandinsky. Este artista logró especificar una teoría bajo la cual su percepción musical se relacionaba con su expresividad visual. Por desgracia, esta descripción es bastante subjetiva y única, por lo que no aplica a la generalidad.
   </p>
   <span class="image fit">
     <img src="{{'/images/kandinsky-01.jpg' | absolute_url}}" alt>
@@ -48,8 +48,8 @@ sitemap:
   "El azul [...] es comparable con el sonido de una flauta. El rojo es calido, [...] comparable con el sonido de una tuba. El naranja [...] sonido de una campana..." (Di Marco & Spadaccini, 2015, p. 25)
   </blockquote>
   <p>
-  Todo pareciera indicar que estamos lejos de comprender este fenómeno, mucho menos de replicarlo. Pero, hoy en día, tenemos herramientas tecnológicas que podrían permitirnos cerrar la brecha entre la habilidad y la creatividad. El aprendizaje de máquina es una de esas herramientas. Esta área de la inteligencia artificial, desarrollada desde los años 50, permite hallar patrones entre una gran cantidad de datos, sean estos patrones conocidos previamente o no. Esta capacidad computacional, que a primera instancia suena sencilla, ha permitido una expansión acelerada al uso de la tecnología en el día a día. Cosas como reconocimiento facial, reconocimiento de voz, procesamiento de lenguaje natural, y mucho más; son algunos ejemplos de aprendizaje de máquina siendo usado en la cotidianidad.
-  </p>
+  Todo pareciera indicar que estamos lejos de comprender este fenómeno, mucho menos de replicarlo. Pero, hoy en día, tenemos herramientas tecnológicas que podrían permitirnos simular comportamientos sinestéticos. El aprendizaje de máquina es una de esas herramientas. Esta área de la inteligencia artificial, desarrollada desde los años 50, permite hallar patrones entre una gran cantidad de datos, sean estos patrones conocidos previamente o no. Esta capacidad computacional, que a primera instancia suena sencilla, ha permitido una expansión acelerada al uso de la tecnología en el día a día. Cosas como reconocimiento facial, reconocimiento de voz, procesamiento de lenguaje natural, y mucho más; son algunos ejemplos de aprendizaje de máquina siendo usado en la cotidianidad.
+    </p>
   <div class="box">
   <p>
   <b>Es probable que no podamos comprender con totalidad la expresión de la sinestesia, pero podemos generar herramientas que busquen replicarla.</b>
