@@ -99,7 +99,7 @@
 
 		@include breakpoint(small) {
 			@include padding(_size(padding) * 1.5, _size(padding) * 1);
-			min-height: 80vh;
+			min-height: 70vh;
 
 			h1 {
 				font-size: 3.25rem;

@@ -12,9 +12,8 @@ sitemap:
 <article class="post">
 	<header class="major">
 		<h2 id="title"><a href="#">Sinestes<span>.IA</span></a></h2>
-		<p>With only a few edits, you can have a stunningly beautiful website <br />
-             nearly out of the box. Of course... you can always take it further <br />
-             and make it something even more amazing!</p>
+		<p style="margin: 0"><i>"El baile puede revelar todo el misterio que la música concede."</i></p>
+    <p>Charles Baudelaire</p>
 	</header>
 	<a href="#intro" class="image main scrolly"><img src="{{ "/images/main.png" | absolute_url }}" alt="" /></a>
 	<h3 id="index">Índice</h3>
@@ -52,7 +51,7 @@ sitemap:
     </p>
   <div class="box">
   <p>
-  <b>Es probable que no podamos comprender con totalidad la expresión de la sinestesia, pero podemos generar herramientas que busquen replicarla.</b>
+  <b>Es probable que no podamos comprender con totalidad la expresión de la sinestesia, pero podemos generar herramientas que busquen simularla.</b>
   </p>
   </div>
   <!-- /INTRODUCTION -->
