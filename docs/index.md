@@ -3,7 +3,7 @@ layout: submain
 title: Sinestes
 alt_title: .IA
 subtitle: Música, Danza e Inteligencia Artificial
-description: Every great website starts with a great homepage. The homepage tells your viewers what your site is all about and gives your viewers a place to come back to.
+description: Sinestes.IA es un proyecto artistico realizado por Alejandro Aristizábal con la intención de explorar las utilidades del aprendizaje profundo como instrumento de creación musical.
 sitemap:
     priority: 1.0
     lastmod: 2019-02-04
@@ -12,9 +12,8 @@ sitemap:
 <article class="post">
 	<header class="major">
 		<h2 id="title"><a href="#">Sinestes<span>.IA</span></a></h2>
-		<p>With only a few edits, you can have a stunningly beautiful website <br />
-             nearly out of the box. Of course... you can always take it further <br />
-             and make it something even more amazing!</p>
+		<p style="margin: 0"><i>"El baile puede revelar todo el misterio que la música concede."</i></p>
+    <p>Charles Baudelaire</p>
 	</header>
 	<a href="#intro" class="image main scrolly"><img src="{{ "/images/main.png" | absolute_url }}" alt="" /></a>
 	<h3 id="index">Índice</h3>
@@ -48,11 +47,11 @@ sitemap:
   "El azul [...] es comparable con el sonido de una flauta. El rojo es calido, [...] comparable con el sonido de una tuba. El naranja [...] sonido de una campana..." (Di Marco & Spadaccini, 2015, p. 25)
   </blockquote>
   <p>
-  Todo pareciera indicar que estamos lejos de comprender este fenómeno, mucho menos de replicarlo. Pero, hoy en día, tenemos herramientas tecnológicas que podrían permitirnos cerrar la brecha entre la habilidad y la creatividad. El aprendizaje de máquina es una de esas herramientas. Esta área de la inteligencia artificial, desarrollada desde los años 50, permite hallar patrones entre una gran cantidad de datos, sean estos patrones conocidos previamente o no. Esta capacidad computacional, que a primera instancia suena sencilla, ha permitido una expansión acelerada al uso de la tecnología en el día a día. Cosas como reconocimiento facial, reconocimiento de voz, procesamiento de lenguaje natural, y mucho más; son algunos ejemplos de aprendizaje de máquina siendo usado en la cotidianidad.
-  </p>
+  Todo pareciera indicar que estamos lejos de comprender este fenómeno, mucho menos de replicarlo. Pero, hoy en día, tenemos herramientas tecnológicas que podrían permitirnos simular comportamientos sinestéticos. El aprendizaje de máquina es una de esas herramientas. Esta área de la inteligencia artificial, desarrollada desde los años 50, permite hallar patrones entre una gran cantidad de datos, sean estos patrones conocidos previamente o no. Esta capacidad computacional, que a primera instancia suena sencilla, ha permitido una expansión acelerada al uso de la tecnología en el día a día. Cosas como reconocimiento facial, reconocimiento de voz, procesamiento de lenguaje natural, y mucho más; son algunos ejemplos de aprendizaje de máquina siendo usado en la cotidianidad.
+    </p>
   <div class="box">
   <p>
-  <b>Es probable que no podamos comprender con totalidad la expresión de la sinestesia, pero podemos generar herramientas que busquen replicarla.</b>
+  <b>Es probable que no podamos comprender con totalidad la expresión de la sinestesia, pero podemos generar herramientas que busquen simularla.</b>
   </p>
   </div>
   <!-- /INTRODUCTION -->
