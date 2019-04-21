@@ -50,8 +50,7 @@ class RNNModel(BaseModel):
         self.output = output
 
         # Pass the output through a fully connected layer and get the predictions
-        l1 = tf.contrib.layers.fully_connected(output, 128, activation_fn=tf.nn.sigmoid)
-        self.prediction = tf.contrib.layers.fully_connected(l1, self.config.state_size[0], activation_fn=tf.nn.relu)
+        self.prediction = tf.contrib.layers.fully_connected(output, self.config.state_size[0], activation_fn=tf.nn.relu)
         # compress the results into values between -1 and 1
         # self.prediction = tf.tanh(logits)
         # self.norm_pred = self.prediction*(self.max - self.mean) + self.mean
@@ -63,7 +62,7 @@ class RNNModel(BaseModel):
 
         with tf.name_scope("loss"):
             # loss = tf.losses.huber_loss(labels=((self.y-self.mean)/(self.max - self.mean)), predictions=self.prediction)
-            loss = tf.losses.huber_loss(labels=(self.y), predictions=self.prediction)
+            loss = tf.losses.mean_squared_error(labels=(self.y), predictions=self.prediction)
             reg_losses = tf.get_collection(tf.GraphKeys.REGULARIZATION_LOSSES)
             self.cross_entropy = tf.reduce_mean(loss) + self.config.reg_constant*sum(reg_losses)
             update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)

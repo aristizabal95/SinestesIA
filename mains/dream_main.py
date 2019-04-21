@@ -2,11 +2,12 @@ import tensorflow as tf
 import numpy as np
 import utils.pure_data as pd
 
-from models.rnn_model import RNNModel
-from models.cae_xs_dropout import CAEModel
+from models.dance_rnn_model import RNNModel
+from models.cae_l_high import CAEModel
 from utils.config import process_config
 from utils.utils import get_args
 import matplotlib.pyplot as plt
+import cv2
 
 def load_models(c_c, r_c):
     # Load the models on separate sessions
@@ -30,8 +31,7 @@ def load_models(c_c, r_c):
 
     return cae, c_s, rnn, r_s
 
-def dream(cae, c_s, rnn, r_s, pred=np.zeros((1,1,190)), state=np.zeros((2,2,1,1024)), length=300, randomize=True):
-    img = None
+def dream(cae, c_s, rnn, r_s, pred=np.zeros((1,1,1024)), state=np.zeros((2,2,1,1024)), length=300, randomize=True):
     prediction = np.copy(pred)
     init_state = np.copy(state)
     print("Dreaming")
@@ -39,8 +39,9 @@ def dream(cae, c_s, rnn, r_s, pred=np.zeros((1,1,190)), state=np.zeros((2,2,1,10
         for _ in range(length):
             prediction, init_state = r_s.run([rnn.norm_pred, rnn.state], feed_dict={rnn.x: prediction, rnn.init_state: init_state})
             init_state = init_state + np.random.rand(2,2,1,1024)*1.8
-            encoded = prediction.squeeze()[174:].reshape((1,2,2,4))
+            encoded = prediction.squeeze().reshape((1,16,16,4))
             decoded = c_s.run(cae.decoded, feed_dict={cae.encoded: encoded})
+            decoded = cv2.resize(decoded.squeeze(), (300,300))
             if img is None:
                 img = plt.imshow(decoded.squeeze())
             else:

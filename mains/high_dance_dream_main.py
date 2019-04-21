@@ -7,6 +7,7 @@ from models.cae_l_high import CAEModel
 from utils.config import process_config
 from utils.utils import get_args
 import matplotlib.pyplot as plt
+import cv2
 
 def load_models(c_c, r_c):
     # Load the models on separate sessions
@@ -30,7 +31,7 @@ def load_models(c_c, r_c):
 
     return cae, c_s, rnn, r_s
 
-def dream(cae, c_s, rnn, r_s, pred=np.zeros((1,1,512)), state=np.zeros((2,2,1,256)), length=300, randomize=True):
+def dream(cae, c_s, rnn, r_s, pred=np.zeros((1,1,1024)), state=np.zeros((2,2,1,1024)), length=300, randomize=True):
     img = None
     prediction = np.copy(pred)
     init_state = np.copy(state)
@@ -42,17 +43,18 @@ def dream(cae, c_s, rnn, r_s, pred=np.zeros((1,1,512)), state=np.zeros((2,2,1,25
             # encoded = prediction.squeeze().reshape((1,2,2,4))
             encoded = prediction.reshape((1,1,1,-1))
             decoded = c_s.run(cae.decoded, feed_dict={cae.encoded: encoded})
-            if img is None:
-                img = plt.imshow(decoded.squeeze())
-            else:
-                img.set_data(decoded.squeeze())
-            plt.pause(1/400.0)
-            plt.draw()
-            # msg = ' '.join(map(str, prediction.squeeze()[:174])) + ';'
-            # pd.send2Pd(msg)
+            encoded = encoded.reshape((16,16,4))
+            encoded = cv2.resize(encoded, (300,300))
+            decoded = cv2.resize(decoded.squeeze(), (300,300))
+            decoded = np.stack((decoded,)*3)
+            decoded = np.vstack((decoded, np.ones((1,300,300))))
+            decoded = np.rollaxis(decoded, 0, 3)
+            show_img = np.concatenate((encoded, decoded), axis=1)
+            cv2.imshow('dream', show_img)
+            cv2.waitKey(1)
         if randomize:
-            prediction += np.random.rand(1,1,512)*10
-            init_state += np.random.rand(2,2,1,256)*1000
+            prediction += np.random.rand(1,1,1024)
+            init_state += np.random.rand(2,2,1,1024)*10
 
 def main():
     try:
@@ -66,8 +68,8 @@ def main():
         exit(0)
 
     cae, c_s, rnn, r_s = load_models(c_c, r_c)
-    pred = np.random.rand(1,1,512)*3
-    state = np.random.rand(2,2,1,256)*100
+    pred = np.random.rand(1,1,1024)*300
+    state = np.random.rand(2,2,1,1024)*0
     dream(cae,c_s,rnn,r_s,pred,state,length)
 
 if __name__ == '__main__':
