@@ -11,6 +11,34 @@
 		margin: 0 0 _size(element-margin) 0;
 		padding-left: 1.25rem;
 
+		.prefix {
+			margin: 0;
+			padding-left: .625rem;
+			counter-reset: item;
+			list-style-type: none;
+			*list-style-type: decimal;
+			&.three li:before {
+				content: '3.' counter(item, decimal) '.';
+				counter-increment: item;
+			}
+			&.three-one li:before {
+				content: '3.1.' counter(item, decimal) '.';
+				counter-increment: item;
+			}
+			&.five li:before {
+				content: '5.' counter(item, decimal) '.';
+				counter-increment: item;
+			}
+			&.five-two li:before {
+				content: '5.2.' counter(item, decimal) '.';
+				counter-increment: item;
+			}
+			&.five-three li:before {
+				content: '5.3.' counter(item, decimal) '.';
+				counter-increment: item;
+			}
+		}
+
 		li {
 			padding-left: 0.25rem;
 		}

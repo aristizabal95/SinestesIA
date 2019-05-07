@@ -65,3 +65,22 @@ def split_datasets(data, noise_percent=15, filename="dataset.hdf5", percents=[0.
     dset.create_dataset('test_data',data=test_data)
     dset.create_dataset('test_labels',data=test_labels)
     dset.close()
+
+def get_max_video_size(dset):
+    # h = h5py.File(seqpath, 'x')
+    video_dset = dset['video']
+    max = 0
+    for i in list(video_dset):
+        if video_dset[i].shape[0] > max:
+            max = video_dset[i].shape[0]
+
+    return max
+
+def extend_video(seq, size):
+    if seq.shape[0] < size:
+        epochs = (size-seq.shape[0])//200
+        batch = np.vstack((seq[-1:-1-100:-1],seq[-100:]))
+        total_batch = np.vstack((batch,)*epochs)
+        return np.concatenate((seq, total_batch), axis=0)
+    else:
+        return seq

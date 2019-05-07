@@ -1,0 +1,13 @@
+{
+  "exp_name": "cae_remade_no_noise",
+  "num_epochs": 100000,
+  "num_iter_per_epoch": 8,
+  "learning_rate": 0.000001,
+  "keep_prob": 1,
+  "reg_constant": 0.0,
+  "noise_percent":0,
+  "background_percent":0,
+  "batch_size": 1,
+  "state_size": [128,128,1],
+  "max_to_keep": 5
+}

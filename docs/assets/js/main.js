@@ -115,6 +115,17 @@
 				window.setTimeout(function() {
 					$body.removeClass('is-loading');
 				}, 100);
+				const players = Plyr.setup('.js-player');
+				$('.tooltip').each(function(){
+					tippy(this, {
+						arrow: true,
+						arrowType: 'round',
+						animation: 'fade',
+						interactive: true,
+						theme: 'light-border',
+						content: $(this).data("tip"),
+					})
+				});
 			});
 
 		// Prioritize "important" elements on medium.

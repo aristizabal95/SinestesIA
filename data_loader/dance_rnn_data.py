@@ -8,8 +8,8 @@ class RNNData:
         self.config = config
         self.index = 0
         self.seq_index = 0
-        f = h5py.File('data/sequences.hdf5','r')
-        self.video = f['sequences']
+        f = h5py.File('E:/Alejandro/Tesis/data/sequences.hdf5','r')
+        self.video = f['sequence']
 
     def next_batch(self):
         index = self.index
@@ -32,3 +32,10 @@ class RNNData:
     def cv_batch(self, batch_size=3):
         idx = np.random.choice(self.cv_input.shape[0], batch_size)
         yield self.cv_input[idx], self.cv_y[idx]
+
+    def get_mean(self):
+        return np.mean(self.video[:].reshape((-1,128)), axis=0)
+
+    def get_stdev(self):
+        data = self.video[:].reshape((-1,128))
+        return data.max(0) - data.min(0)

@@ -1,14 +1,15 @@
 {
-  "exp_name": "dance_rnn_1_1024_dropout",
+  "exp_name": "dance_rnn_enhanced",
   "num_epochs": 120000,
-  "num_iter_per_epoch": 10,
-  "learning_rate": 0.0001,
+  "num_iter_per_epoch": 50,
+  "learning_rate": 0.000000001,
   "reg_constant": 0,
-  "keep_prob": 1,
-  "batch_size": 100,
-  "state_size": [1024],
+  "keep_prob": 0.98,
+  "batch_size": 200,
+  "state_size": [128],
   "timesteps": 200,
-  "lstm_layers": 1,
-  "hidden_size": 1024,
-  "max_to_keep": 5
+  "lstm_layers": 2,
+  "hidden_size": 512,
+  "max_to_keep": 5,
+  "checkpoint_dir": "E:/Alejandro/experiments"
 }

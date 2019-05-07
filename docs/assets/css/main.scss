@@ -55,6 +55,7 @@ $background_image: '{{site.background_image | absolute_url}}';
 	@import 'components/form';
 	@import 'components/icon';
 	@import 'components/image';
+	@import 'components/video';
 	@import 'components/list';
 	@import 'components/section';
 	@import 'components/table';

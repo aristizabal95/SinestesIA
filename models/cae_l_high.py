@@ -49,16 +49,22 @@ class CAEModel(BaseModel):
             # now 4x4x128
             l12 = tf.layers.max_pooling2d(d11, pool_size=(2,2), strides=(2,2), padding='same')
             # now 2x2x128
-            l13 = tf.layers.conv2d(inputs=l12, filters=512, kernel_size=(5,5), padding='same', activation=tf.nn.relu, kernel_initializer=tf.contrib.layers.xavier_initializer(), name="e_conv7")
+            l13 = tf.layers.conv2d(inputs=l12, filters=256, kernel_size=(5,5), padding='same', activation=tf.nn.relu, kernel_initializer=tf.contrib.layers.xavier_initializer(), name="e_conv7")
             d13= tf.nn.dropout(l13, self.config.keep_prob, name="e_drop7")
             # now 2x2x512
             l14 = tf.layers.max_pooling2d(d13, pool_size=(2,2), strides=(2,2), padding='same')
             # now 1x1x512
-        self.encoded = tf.layers.conv2d(inputs=l14, filters = 1024, kernel_size=(5,5), padding='same', name='encoded')
-        d15= tf.nn.dropout(self.encoded, self.config.keep_prob, name="encoded_drop")
+            l15 = tf.layers.conv2d(inputs=l14, filters=512, kernel_size=(5,5), padding='same', activation=tf.nn.relu, kernel_initializer=tf.contrib.layers.xavier_initializer(), name="e_conv8")
+            d15= tf.nn.dropout(l15, self.config.keep_prob, name="encoded_drop")
+            # now 2x2x512
+        self.encoded = tf.layers.conv2d(inputs=l14, filters = 128, kernel_size=(5,5), padding='same', name='encoded')
+        d16= tf.nn.dropout(self.encoded, self.config.keep_prob, name="encoded_drop")
         # now 1x1x1024
         with tf.name_scope("decoder"):
-            dl15 = tf.layers.conv2d(inputs=d15, filters=512, kernel_size=(5,5), padding='same', name='d_conv1')
+            dl14 = tf.layers.conv2d(inputs=d16, filters=512, kernel_size=(5,5), padding='same', name='d_conv0')
+            d15= tf.nn.dropout(dl14, self.config.keep_prob, name="d_drop7")
+            # now 1x1x512
+            dl15 = tf.layers.conv2d(inputs=d15, filters=256, kernel_size=(5,5), padding='same', name='d_conv1')
             dd15= tf.nn.dropout(dl15, self.config.keep_prob, name="e_drop8")
             # now 1x1x512
             l16 = tf.image.resize_images(dd15, size=(2,2), method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
