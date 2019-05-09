@@ -54,7 +54,7 @@ Habiendo desarrollado, y encapsulado toda la idea de un instrumento bajo estos p
   <img src="{{'/images/kick.png' | absolute_url}}" alt>
 </span>
 <audio class="js-player" controls preload>
-  <source src="{{ 'audios/kick.wav' | absolute_url}}" />
+  <source src="{{ 'audios/kick.mp3' | absolute_url}}" />
 </audio>
 Este ejemplo demuestra qué parámetros usar para generar sonidos percutivos bajos como el bombo de una batería.
 <h3>Flauta</h3>
@@ -62,7 +62,7 @@ Este ejemplo demuestra qué parámetros usar para generar sonidos percutivos baj
   <img src="{{'/images/flute.png' | absolute_url}}" alt>
 </span>
 <audio class="js-player" controls preload>
-  <source src="{{ 'audios/flute.wav' | absolute_url}}" />
+  <source src="{{ 'audios/flute.mp3' | absolute_url}}" />
 </audio>
 Acá podemos ver la versatilidad del instrumento, ya que sin haber modificado la arquitectura pudimos obtener un sonido contrastante al bombo modificando los parámetros. En este caso, hacemos uso del FM con una tasa tan baja que actúa como un LFO, generando un efecto de vibrato en la nota.
 <h3>Sonido dinámico</h3>
@@ -70,7 +70,7 @@ Acá podemos ver la versatilidad del instrumento, ya que sin haber modificado la
   <img src="{{'/images/estridente.png' | absolute_url}}" alt>
 </span>
 <audio class="js-player" controls preload>
-  <source src="{{ 'audios/synth.wav' | absolute_url}}" />
+  <source src="{{ 'audios/synth.mp3' | absolute_url}}" />
 </audio>
 Se pueden encadenar mensajes para generar sonoridades más interesantes. En este caso, hacemos uso del glissando para cambiar de altura de manera gradual, y haciendo uso de la síntesis FM, del compresor y de los filtros se obtiene un timbre interesante.
 <h3>Arpegio</h3>
@@ -78,7 +78,7 @@ Se pueden encadenar mensajes para generar sonoridades más interesantes. En este
   <img src="{{'/images/arpegio.png' | absolute_url}}" alt>
 </span>
 <audio class="js-player" controls preload>
-  <source src="{{ 'audios/arp.wav' | absolute_url}}" />
+  <source src="{{ 'audios/arp.mp3' | absolute_url}}" />
 </audio>
 El encadenamiento de mensajes también permite generar secuencias, lo cual abre la posibilidad a construir melodías en un solo instrumento. Acá se hace uso del delay para mantener el arpeggio por más tiempo.
 

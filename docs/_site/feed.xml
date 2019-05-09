@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/SinestesIA/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/SinestesIA/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/SinestesIA/" rel="alternate" type="text/html" /><updated>2019-05-08T19:56:54-05:00</updated><id>http://localhost:4000/SinestesIA/</id><title type="html">Sinestes</title><subtitle>Sinestes.IA es un proyecto artistico realizado por Alejandro Aristizábal con la intención de explorar las utilidades del aprendizaje profundo como instrumento de creación musical.</subtitle><entry><title type="html">Entorno Sonoro</title><link href="http://localhost:4000/SinestesIA/anexos/entorno-sonoro/" rel="alternate" type="text/html" title="Entorno Sonoro" /><published>2019-05-08T00:00:00-05:00</published><updated>2019-05-08T00:00:00-05:00</updated><id>http://localhost:4000/SinestesIA/anexos/entorno-sonoro</id><content type="html" xml:base="http://localhost:4000/SinestesIA/anexos/entorno-sonoro/">&lt;p&gt;El ambiente sonoro de Sinestes.IA debe ser diseñado con el propósito de ofrecer la mayor cantidad de variedad sonora y textural en un número reducido de parámetros. De esta manera, el modelo de inteligencia artificial no se verá limitado por la diversidad sonora, sino por sus capacidades de aprendizaje. Además de esto, la sonoridad del entorno sonoro debe poder ser completamente representada en todo momento por los parámetros que el programa va a manipular, lo que significa que el algoritmo tendrá control absoluto de lo que está sonando en este entorno.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/SinestesIA/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/SinestesIA/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/SinestesIA/" rel="alternate" type="text/html" /><updated>2019-05-08T20:09:51-05:00</updated><id>http://localhost:4000/SinestesIA/</id><title type="html">Sinestes</title><subtitle>Sinestes.IA es un proyecto artistico realizado por Alejandro Aristizábal con la intención de explorar las utilidades del aprendizaje profundo como instrumento de creación musical.</subtitle><entry><title type="html">Entorno Sonoro</title><link href="http://localhost:4000/SinestesIA/anexos/entorno-sonoro/" rel="alternate" type="text/html" title="Entorno Sonoro" /><published>2019-05-08T00:00:00-05:00</published><updated>2019-05-08T00:00:00-05:00</updated><id>http://localhost:4000/SinestesIA/anexos/entorno-sonoro</id><content type="html" xml:base="http://localhost:4000/SinestesIA/anexos/entorno-sonoro/">&lt;p&gt;El ambiente sonoro de Sinestes.IA debe ser diseñado con el propósito de ofrecer la mayor cantidad de variedad sonora y textural en un número reducido de parámetros. De esta manera, el modelo de inteligencia artificial no se verá limitado por la diversidad sonora, sino por sus capacidades de aprendizaje. Además de esto, la sonoridad del entorno sonoro debe poder ser completamente representada en todo momento por los parámetros que el programa va a manipular, lo que significa que el algoritmo tendrá control absoluto de lo que está sonando en este entorno.&lt;/p&gt;
 
 &lt;p&gt;Para lograr representar la sonoridad del entorno sonoro, los parámetros no solo deben capturar la información de intensidad y altura de cada voz o línea que se piense manejar, sino que además deben capturar las características sonoras, tímbricas y temporales de cada sonido. Esto lo diferencia del protocolo MIDI, ya que este no encapsula la información sonora, sino las instrucciones de interpretación que debe manejar el instrumento que uno decida. Para lograr esto, se desarrolló un instrumento como un componente aislado del entorno sonoro, el cual encapsula todos los requerimientos anteriores. De esta forma, se puede construir el entorno sonoro a partir de múltiples instrumentos, cuya construcción es idéntica, reduciendo la complejidad del entorno, y maximizando la variedad sonora del mismo.&lt;/p&gt;
 
@@ -46,7 +46,7 @@
   &lt;img src=&quot;http://localhost:4000/SinestesIA/images/kick.png&quot; alt=&quot;&quot; /&gt;
 &lt;/span&gt;&lt;/p&gt;
 &lt;audio class=&quot;js-player&quot; controls=&quot;&quot; preload=&quot;&quot;&gt;
-  &lt;source src=&quot;http://localhost:4000/SinestesIA/audios/kick.wav&quot; /&gt;
+  &lt;source src=&quot;http://localhost:4000/SinestesIA/audios/kick.mp3&quot; /&gt;
 &lt;/audio&gt;
 &lt;p&gt;Este ejemplo demuestra qué parámetros usar para generar sonidos percutivos bajos como el bombo de una batería.&lt;/p&gt;
 &lt;h3&gt;Flauta&lt;/h3&gt;
@@ -54,7 +54,7 @@
   &lt;img src=&quot;http://localhost:4000/SinestesIA/images/flute.png&quot; alt=&quot;&quot; /&gt;
 &lt;/span&gt;&lt;/p&gt;
 &lt;audio class=&quot;js-player&quot; controls=&quot;&quot; preload=&quot;&quot;&gt;
-  &lt;source src=&quot;http://localhost:4000/SinestesIA/audios/flute.wav&quot; /&gt;
+  &lt;source src=&quot;http://localhost:4000/SinestesIA/audios/flute.mp3&quot; /&gt;
 &lt;/audio&gt;
 &lt;p&gt;Acá podemos ver la versatilidad del instrumento, ya que sin haber modificado la arquitectura pudimos obtener un sonido contrastante al bombo modificando los parámetros. En este caso, hacemos uso del FM con una tasa tan baja que actúa como un LFO, generando un efecto de vibrato en la nota.&lt;/p&gt;
 &lt;h3&gt;Sonido dinámico&lt;/h3&gt;
@@ -62,7 +62,7 @@
   &lt;img src=&quot;http://localhost:4000/SinestesIA/images/estridente.png&quot; alt=&quot;&quot; /&gt;
 &lt;/span&gt;&lt;/p&gt;
 &lt;audio class=&quot;js-player&quot; controls=&quot;&quot; preload=&quot;&quot;&gt;
-  &lt;source src=&quot;http://localhost:4000/SinestesIA/audios/synth.wav&quot; /&gt;
+  &lt;source src=&quot;http://localhost:4000/SinestesIA/audios/synth.mp3&quot; /&gt;
 &lt;/audio&gt;
 &lt;p&gt;Se pueden encadenar mensajes para generar sonoridades más interesantes. En este caso, hacemos uso del glissando para cambiar de altura de manera gradual, y haciendo uso de la síntesis FM, del compresor y de los filtros se obtiene un timbre interesante.&lt;/p&gt;
 &lt;h3&gt;Arpegio&lt;/h3&gt;
@@ -70,7 +70,7 @@
   &lt;img src=&quot;http://localhost:4000/SinestesIA/images/arpegio.png&quot; alt=&quot;&quot; /&gt;
 &lt;/span&gt;&lt;/p&gt;
 &lt;audio class=&quot;js-player&quot; controls=&quot;&quot; preload=&quot;&quot;&gt;
-  &lt;source src=&quot;http://localhost:4000/SinestesIA/audios/arp.wav&quot; /&gt;
+  &lt;source src=&quot;http://localhost:4000/SinestesIA/audios/arp.mp3&quot; /&gt;
 &lt;/audio&gt;
 &lt;p&gt;El encadenamiento de mensajes también permite generar secuencias, lo cual abre la posibilidad a construir melodías en un solo instrumento. Acá se hace uso del delay para mantener el arpeggio por más tiempo.&lt;/p&gt;
 
