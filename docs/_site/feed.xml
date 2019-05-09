@@ -1,19 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/SinestesIA/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/SinestesIA/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/SinestesIA/" rel="alternate" type="text/html" /><updated>2019-05-07T11:53:31-05:00</updated><id>http://localhost:4000/SinestesIA/</id><title type="html">Sinestes</title><subtitle>Sinestes.IA es un proyecto artistico realizado por Alejandro Aristizábal con la intención de explorar las utilidades del aprendizaje profundo como instrumento de creación musical.</subtitle><entry><title type="html">Welcome to Massively: The Jekyll Theme!</title><link href="http://localhost:4000/SinestesIA/blog/welcome-to-massively-the-jekyll-theme/" rel="alternate" type="text/html" title="Welcome to Massively: The Jekyll Theme!" /><published>2017-10-31T00:00:00-05:00</published><updated>2017-10-31T00:00:00-05:00</updated><id>http://localhost:4000/SinestesIA/blog/welcome-to-massively-the-jekyll-theme</id><content type="html" xml:base="http://localhost:4000/SinestesIA/blog/welcome-to-massively-the-jekyll-theme/">&lt;h2 id=&quot;how-to-use-this-theme&quot;&gt;How to Use This Theme&lt;/h2&gt;
-&lt;p&gt;Just go ahead and read up on &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;how to install Jekyll&lt;/a&gt;. It’s not too hard I promise!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/SinestesIA/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/SinestesIA/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/SinestesIA/" rel="alternate" type="text/html" /><updated>2019-05-08T19:56:54-05:00</updated><id>http://localhost:4000/SinestesIA/</id><title type="html">Sinestes</title><subtitle>Sinestes.IA es un proyecto artistico realizado por Alejandro Aristizábal con la intención de explorar las utilidades del aprendizaje profundo como instrumento de creación musical.</subtitle><entry><title type="html">Entorno Sonoro</title><link href="http://localhost:4000/SinestesIA/anexos/entorno-sonoro/" rel="alternate" type="text/html" title="Entorno Sonoro" /><published>2019-05-08T00:00:00-05:00</published><updated>2019-05-08T00:00:00-05:00</updated><id>http://localhost:4000/SinestesIA/anexos/entorno-sonoro</id><content type="html" xml:base="http://localhost:4000/SinestesIA/anexos/entorno-sonoro/">&lt;p&gt;El ambiente sonoro de Sinestes.IA debe ser diseñado con el propósito de ofrecer la mayor cantidad de variedad sonora y textural en un número reducido de parámetros. De esta manera, el modelo de inteligencia artificial no se verá limitado por la diversidad sonora, sino por sus capacidades de aprendizaje. Además de esto, la sonoridad del entorno sonoro debe poder ser completamente representada en todo momento por los parámetros que el programa va a manipular, lo que significa que el algoritmo tendrá control absoluto de lo que está sonando en este entorno.&lt;/p&gt;
 
-&lt;p&gt;Download this repository &lt;a href=&quot;https://github.com/iwiedenm/jekyll-theme-massively&quot;&gt;here&lt;/a&gt; and save it to any folder you want.&lt;/p&gt;
+&lt;p&gt;Para lograr representar la sonoridad del entorno sonoro, los parámetros no solo deben capturar la información de intensidad y altura de cada voz o línea que se piense manejar, sino que además deben capturar las características sonoras, tímbricas y temporales de cada sonido. Esto lo diferencia del protocolo MIDI, ya que este no encapsula la información sonora, sino las instrucciones de interpretación que debe manejar el instrumento que uno decida. Para lograr esto, se desarrolló un instrumento como un componente aislado del entorno sonoro, el cual encapsula todos los requerimientos anteriores. De esta forma, se puede construir el entorno sonoro a partir de múltiples instrumentos, cuya construcción es idéntica, reduciendo la complejidad del entorno, y maximizando la variedad sonora del mismo.&lt;/p&gt;
 
-&lt;p&gt;Open a terminal window or a command line and &lt;code class=&quot;highlighter-rouge&quot;&gt;cd&lt;/code&gt; to that location.&lt;/p&gt;
+&lt;p&gt;Los parámetros del instrumento deben contener información que indique la intensidad, altura, envolvente, timbre, volumen, paneo y demás agregados que afecten la sonoridad del instrumento. A partir de esto, el instrumento se desarrolló de la siguiente manera.&lt;/p&gt;
 
-&lt;p&gt;Then enter: &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt;. You can now access your new Jekyll site from &lt;a href=&quot;http://127.0.0.1:4000/&quot;&gt;http://127.0.0.1:4000/&lt;/a&gt;. Have fun exploring your new site!&lt;/p&gt;
+&lt;p&gt;De esta manera, el instrumento recibe como entrada en el siguiente orden:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;h5&gt;Velocity:&lt;/h5&gt;Similar al protocolo MIDI, este es un valor de 0 a 127 que representa la intensidad interpretativa del sonido.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Amplitud de ataque:&lt;/h5&gt;Este es un valor de 0 a 1 que representa el porcentaje de intensidad al que llega el instrumento durante el ataque de la envolvente.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Tiempo de ataque:&lt;/h5&gt;Indica la duración de la etapa de ataque en milisegundos.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Curva de ataque:&lt;/h5&gt;Es un valor binario (0,1) que indica si la curva es lineal o logarítmica respectivamente.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Amplitud de decay:&lt;/h5&gt;Representa el porcentaje de intensidad en la etapa de decay. Esta será la misma amplitud usada para el sustain.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Tiempo de decay:&lt;/h5&gt;Indica la duración de la etapa de decay en milisegundos.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Curva de decay:&lt;/h5&gt;Valor binario que indica el tipo de curva de la etapa de decay.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Tiempo de sustain:&lt;/h5&gt;Indica la duración de la etapa de sustain.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Note-off trigger:&lt;/h5&gt;Indica si el tiempo de sustain dependerá de un mensaje de note-off, que en este caso sería un Velocity de cero. De ser así, el tiempo de sustain es ignorado, para depender del velocity.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Tiempo de release:&lt;/h5&gt;Indica el tiempo que se demora el sonido en silenciarse desde que termina la etapa de sustain.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Curva de release:&lt;/h5&gt;Indica si la curva de la etapa de release es lineal o logarítmica.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Velocity-dependent:&lt;/h5&gt;Valor binario que señala si la intensidad de la envolvente depende del velocity, o si se usará el velocity como trigger únicamente. Esta es más una herramienta para el intérprete que para el modelo.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Reverse:&lt;/h5&gt;Valor binario que indica si se desea reproducir la envolvente en reversa. Esto permite generar sonoridades de sonidos reproducidos en reversa.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Frecuencia:&lt;/h5&gt;Representa la altura del sonido en términos de frecuencia. Puede variar entre 20Hz y 20kHz.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Tipo de oscilador:&lt;/h5&gt;es un número del 0 al 4, que permite variar de manera continua entre múltiples tipos de forma de onda. 0 es sinusoidal, 1 es triangular, 2 es diente de sierra, 3 es cuadrada y 4 es ruido blanco. Si el valor es intermedio a los previamente indicados, entonces es una mezcla de las dos formas de onda más cercana. Por ejemplo 0.5 es la combinación de sinusoidal con triangular en magnitudes iguales.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Tiempo de glissando:&lt;/h5&gt;Representa el tiempo que se demora el instrumento en pasar de una altura a otra. Si es 0 significa que no hay glissando.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Tasa de FM:&lt;/h5&gt;Valor que representa la relación entre la frecuencia portadora y moduladora en la etapa de FM.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Cantidad de FM:&lt;/h5&gt;Valor que representa la cantidad de modulación en la etapa de FM. 0 representa sin FM.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Tipo de oscilador FM:&lt;/h5&gt;Este valor define la forma de onda a usar como moduladora del FM, y se comporta como el parámetro “Tipo de oscilador”.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Compresor:&lt;/h5&gt;Valor de 0 a 5 que representa una cantidad específica de compresión. Esto se logra haciendo uso del objeto &lt;code&gt;compressor&lt;/code&gt; de Pure Data, que lamentablemente no específica lo que representa exáctamente cada valor.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Filtro pasa altos:&lt;/h5&gt;Representa la frecuencia de corte del filtro pasa altos. 0 significa sin filtro.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Filtro pasa bajos:&lt;/h5&gt;Representa la frecuencia de corte del filtro pasa bajos. 20000 es equivalente a sin filtro.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Tiempo de delay:&lt;/h5&gt;El tiempo en milisegundos entre cada repetición del delay.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Cantidad de delay:&lt;/h5&gt;Valor que representa el porcentaje de nivel de salida del delay en comparación al nivel de entrada. 100% representa mismo nivel de entrada.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Damping de reverberación:&lt;/h5&gt;Valor que representa el porcentaje de amortiguación de sonido en la etapa de reverberación.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Tamaño de cuarto:&lt;/h5&gt;Valor de 0 a 1 que representa el tamaño de cuarto en la reverberación.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Dry/Wet:&lt;/h5&gt;Relación entre sonido reverberado y sonido limpio.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Volumen:&lt;/h5&gt;Valor de 0 a 1 que representa el nivel de volumen a la salida del instrumento.&lt;/li&gt;
+  &lt;li&gt;&lt;h5&gt;Paneo:&lt;/h5&gt;Valor de -1 a 1 que representa la posición estéreo del instrumento.&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;h2 id=&quot;features&quot;&gt;Features&lt;/h2&gt;
-&lt;h3 id=&quot;auto-generating-sitemap&quot;&gt;Auto-Generating Sitemap&lt;/h3&gt;
-&lt;p&gt;The sitemap is auto generated! Just simply change the front matter of each site. It looks like so…&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sitemap:
-    priority: 0.7
-    lastmod: 2017-11-02
-    changefreq: weekly
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;formspring-integration&quot;&gt;Formspring integration&lt;/h3&gt;
-&lt;p&gt;The contact form below each page on the footer actually collects information! Just change your email address in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; file!&lt;/p&gt;</content><summary type="html">Huge thanks to HTML5 UP for making this awesome template! Let's see what it can do</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/SinestesIA/images/pic02.jpg" /></entry></feed>
+&lt;p&gt;Con esto podemos representar todo el estado de un instrumento en 29 valores individuales. Es importante destacar que esta definición fue realizada previamente a las composiciones, y algunos de estos parámetros no fueron manipulados en las bases de datos. Esto significa que se podría definir un número de parámetros menor a este, pero con la intención de mantener una consistencia con la idea de ofrecer la mayor variedad posible se mantendrán dentro de la definición del instrumento.&lt;/p&gt;
+
+&lt;p&gt;Habiendo desarrollado, y encapsulado toda la idea de un instrumento bajo estos parámetros, se puede especificar el tipo de sonido a producir asignando valores a cada parámetro. Como ejemplo:&lt;/p&gt;
+
+&lt;h3&gt;Bombo&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&quot;image fit&quot;&gt;
+  &lt;img src=&quot;http://localhost:4000/SinestesIA/images/kick.png&quot; alt=&quot;&quot; /&gt;
+&lt;/span&gt;&lt;/p&gt;
+&lt;audio class=&quot;js-player&quot; controls=&quot;&quot; preload=&quot;&quot;&gt;
+  &lt;source src=&quot;http://localhost:4000/SinestesIA/audios/kick.wav&quot; /&gt;
+&lt;/audio&gt;
+&lt;p&gt;Este ejemplo demuestra qué parámetros usar para generar sonidos percutivos bajos como el bombo de una batería.&lt;/p&gt;
+&lt;h3&gt;Flauta&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&quot;image fit&quot;&gt;
+  &lt;img src=&quot;http://localhost:4000/SinestesIA/images/flute.png&quot; alt=&quot;&quot; /&gt;
+&lt;/span&gt;&lt;/p&gt;
+&lt;audio class=&quot;js-player&quot; controls=&quot;&quot; preload=&quot;&quot;&gt;
+  &lt;source src=&quot;http://localhost:4000/SinestesIA/audios/flute.wav&quot; /&gt;
+&lt;/audio&gt;
+&lt;p&gt;Acá podemos ver la versatilidad del instrumento, ya que sin haber modificado la arquitectura pudimos obtener un sonido contrastante al bombo modificando los parámetros. En este caso, hacemos uso del FM con una tasa tan baja que actúa como un LFO, generando un efecto de vibrato en la nota.&lt;/p&gt;
+&lt;h3&gt;Sonido dinámico&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&quot;image fit&quot;&gt;
+  &lt;img src=&quot;http://localhost:4000/SinestesIA/images/estridente.png&quot; alt=&quot;&quot; /&gt;
+&lt;/span&gt;&lt;/p&gt;
+&lt;audio class=&quot;js-player&quot; controls=&quot;&quot; preload=&quot;&quot;&gt;
+  &lt;source src=&quot;http://localhost:4000/SinestesIA/audios/synth.wav&quot; /&gt;
+&lt;/audio&gt;
+&lt;p&gt;Se pueden encadenar mensajes para generar sonoridades más interesantes. En este caso, hacemos uso del glissando para cambiar de altura de manera gradual, y haciendo uso de la síntesis FM, del compresor y de los filtros se obtiene un timbre interesante.&lt;/p&gt;
+&lt;h3&gt;Arpegio&lt;/h3&gt;
+&lt;p&gt;&lt;span class=&quot;image fit&quot;&gt;
+  &lt;img src=&quot;http://localhost:4000/SinestesIA/images/arpegio.png&quot; alt=&quot;&quot; /&gt;
+&lt;/span&gt;&lt;/p&gt;
+&lt;audio class=&quot;js-player&quot; controls=&quot;&quot; preload=&quot;&quot;&gt;
+  &lt;source src=&quot;http://localhost:4000/SinestesIA/audios/arp.wav&quot; /&gt;
+&lt;/audio&gt;
+&lt;p&gt;El encadenamiento de mensajes también permite generar secuencias, lo cual abre la posibilidad a construir melodías en un solo instrumento. Acá se hace uso del delay para mantener el arpeggio por más tiempo.&lt;/p&gt;
+
+&lt;p&gt;La única limitante del instrumento es que es una única fuente sonora, lo que significa que por diseño es monofónico. Para poder aumentar la textura del entorno sonoro, es por lo tanto necesario usar más de un instrumento. Priorizando la variedad sonora, se ha decidido manejar 6 instrumentos independientes, lo que puede ser usado como 4 voces para armonía y melodía, y dos para percusión o efectos. De esta forma se diseñó el entorno sonoro, el cual es usado tanto por la inteligencia artificial como para la construcción de las composiciones.&lt;/p&gt;</content><summary type="html">Una exploración detallada de la construcción del entorno sonoro y las posibilidades sonoras que ofrece.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/SinestesIA/images/instrument.png" /></entry></feed>
