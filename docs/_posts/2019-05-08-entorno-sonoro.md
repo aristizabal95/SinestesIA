@@ -67,7 +67,7 @@ Este ejemplo demuestra qué parámetros usar para generar sonidos percutivos baj
 Acá podemos ver la versatilidad del instrumento, ya que sin haber modificado la arquitectura pudimos obtener un sonido contrastante al bombo modificando los parámetros. En este caso, hacemos uso del FM con una tasa tan baja que actúa como un LFO, generando un efecto de vibrato en la nota.
 <h3>Sonido dinámico</h3>
 <span class="image fit">
-  <img src="{{'/images/estridente.png' | absolute_url}}" alt>
+  <img src="{{'/images/synth.png' | absolute_url}}" alt>
 </span>
 <audio class="js-player" controls preload>
   <source src="{{ 'audios/synth.mp3' | absolute_url}}" />
