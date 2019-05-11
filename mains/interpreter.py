@@ -3,7 +3,7 @@ import subprocess as sp
 import tensorflow as tf
 import utils.pure_data as pd
 from models.dance_rnn_model import RNNModel
-from models.cae_xs_dropout import CAEModel
+from models.cae_l_high import CAEModel
 from models.actions_model import ActionsModel
 from utils.config import process_config
 from utils.utils import get_args
@@ -13,23 +13,24 @@ import threading
 import time
 import math
 import cv2
-import matplotlib.pyplot as plt
 
 class Interpreter:
     # ATTRIBUTES
     # self.current_frame = None
 
-    def __init__(self, cc_path='configs/cae_xs_dropout.json', rc_path='configs/dance_rnn_production.json', ac_path='configs/actions_config.json'):
+    def __init__(self, cc_path='configs/cae_remade.json', rc_path='configs/dance_rnn_prod.json', ac_path='configs/actions_config.json'):
         # Here comes all the initialization required
         # Initialize the models
         self.cc = process_config(cc_path)
         self.rc = process_config(rc_path)
         self.ac = process_config(ac_path)
         self.cae, self.c_s, self.rnn, self.r_s, self.actions, self.a_s = self.load_models(self.cc, self.rc, self.ac)
+        self.current_frame = np.zeros((128,128))
         # Create the video stream thread
         try:
             t = threading.Thread(target=self.getVideoData)
             t.start()
+            print("thread started")
         except:
             print("Something went wrong trying to start getVideoData")
             # Create the pure data receive thread
@@ -95,23 +96,24 @@ class Interpreter:
         img = None
         while True:
             image = self.current_frame.reshape((1,128,128,1))
-            encoding = self.c_s.run(self.cae.encoded, feed_dict={self.cae.x: image})
+            encoding = self.c_s.run(self.cae.encoded, feed_dict={self.cae.x: image/255*0.6})
             encoding = encoding.reshape((1, 1,-1))
-            prediction, output, init_state = self.r_s.run([self.rnn.norm_pred, self.rnn.output, self.rnn.state], feed_dict={self.rnn.x: encoding, self.rnn.init_state: init_state})
-            encoded = encoding.squeeze().reshape((1,2,2,4))
-            decoded = self.c_s.run(self.cae.decoded, feed_dict={self.cae.encoded: encoded}).squeeze()
-            output = output.reshape((-1,256))
-            actions_arr = self.a_s.run(self.actions.norm_pred, feed_dict={self.actions.x: output})
-            msg = ' '.join(map(str, actions_arr.squeeze())) + ';'
+            prediction, init_state = self.r_s.run([self.rnn.norm_pred, self.rnn.state], feed_dict={self.rnn.x: encoding, self.rnn.init_state: init_state})
+            encoded = prediction.reshape((1,1,1,-1))
+            decoded = self.c_s.run(self.cae.decoded, feed_dict={self.cae.encoded: encoded})
+            encoded = encoded.reshape((8,4,4))
+            encoded = cv2.resize(encoded/encoded.max(), (500,500))
+            decoded = cv2.resize(decoded.squeeze()/decoded.max(), (500,500))
+            decoded = np.stack((decoded,)*3)
+            decoded = np.vstack((decoded, np.ones((1,500,500))))
+            decoded = np.rollaxis(decoded, 0, 3)
+            show_img = np.concatenate((encoded, decoded), axis=1)
+            cv2.imshow('perform', show_img)
+            cv2.waitKey(1)
+            actions = self.a_s.run(self.actions.prediction, feed_dict={self.actions.x: np.asarray(init_state).reshape((1,-1))})
+            msg = ' '.join(map(str, actions.squeeze())) + ';'
             pd.send2Pd(msg)
-            show_img = np.hstack((self.current_frame.squeeze(), decoded)).astype(np.uint8)
-            # cv2.namedWindow('Sinestes.IA', cv2.WINDOW_NORMAL)
-            # cv2.resizeWindow('Sinestes.IA', 8000, 16000)
-            # show_img = cv2.applyColorMap(show_img, cv2.COLORMAP_RAINBOW)
-            # cv2.imshow('Sinestes.IA', show_img)
-            if img is None:
-                img = plt.imshow(decoded)
-            else:
-                img.set_data(decoded)
-            plt.pause(.0000001)
-            plt.draw()
+
+if __name__ == '__main__':
+    i = Interpreter()
+    i.run()

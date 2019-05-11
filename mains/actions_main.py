@@ -24,7 +24,10 @@ def main():
     logger = Logger(sess,config)
     trainer = ActionsTrainer(sess,model,data,config,logger)
     sess.run(tf.global_variables_initializer())
-    model.load(sess)
+    loaded = model.load(sess)
+    if not loaded:
+        sess.run(model.mean.assign(data.get_mean()))
+        sess.run(model.stdev.assign(data.get_stdev()))
     trainer.train()
 
 if __name__ == '__main__':
