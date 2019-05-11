@@ -1,6 +1,6 @@
 # Site
 title:              Sinestes
-subtitle:           .IA
+alt_title:           .IA
 bio:                'Sinestes.IA es un proyecto artistico realizado por Alejandro Aristizábal con la intención de explorar las utilidades del aprendizaje profundo como instrumento de creación musical.'
 description:        "Sinestes.IA es un proyecto artistico realizado por Alejandro Aristizábal con la intención de explorar las utilidades del aprendizaje profundo como instrumento de creación musical."
 locale:             es_US
@@ -32,7 +32,7 @@ defaults:
     path: ''
     type: posts
   values:
-    permalink: "/blog/:title/"
+    permalink: "/anexos/:title/"
     layout: post
     author:
 

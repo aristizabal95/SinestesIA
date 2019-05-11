@@ -10,7 +10,8 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-<title>Sinestes.IA</title>
+<title id="title">Sinestes.IA</title>
+
 <meta name="description" content="Sinestes.IA es un proyecto artistico realizado por Alejandro Aristizábal con la intención de explorar las utilidades del aprendizaje profundo como instrumento de creación musical.">
 
 <link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/SinestesIA/assets/icon/apple-icon-57x57.png">
@@ -64,14 +65,13 @@
 					<nav id="nav">
 
             <ul class="links">
-  <li class=" active "><a href="http://localhost:4000/SinestesIA/">Theme Home</a></li>
-  <li class=""><a href="http://localhost:4000/SinestesIA/about/">About</a></li>
-  <li class=""><a href="http://localhost:4000/SinestesIA/blog/">Blog</a></li>
-  <li class=""><a href="http://localhost:4000/SinestesIA/elements/">Elements Reference</a></li>
+  <li class=" active "><a href="http://localhost:4000/SinestesIA/">Home</a></li>
+  
+    <li class=""><a href="http://localhost:4000/SinestesIA/anexos/entorno-sonoro/">Entorno Sonoro</a></li>
+  
 </ul>
 
 <ul class="icons">
-  <li><a href="https://twitter.com/default" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
   <li><a href="https://facebook.com/aristizabal95" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>
   <li><a href="https://instagram.com/a.aristizabalm" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
   <li><a href="https://github.com/aristizabal95" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
@@ -84,7 +84,7 @@
 					<div id="main">
             <article class="post">
 	<header class="major">
-		<h2 id="title"><a href="#">Sinestes<span>.IA</span></a></h2>
+    <h2 id="title"><a href="/SinestesIA/">Sinestes<span>.IA</span></a></h2>
 		<p style="margin: 0"><i>"El baile puede revelar todo el misterio que la música concede."</i></p>
     <p>Charles Baudelaire</p>
 	</header>
@@ -136,6 +136,7 @@
 		<li><a href="#six" class="scrolly">Resultados</a></li>
 		<li><a href="#seven" class="scrolly">Conclusión</a></li>
 		<li><a href="#biblio" class="scrolly">Bibliografía</a></li>
+		<li><a href="#anexos" class="scrolly">Anexos</a></li>
 	</ol>
   <!-- INTRODUCTION -->
   <header>
@@ -509,7 +510,7 @@
   El tratamiento del sonido en aplicaciones de inteligencia artificial no es trivial, debido a que un segundo de sonido suele representarse por decenas de miles de valores o samples. Poner a una red neuronal a generar los samples de manera secuencial requeriría de recursos y tiempos por fuera de los estipulados para este proyecto. Aproximaciones de este estilo a la generación musical se pueden observar con Wavenet de DeepMind, red neuronal que genera resultados excepcionales, a costa de los tiempos de generación, que con altos valores de computación puede tomar hasta 90 minutos generar un segundo de audio. Siendo que este proyecto requiere de generación de sonido en tiempo real es necesario buscar otras aproximaciones <i>(Cahill, P. 2018)</i>.
   </p>
   <p>
-  La mejor opción para solucionar el problema anterior es codificar la información musical, de tal forma que se requiere menor información poder representar los sonidos deseados. Siendo que los sonidos son generados o sintetizados por el computador, es posible representar la información sonora por medio de mensajes que indiquen la activación y desactivación de sonidos. Este tipo de protocolos ya existen, siendo MIDI (Musical Instrument Digital Interface) el más usado. El protocolo MIDI codifica información de altura, velocidad y canal en su forma más básica, pero no incluye información alguna sobre cómo debería sonar o qué instrumento usar. Este tipo de información es relevante para este proyecto, ya que se busca que el programa pueda reproducir una gran variedad de sonoridades. Por esta razón se implementó un entorno sonoro en Pure Data, con la posibilidad de representar hasta 6 instrumentos simultáneos, cada uno absolutamente moldeable a través de una lista de parámetros. Cada instrumento puede representar desde un sonido ligero y etéreo hasta sonidos súbitos y estridentes, dependiendo de los parámetros especificados.
+  La mejor opción para solucionar el problema anterior es codificar la información musical, de tal forma que se requiere menor información poder representar los sonidos deseados. Siendo que los sonidos son generados o sintetizados por el computador, es posible representar la información sonora por medio de mensajes que indiquen la activación y desactivación de sonidos. Este tipo de protocolos ya existen, siendo MIDI (Musical Instrument Digital Interface) el más usado. El protocolo MIDI codifica información de altura, velocidad y canal en su forma más básica, pero no incluye información alguna sobre cómo debería sonar o qué instrumento usar. Este tipo de información es relevante para este proyecto, ya que se busca que el programa pueda reproducir una gran variedad de sonoridades. Por esta razón se implementó un entorno sonoro en Pure Data, con la posibilidad de representar hasta 6 instrumentos simultáneos, cada uno absolutamente moldeable a través de una lista de parámetros. Cada instrumento puede representar desde un sonido ligero y etéreo hasta sonidos súbitos y estridentes, dependiendo de los parámetros especificados (ver anexo: <a href="/SinestesIA/anexos/entorno-sonoro/">entorno sonoro</a>).
   </p>
   <header>
     <h3 id="five-two-three">5.2.3.Componer los ejemplos sonoros</h3>
@@ -749,18 +750,18 @@
 </article>
 
 						<!-- Posts -->
-							<section class="posts">
+							<section class="posts" id="anexos">
                 
                 
   								<article>
   									<header>
-  										<span class="date">31 Oct 2017</span>
-  										<h2><a href="http://localhost:4000/SinestesIA/blog/welcome-to-massively-the-jekyll-theme/">Welcome to Massively: The Jekyll Theme!</a></h2>
+  										<span class="date">08 May 2019</span>
+  										<h2><a href="http://localhost:4000/SinestesIA/anexos/entorno-sonoro/">Entorno Sonoro</a></h2>
   									</header>
-  									<a href="http://localhost:4000/SinestesIA/blog/welcome-to-massively-the-jekyll-theme/" class="image fit"><img src="http://localhost:4000/SinestesIA/images/pic02.jpg" alt="" /></a>
-  									<p>Huge thanks to HTML5 UP for making this awesome template! Let's see what it can do</p>
+  									<a href="http://localhost:4000/SinestesIA/anexos/entorno-sonoro/" class="image fit"><img src="http://localhost:4000/SinestesIA/images/instrument.png" alt="" /></a>
+  									<p>Una exploración detallada de la construcción del entorno sonoro y las posibilidades sonoras que ofrece.</p>
   									<ul class="actions">
-  										<li><a href="http://localhost:4000/SinestesIA/blog/welcome-to-massively-the-jekyll-theme/" class="button">Full Story</a></li>
+  										<li><a href="http://localhost:4000/SinestesIA/anexos/entorno-sonoro/" class="button">Leer más</a></li>
   									</ul>
   								</article>
                   
@@ -771,7 +772,7 @@
 						<!-- Footer -->
 							<footer>
                 <ul class="actions">
-                  <li><a href="http://localhost:4000/SinestesIA/blog/" class="button">Our Blog</a></li>
+                  <li><a href="http://localhost:4000/SinestesIA/blog/" class="button">Blog</a></li>
                 </ul>
 							</footer>
 
@@ -815,7 +816,6 @@
     <section>
       <h3>Social</h3>
       <ul class="icons alt">
-        <li><a href="https://twitter.com/default" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
         <li><a href="https://facebook.com/aristizabal95" class="icon fa-facebook" rel="nofollow"><span class="label">Facebook</span></a></li>
         <li><a href="https://instagram.com/a.aristizabalm" class="icon fa-instagram" rel="nofollow"><span class="label">Instagram</span></a></li>
         <li><a href="https://github.com/aristizabal95" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>

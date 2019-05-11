@@ -11,7 +11,7 @@ sitemap:
 ---
 <article class="post">
 	<header class="major">
-		<h2 id="title"><a href="#">Sinestes<span>.IA</span></a></h2>
+    <h2 id="title"><a href="{{site.baseurl}}/">{{site.title}}<span>{{site.alt_title}}</span></a></h2>
 		<p style="margin: 0"><i>"El baile puede revelar todo el misterio que la música concede."</i></p>
     <p>Charles Baudelaire</p>
 	</header>
@@ -63,6 +63,7 @@ sitemap:
 		<li><a href="#six" class="scrolly">Resultados</a></li>
 		<li><a href="#seven" class="scrolly">Conclusión</a></li>
 		<li><a href="#biblio" class="scrolly">Bibliografía</a></li>
+		<li><a href="#anexos" class="scrolly">Anexos</a></li>
 	</ol>
   <!-- INTRODUCTION -->
   <header>
@@ -466,7 +467,7 @@ sitemap:
   El tratamiento del sonido en aplicaciones de inteligencia artificial no es trivial, debido a que un segundo de sonido suele representarse por decenas de miles de valores o samples. Poner a una red neuronal a generar los samples de manera secuencial requeriría de recursos y tiempos por fuera de los estipulados para este proyecto. Aproximaciones de este estilo a la generación musical se pueden observar con Wavenet de DeepMind, red neuronal que genera resultados excepcionales, a costa de los tiempos de generación, que con altos valores de computación puede tomar hasta 90 minutos generar un segundo de audio. Siendo que este proyecto requiere de generación de sonido en tiempo real es necesario buscar otras aproximaciones <i>(Cahill, P. 2018)</i>.
   </p>
   <p>
-  La mejor opción para solucionar el problema anterior es codificar la información musical, de tal forma que se requiere menor información poder representar los sonidos deseados. Siendo que los sonidos son generados o sintetizados por el computador, es posible representar la información sonora por medio de mensajes que indiquen la activación y desactivación de sonidos. Este tipo de protocolos ya existen, siendo MIDI (Musical Instrument Digital Interface) el más usado. El protocolo MIDI codifica información de altura, velocidad y canal en su forma más básica, pero no incluye información alguna sobre cómo debería sonar o qué instrumento usar. Este tipo de información es relevante para este proyecto, ya que se busca que el programa pueda reproducir una gran variedad de sonoridades. Por esta razón se implementó un entorno sonoro en Pure Data, con la posibilidad de representar hasta 6 instrumentos simultáneos, cada uno absolutamente moldeable a través de una lista de parámetros. Cada instrumento puede representar desde un sonido ligero y etéreo hasta sonidos súbitos y estridentes, dependiendo de los parámetros especificados.
+  La mejor opción para solucionar el problema anterior es codificar la información musical, de tal forma que se requiere menor información poder representar los sonidos deseados. Siendo que los sonidos son generados o sintetizados por el computador, es posible representar la información sonora por medio de mensajes que indiquen la activación y desactivación de sonidos. Este tipo de protocolos ya existen, siendo MIDI (Musical Instrument Digital Interface) el más usado. El protocolo MIDI codifica información de altura, velocidad y canal en su forma más básica, pero no incluye información alguna sobre cómo debería sonar o qué instrumento usar. Este tipo de información es relevante para este proyecto, ya que se busca que el programa pueda reproducir una gran variedad de sonoridades. Por esta razón se implementó un entorno sonoro en Pure Data, con la posibilidad de representar hasta 6 instrumentos simultáneos, cada uno absolutamente moldeable a través de una lista de parámetros. Cada instrumento puede representar desde un sonido ligero y etéreo hasta sonidos súbitos y estridentes, dependiendo de los parámetros especificados (ver anexo: <a href="{{site.baseurl}}/anexos/entorno-sonoro/">entorno sonoro</a>).
   </p>
   <header>
     <h3 id="five-two-three">5.2.3.Componer los ejemplos sonoros</h3>
