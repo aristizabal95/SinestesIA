@@ -10,34 +10,30 @@ class ActionsModel(BaseModel):
 
     def build_model(self):
         self.is_training = tf.placeholder(tf.bool, name="training")
-        inst_max = [127, 1, 8000, 1, 1, 8000, 1, 50000, 1, 8000, 1, 1, 1, 20000, 4, 50000, 20, 50000, 4, 5, 20000, 20000, 20000, 1, 1, 1, 1, 1, 1]
-        inst_mean = [63.5, 0.5, 4000, 0.5, 0.5, 4000, 0.5, 25000, 0.5, 4000, 0.5, 0.5 , 0.5, 10000, 2, 25000, 10, 25000, 2, 2.5, 10000, 10000, 10000, 0.5, 0.5, 0.5, 0.5, 0.5, 0]
-        self.max = np.tile(inst_max, 6)
-        self.mean = np.tile(inst_mean, 6)
+        self.mean = tf.get_variable("mean", shape=(self.config.input_size), trainable=False)
+        self.stdev = tf.get_variable("stdev", shape=(self.config.input_size), trainable=False)
 
         self.x = tf.placeholder(tf.float32, shape=[None] + self.config.input_size, name="X")
         self.y = tf.placeholder(tf.float32, shape=[None] + self.config.output_size, name="Y")
 
         # Make the network infraestructure here
-        # First normalize the input and labels
-        # Setting up initial state to all zeros
+        # First normalize the input
         # Pass the output through a fully connected layer and get the predictions
         # Set the input as the first layer. This 'layer' variable will be replaced by the layer loop later
-        layer = self.x
+        layer = (self.x-self.mean)/self.stdev
         for hidden_size in self.config.layers:
             layer = tf.contrib.layers.fully_connected(layer, hidden_size, activation_fn=tf.nn.relu)
             layer = tf.nn.dropout(layer, keep_prob=self.config.keep_prob)
         logits = tf.contrib.layers.fully_connected(layer, self.config.output_size[0], activation_fn=None)
         # compress the results into values between -1 and 1
-        self.prediction = tf.tanh(logits)
-        self.norm_pred = self.prediction*(self.max - self.mean) + self.mean
+        self.prediction = logits
 
 
 
 
 
         with tf.name_scope("loss"):
-            loss = tf.losses.mean_squared_error(labels=((self.y-self.mean)/(self.max - self.mean)), predictions=self.prediction)
+            loss = tf.losses.mean_squared_error(labels=self.y, predictions=self.prediction)
             reg_losses = tf.get_collection(tf.GraphKeys.REGULARIZATION_LOSSES)
             self.cross_entropy = tf.reduce_mean(loss) + self.config.reg_constant*sum(reg_losses)
             update_ops = tf.get_collection(tf.GraphKeys.UPDATE_OPS)

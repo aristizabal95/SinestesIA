@@ -3,11 +3,11 @@
   "num_epochs": 1000,
   "num_iter_per_epoch": 2000,
   "learning_rate": 0.001,
-  "reg_constant": 0.45,
+  "reg_constant": 0,
   "keep_prob": 1,
-  "batch_size": 200,
-  "input_size": [256],
+  "batch_size": 1,
+  "input_size": [2048],
   "output_size": [174],
-  "layers": [256, 512, 512, 512],
+  "layers": [2048, 1024, 1024, 1024],
   "max_to_keep": 5
 }
