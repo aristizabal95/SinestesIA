@@ -13,7 +13,6 @@ import threading
 import time
 import math
 import cv2
-import matplotlib.pyplot as plt
 
 class Interpreter:
     # ATTRIBUTES
@@ -31,6 +30,7 @@ class Interpreter:
         try:
             t = threading.Thread(target=self.getVideoData)
             t.start()
+            print("thread started")
         except:
             print("Something went wrong trying to start getVideoData")
             # Create the pure data receive thread
