@@ -93,14 +93,12 @@ class Interpreter:
 
     def run(self):
         init_state = np.zeros((self.rc.lstm_layers,2,self.rc.batch_size,self.rc.hidden_size))
-        img = None
         while True:
             image = self.current_frame.reshape((1,128,128,1))
-            encoding = self.c_s.run(self.cae.encoded, feed_dict={self.cae.x: image/255*0.6})
-            encoding = encoding.reshape((1, 1,-1))
-            prediction, init_state = self.r_s.run([self.rnn.norm_pred, self.rnn.state], feed_dict={self.rnn.x: encoding, self.rnn.init_state: init_state})
-            encoded = prediction.reshape((1,1,1,-1))
-            decoded = self.c_s.run(self.cae.decoded, feed_dict={self.cae.encoded: encoded})
+            encoded = self.c_s.run(self.cae.encoded, feed_dict={self.cae.x: image/255})
+            encoded = encoded.reshape((1, 1,-1))
+            prediction, init_state = self.r_s.run([self.rnn.prediction, self.rnn.state], feed_dict={self.rnn.x: encoded, self.rnn.init_state: init_state})
+            decoded = self.c_s.run(self.cae.decoded, feed_dict={self.cae.encoded: prediction.reshape((1,1,1,-1))})
             encoded = encoded.reshape((8,4,4))
             encoded = cv2.resize(encoded/encoded.max(), (500,500))
             decoded = cv2.resize(decoded.squeeze()/decoded.max(), (500,500))
@@ -108,12 +106,13 @@ class Interpreter:
             decoded = np.vstack((decoded, np.ones((1,500,500))))
             decoded = np.rollaxis(decoded, 0, 3)
             show_img = np.concatenate((encoded, decoded), axis=1)
-            cv2.imshow('perform', show_img)
-            cv2.waitKey(1)
-            actions = self.a_s.run(self.actions.prediction, feed_dict={self.actions.x: np.asarray(init_state).reshape((1,-1))})
-            msg = ' '.join(map(str, actions.squeeze())) + ';'
+            actions_arr = self.a_s.run(self.actions.prediction, feed_dict={self.actions.x: np.asarray(init_state).reshape((1, -1))})
+            msg = ' '.join(map(str, actions_arr.squeeze())) + ';'
             pd.send2Pd(msg)
+            cv2.imshow('dream', show_img)
+            cv2.waitKey(40)
+            time.sleep(0.01)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     i = Interpreter()
     i.run()
