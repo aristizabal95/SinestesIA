@@ -10,9 +10,7 @@ El ambiente sonoro de Sinestes.IA debe ser diseñado con el propósito de ofrece
 
 Para lograr representar la sonoridad del entorno sonoro, los parámetros no solo deben capturar la información de intensidad y altura de cada voz o línea que se piense manejar, sino que además deben capturar las características sonoras, tímbricas y temporales de cada sonido. Esto lo diferencia del protocolo MIDI, ya que este no encapsula la información sonora, sino las instrucciones de interpretación que debe manejar el instrumento que uno decida. Para lograr esto, se desarrolló un instrumento como un componente aislado del entorno sonoro, el cual encapsula todos los requerimientos anteriores. De esta forma, se puede construir el entorno sonoro a partir de múltiples instrumentos, cuya construcción es idéntica, reduciendo la complejidad del entorno, y maximizando la variedad sonora del mismo.
 
-Los parámetros del instrumento deben contener información que indique la intensidad, altura, envolvente, timbre, volumen, paneo y demás agregados que afecten la sonoridad del instrumento. A partir de esto, el instrumento se desarrolló de la siguiente manera.
-
-De esta manera, el instrumento recibe como entrada en el siguiente orden:
+Los parámetros del instrumento deben contener información que indique la intensidad, altura, envolvente, timbre, volumen, paneo y demás agregados que afecten la sonoridad del instrumento. De esta manera, el instrumento recibe como entrada en el siguiente orden:
 <ol>
   <li><h5>Velocity:</h5>Similar al protocolo MIDI, este es un valor de 0 a 127 que representa la intensidad interpretativa del sonido.</li>
   <li><h5>Amplitud de ataque:</h5>Este es un valor de 0 a 1 que representa el porcentaje de intensidad al que llega el instrumento durante el ataque de la envolvente.</li>

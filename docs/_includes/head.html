@@ -1,7 +1,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-<title id="title">{{ page.title }}{{ site.alt_title}}</title>
+<title id="title">{{ page.title }}{% if page.title == site.title %}{{ site.alt_title}}{% endif %}</title>
 
 <meta name="description" content="{{ page.description }}">
 
