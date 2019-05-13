@@ -5,7 +5,7 @@ bio:                'Sinestes.IA es un proyecto artistico realizado por Alejandr
 description:        "Sinestes.IA es un proyecto artistico realizado por Alejandro Aristizábal con la intención de explorar las utilidades del aprendizaje profundo como instrumento de creación musical."
 locale:             es_US
 baseurl: "/SinestesIA" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site
+url: "https://aristizabal95.github.io/SinestesIA" # the base hostname & protocol for your site
 
 # Comments
 disqus_shortname:   aristizabal95
