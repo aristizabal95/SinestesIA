@@ -8,7 +8,7 @@ baseurl: "/SinestesIA" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
 
 # Comments
-disqus_shortname:   default
+disqus_shortname:   aristizabal95
 
 # Social
 analytics-id:       "UA-137824423-2"
