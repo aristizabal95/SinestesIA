@@ -4,6 +4,11 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+function show_random_img() {
+	index = Math.floor(Math.random()*236);
+	$('#randimg').attr('src', 'http://localhost:4000/SinestesIA/images/' + index.toString(10) + '.png')
+}
+
 (function($) {
 
 	skel.breakpoints({
@@ -126,6 +131,8 @@
 						content: $(this).data("tip"),
 					})
 				});
+				show_random_img();
+				$('#randclick').click(show_random_img());
 			});
 
 		// Prioritize "important" elements on medium.

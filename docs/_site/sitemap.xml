@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
-      <loc>http://localhost:4000/anexos/composiciones/</loc>
+      <loc>http://localhost:4000/SinestesIA/anexos/composiciones/</loc>
       
         <lastmod>2019-05-12T00:00:00-05:00</lastmod>
       
@@ -11,7 +11,7 @@
     </url>
   
     <url>
-      <loc>http://localhost:4000/anexos/entorno-sonoro/</loc>
+      <loc>http://localhost:4000/SinestesIA/anexos/entorno-sonoro/</loc>
       
         <lastmod>2019-05-08T00:00:00-05:00</lastmod>
       
@@ -21,7 +21,7 @@
   
   
     <url>
-      <loc>http://localhost:4000/about/</loc>
+      <loc>http://localhost:4000/SinestesIA/about/</loc>
        <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -31,7 +31,7 @@
      </url>
   
     <url>
-      <loc>http://localhost:4000/backup.index/</loc>
+      <loc>http://localhost:4000/SinestesIA/backup.index/</loc>
        <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -41,7 +41,7 @@
      </url>
   
     <url>
-      <loc>http://localhost:4000/blog/</loc>
+      <loc>http://localhost:4000/SinestesIA/blog/</loc>
        <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -51,7 +51,7 @@
      </url>
   
     <url>
-      <loc>http://localhost:4000/elements/</loc>
+      <loc>http://localhost:4000/SinestesIA/elements/</loc>
        <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -61,7 +61,7 @@
      </url>
   
     <url>
-      <loc>http://localhost:4000/</loc>
+      <loc>http://localhost:4000/SinestesIA/</loc>
        <lastmod>2019-02-04T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -71,7 +71,7 @@
      </url>
   
     <url>
-      <loc>http://localhost:4000/assets/css/main.css</loc>
+      <loc>http://localhost:4000/SinestesIA/assets/js/main.js</loc>
        <lastmod>2017-11-10T00:20:35+00:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -81,7 +81,7 @@
      </url>
   
     <url>
-      <loc>http://localhost:4000/assets/css/noscript.css</loc>
+      <loc>http://localhost:4000/SinestesIA/assets/css/main.css</loc>
        <lastmod>2017-11-10T00:20:35+00:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -91,7 +91,7 @@
      </url>
   
     <url>
-      <loc>http://localhost:4000/sitemap.xml</loc>
+      <loc>http://localhost:4000/SinestesIA/assets/css/noscript.css</loc>
        <lastmod>2017-11-10T00:20:35+00:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -101,7 +101,7 @@
      </url>
   
     <url>
-      <loc>http://localhost:4000/thank-you/</loc>
+      <loc>http://localhost:4000/SinestesIA/sitemap.xml</loc>
        <lastmod>2017-11-10T00:20:35+00:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -111,7 +111,7 @@
      </url>
   
     <url>
-      <loc>http://localhost:4000/feed.xml</loc>
+      <loc>http://localhost:4000/SinestesIA/thank-you/</loc>
        <lastmod>2017-11-10T00:20:35+00:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -121,7 +121,17 @@
      </url>
   
     <url>
-      <loc>http://localhost:4000/feed.xslt.xml</loc>
+      <loc>http://localhost:4000/SinestesIA/feed.xml</loc>
+       <lastmod>2017-11-10T00:20:35+00:00</lastmod>
+      
+       <changefreq>weekly</changefreq>
+      
+       <priority>0.5</priority>
+      
+     </url>
+  
+    <url>
+      <loc>http://localhost:4000/SinestesIA/feed.xslt.xml</loc>
        <lastmod>2017-11-10T00:20:35+00:00</lastmod>
       
        <changefreq>weekly</changefreq>

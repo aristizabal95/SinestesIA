@@ -37,6 +37,10 @@
 				content: '5.3.' counter(item, decimal) '.';
 				counter-increment: item;
 			}
+			&.six li:before {
+				content: '6.' counter(item, decimal) '.';
+				counter-increment: item;
+			}
 		}
 
 		li {

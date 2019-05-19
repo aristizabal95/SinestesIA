@@ -135,7 +135,15 @@
         <li><a href="#five-four" class="scrolly">Entrenar el modelo de aprendizaje</a></li>
       </ol>
     </li>
-		<li><a href="#six" class="scrolly">Resultados</a></li>
+		<li>
+    <a href="#six" class="scrolly">Resultados</a>
+    <ol class="alt prefix six">
+      <li><a href="#six-one" class="scrolly">Modelo de comprensión espacial</a></li>
+      <li><a href="#six-two" class="scrolly">Modelo de comprensión temporal</a></li>
+      <li><a href="#six-three" class="scrolly">Modelo de acción</a></li>
+      <li><a href="#six-four" class="scrolly">Resultado final</a></li>
+    </ol>
+    </li>
 		<li><a href="#seven" class="scrolly">Conclusión</a></li>
 		<li><a href="#biblio" class="scrolly">Bibliografía</a></li>
 		<li><a href="#anexos" class="scrolly">Anexos</a></li>
@@ -247,20 +255,6 @@
   <p>
   Sinestes.IA es un proyecto que abarca distintas temáticas y conceptos con la intención de definir las herramientas que se usarán para el desarrollo del mismo. Estos temas van desde el tipo de inteligencia artificial y las arquitecturas, como las teorías de comprensión del movimiento y su relación con la música. Siendo así, estos son los conceptos que se abarcarán:
   </p>
-  <ol>
-  <ol class="alt prefix three">
-    <li>
-      <a href="#three-one" class="scrolly">Redes Neuronales</a>
-      <ol class="alt prefix three-one">
-        <li><a href="#three-one-one" class="scrolly">Redes Neuronales Completamente Conectadas</a></li>
-        <li><a href="#three-one-two" class="scrolly">Redes Neuronales Convolucionales</a></li>
-        <li><a href="#three-one-three" class="scrolly">Redes Neuronales Recurrentes</a></li>
-      </ol>
-    </li>
-    <li><a href="#three-two" class="scrolly">Sistemas de Tracking</a></li>
-    <li><a href="#three-three" class="scrolly">Los Esfuerzo-Acciones de Laban</a></li>
-  </ol>
-  </ol>
   <header>
     <h4 id="three-one">3.1.Redes Neuronales</h4>
     <p><a href="#index" class="scrolly">Volver al inicio</a></p>
@@ -452,19 +446,6 @@
   Para desarrollar un proyecto de aprendizaje de máquina hay que implementar varios aspectos. Estos son:
   </p>
 
-  <ol>
-  <ol class="alt prefix five">
-    <li><a href="#five-one" class="scrolly">Definir el problema de aprendizaje</a></li>
-    <li>
-      <a href="#five-two" class="scrolly">Obtener bases de datos</a>
-    </li>
-    <li>
-      <a href="#five-three" class="scrolly">Definir un modelo de aprendizaje base</a>
-    </li>
-    <li><a href="#five-four" class="scrolly">Entrenar el modelo de aprendizaje</a></li>
-  </ol>
-  </ol>
-
   <header>
     <h3 id="five-one">5.1.Definir el problema de aprendizaje</h3>
     <p><a href="#index" class="scrolly">Volver al inicio</a></p>
@@ -482,14 +463,6 @@
   <p>
   Como fue señalado en la definición del problema, Sinestes.IA manejará como datos de entrada una sucesión de imágenes, y de salida sonidos. Ambos tipos de datos deben tener correspondencia, lo que significa que por cada imagen debe haber un dato sonoro, y que cada dato sonoro debe reflejar lo que está ocurriendo en la imagen. Para poder obtener estos datos es necesario plantear varios puntos a resolver:
   </p>
-  <ol>
-  <ol class="alt prefix five-two">
-		 <li><a href="#five-two-one" class="scrolly">Cómo capturar el video</a></li>
-		 <li><a href="#five-two-two" class="scrolly">Cómo capturar el sonido</a></li>
-		 <li><a href="#five-two-three" class="scrolly">Componer los ejemplos sonoros</a></li>
-		 <li><a href="#five-two-four" class="scrolly">Capturar los datos</a></li>
-  </ol>
-  </ol>
   <header>
     <h3 id="five-two-one">5.2.1.Cómo capturar el video</h3>
     <p><a href="#index" class="scrolly">Volver al inicio</a></p>
@@ -512,23 +485,23 @@
   El tratamiento del sonido en aplicaciones de inteligencia artificial no es trivial, debido a que un segundo de sonido suele representarse por decenas de miles de valores o samples. Poner a una red neuronal a generar los samples de manera secuencial requeriría de recursos y tiempos por fuera de los estipulados para este proyecto. Aproximaciones de este estilo a la generación musical se pueden observar con Wavenet de DeepMind, red neuronal que genera resultados excepcionales, a costa de los tiempos de generación, que con altos valores de computación puede tomar hasta 90 minutos generar un segundo de audio. Siendo que este proyecto requiere de generación de sonido en tiempo real es necesario buscar otras aproximaciones <i>(Cahill, P. 2018)</i>.
   </p>
   <p>
-  La mejor opción para solucionar el problema anterior es codificar la información musical, de tal forma que se requiere menor información poder representar los sonidos deseados. Siendo que los sonidos son generados o sintetizados por el computador, es posible representar la información sonora por medio de mensajes que indiquen la activación y desactivación de sonidos. Este tipo de protocolos ya existen, siendo MIDI (Musical Instrument Digital Interface) el más usado. El protocolo MIDI codifica información de altura, velocidad y canal en su forma más básica, pero no incluye información alguna sobre cómo debería sonar o qué instrumento usar. Este tipo de información es relevante para este proyecto, ya que se busca que el programa pueda reproducir una gran variedad de sonoridades. Por esta razón se implementó un entorno sonoro en Pure Data, con la posibilidad de representar hasta 6 instrumentos simultáneos, cada uno absolutamente moldeable a través de una lista de parámetros. Cada instrumento puede representar desde un sonido ligero y etéreo hasta sonidos súbitos y estridentes, dependiendo de los parámetros especificados (ver anexo: <a href="/SinestesIA/anexos/entorno-sonoro/">entorno sonoro</a>).
+  La mejor opción para solucionar el problema anterior es codificar la información musical, de tal forma que se requiere menor información poder representar los sonidos deseados. Siendo que los sonidos son generados o sintetizados por el computador, es posible representar la información sonora por medio de mensajes que indiquen la activación y desactivación de sonidos. Este tipo de protocolos ya existen, siendo MIDI (Musical Instrument Digital Interface) el más usado. El protocolo MIDI codifica información de altura, velocidad y canal en su forma más básica, pero no incluye información alguna sobre cómo debería sonar o qué instrumento usar. Este tipo de información es relevante para este proyecto, ya que se busca que el programa pueda reproducir una gran variedad de sonoridades. Por esta razón se implementó un entorno sonoro en Pure Data, con la posibilidad de representar hasta 6 instrumentos simultáneos, cada uno absolutamente moldeable a través de una lista de parámetros. Cada instrumento puede representar desde un sonido ligero y etéreo hasta sonidos súbitos y estridentes, dependiendo de los parámetros especificados <i>(ver anexo: <a href="/SinestesIA/anexos/entorno-sonoro/">entorno sonoro</a>)</i>.
   </p>
   <header>
     <h3 id="five-two-three">5.2.3.Componer los ejemplos sonoros</h3>
     <p><a href="#index" class="scrolly">Volver al inicio</a></p>
   </header>
   <p>
-  Una vez desarrollado el entorno sonoro, es momento de preparar los datos a capturar. Siendo que el objetivo del proyecto es generar música en relación a la danza, dicha relación debe estar representada en los datos de entrenamiento. Para lograr esto es necesario parametrizar la música, de tal manera que pueda ser fielmente representada en la danza al momento de capturar la información. Dicha parametrización no es sencilla, debido a que no existe una relación objetiva entre el movimiento y la música, de tal forma que se pueda expresar un solo sonido específico con un solo tipo de movimiento <i>(Gualdrón, 2013)</i>.
+		Siendo que el objetivo del proyecto es generar música en relación a la danza, dicha relación debe estar representada en los datos de entrenamiento. Para lograr esto es necesario parametrizar la música, de tal forma que pueda ser fielmente representada en la danza al momento de capturar la información. Dicha parametrización no es sencilla, debido a que no existe una relación objetiva entre el movimiento y la música, de tal manera que se pueda expresar un solo sonido específico con un solo tipo de movimiento <i><em>(Gualdrón, 2013)</em></i>.
   </p>
   <p>
-  Aún así, se ha observado que conocimientos en lenguaje corporal suelen facilitar la expresividad de carácter y dinámica en estudiantes de dirección. Trabajos como Las Ventajas de Aprender Técnica de Dirección por Medio del Análisis de Movimiento Laban  de Deyanira Gualdrón exploran cómo los esfuerzo-acciones de Rudolf Von Laban pueden ejemplificar ciertos tipos de características musicales al ser usados en un ambiente de dirección. Además, la carencia de una relación directa entre la danza y la música abre la posibilidad a la creatividad, permitiendo definir un estilo propio al momento de establecer una conexión entre ambos tipos de arte. Es debido a esto, y con la intención de facilitar la labor de aprendizaje, que se usarán los esfuerzo-acciones de Laban como guía para definir un estilo musical en coherencia con el movimiento.
+		Aún así, se ha observado que conocimientos en lenguaje corporal suelen facilitar la expresividad de carácter y dinámica en estudiantes de dirección. Trabajos como Las Ventajas de Aprender Técnica de Dirección por Medio del Análisis de Movimiento Laban de Deyanira Gualdrón exploran cómo los esfuerzo-acciones de Rudolf Von Laban pueden ejemplificar ciertos tipos de características musicales al ser usados en un ambiente de dirección. Además, la carencia de una relación directa entre la danza y la música abre la posibilidad a la creatividad, permitiendo definir un estilo propio para establecer una conexión entre ambos tipos de arte. Es debido a esto que se usarán los esfuerzo-acciones de Laban como guía para definir un estilo musical en coherencia con el movimiento.
   </p>
   <p>
-  Para establecer el estilo y su conexión con los esfuerzo-acciones, se relacionarán los aspectos del movimiento (espacio, tiempo y peso) con características sonoras y musicales, para así guiar tanto el diseño sonoro como la composición. Esta parametrización es subjetiva, pero fue pensada para mantener cierta generalidad, a través de opiniones tanto de compositores como de bailarines. Como ejemplo, el aspecto del peso en el movimiento suele verse relacionado con la altura y el timbre de los sonidos, de tal forma que sonidos agudos y redondos se ven reflejados por movimientos ligeros, mientras que sonidos estridentes y bajos se reflejan con movimientos enérgicos.
+		Para establecer el estilo y su conexión con los esfuerzo-acciones, se relacionarán los aspectos del movimiento (espacio, tiempo y peso) con características sonoras y musicales, para así guiar tanto la síntesis como la composición. Esta parametrización es subjetiva, pero fue pensada para mantener cierta generalidad, a través de opiniones tanto de compositores como de bailarines. Como ejemplo, el aspecto del peso en el movimiento suele verse relacionado con la altura y el timbre de los sonidos, de tal forma que sonidos agudos y redondos se ven reflejados por movimientos ligeros, mientras que sonidos estridentes y bajos se reflejan con movimientos enérgicos.
   </p>
   <p>
-  Con base en estos parámetros se compusieron 8 pequeñas piezas, con duraciones de máximo minuto y medio, donde se buscaba reflejar cada esfuerzo-acción haciendo uso del entorno sonoro implementado anteriormente. De esta manera, se puede especificar el tipo de movimiento específico que se desea para cada obra, y así grabar los datos necesarios para el entrenamiento.
+		Con base en estos parámetros se compusieron 8 pequeñas piezas, con duraciones de máximo minuto y medio, donde se buscaba reflejar cada esfuerzo-acción haciendo uso del entorno sonoro implementado anteriormente. De esta manera, se puede especificar el tipo de movimiento específico que se desea para cada obra, y así grabar los datos necesarios para el entrenamiento <i><em>(ver anexo: <a href="/anexos/composiciones">composiciones</a>)</em></i>.
   </p>
   <header>
     <h4>Deslizar</h4>
@@ -556,42 +529,35 @@
     <p><a href="#index" class="scrolly">Volver al inicio</a></p>
   </header>
   <p>
-  Debido a que los datos de video y audio deben estar en sincronía, y a que la información sonora es representada de una forma no tradicional, fue necesario diseñar un sistema propio para capturar la información. Esto implicó que era necesario definir limitaciones de velocidad de captura y tamaño de buffer para una grabación fiel y constante.
+		Debido a que los datos de video y audio deben estar en sincronía, y a que la información sonora es representada de una forma no tradicional, fue necesario diseñar un sistema propio para capturar la información. Esto implicó que era necesario definir limitaciones de velocidad de captura y tamaño de buffer para una grabación fiel y constante.
   </p>
   <p>
-  La velocidad de captura depende de la frecuencia máxima de la información a grabar, y según el teorema de Nyquist la frecuencia de muestreo debe estar por encima del doble de la frecuencia máxima de los datos. La frecuencia para video estándar para reproducción es de 24fps (frames por segundo), siendo 16fps el mínimo considerado para la percepción de movimiento continuo.
+		La velocidad de captura depende de la frecuencia máxima de la información a grabar, y según el teorema de Nyquist la frecuencia de muestreo debe estar por encima del doble de la frecuencia máxima de los datos. La frecuencia para video estándar para reproducción es de 24fps (frames por segundo), siendo 16fps el mínimo considerado para la percepción de movimiento continuo.
   </p>
   <p>
-  En cuanto a los datos sonoros, es necesario establecer una velocidad máxima de acciones para establecer la frecuencia de muestreo necesaria. El estudio de Justin London denominado “Restricciones cognitivas en sistemas métricos” examina la velocidad máxima de impulsos sonoros independientes que el oído humano puede percibir, y establece que una distancia entre impulsos de 50ms (20Hz) es la velocidad teórica máxima de percepción, debido a que este es el límite mínimo de percepción de tonos en la escucha humana. A partir de esto, se puede definir la velocidad de muestreo de las acciones sonoras como 40Hz, y usar esta velocidad para la grabación tanto de sonido como de video en este proyecto.
+		En cuanto a los datos sonoros, es necesario establecer una velocidad máxima de acciones para establecer la frecuencia de muestreo necesaria. El estudio de Justin London denominado “Restricciones cognitivas en sistemas métricos” examina la velocidad máxima de impulsos sonoros independientes que el oído humano puede percibir, y establece que una distancia entre impulsos de 50ms (20Hz) es la velocidad teórica máxima de percepción, debido a que este es el límite mínimo de percepción de tonos en la escucha humana. A partir de esto, se puede definir la velocidad de muestreo de las acciones sonoras como 40Hz, y usar esta velocidad para la grabación tanto de sonido como de video en este proyecto.
   </p>
   <p>
-  Ahora bien, al momento de capturar los datos, se trabajó con 7 bailarines para realizar múltiples grabaciones de cada composición. Se requirieron múltiples bailarines para tener variedad de estilos de danza y facilidad de coordinación de tiempos con cada bailarín. Las composiciones varían en duración entre un mínimo de 20 segundos hasta un máximo de 1 minuto 30 segundos. Debido a las diferencias de tiempo, las piezas cortas fueron grabadas más veces para compensar por su corta longitud. Una vez finalizadas las grabaciones se obtuvo una cantidad de 240 capturas individuales de vídeo y sonido, que si bien son pocas para un proyecto de aprendizaje profundo, son suficientes para obtener resultados interesantes para este proyecto.
+		Ahora bien, al momento de capturar los datos, se trabajó con 7 bailarines para realizar múltiples grabaciones de cada composición. Se requirieron múltiples bailarines para tener variedad de estilos de danza y facilidad de coordinación de tiempos con cada bailarín. Debido a las diferencias de tiempo, las piezas más cortas fueron grabadas más veces para compensar su duración. Una vez finalizadas las grabaciones se obtuvo una cantidad de 240 capturas individuales, que si bien son pocas para un proyecto de aprendizaje profundo, son suficientes para obtener resultados interesantes para este proyecto.
   </p>
   <header>
     <h3 id="five-three">5.3.Definir un modelo de aprendizaje base</h3>
     <p><a href="#index" class="scrolly">Volver al inicio</a></p>
   </header>
   <p>
-  El diseño del modelo de aprendizaje se basa sustancialmente en el comportamiento de los datos. Siendo que existen tantas arquitecturas y tantas investigaciones realizadas para distintas aplicaciones, es necesario definir algún sistema inicial para evaluar su rendimiento e iterar según los requerimientos del proyecto. Esto significa que si bien es importante tener claro cómo aproximarse al problema, los detalles del modelo se pueden refinar a través de experimentación.
+		El diseño del modelo de aprendizaje se basa sustancialmente en el comportamiento de los datos. Siendo que existen tantas arquitecturas y tantas investigaciones realizadas para distintas aplicaciones, es necesario definir algún sistema inicial para evaluar su rendimiento e iterar según los requerimientos del proyecto. Esto significa que si bien es importante tener claro cómo aproximarse al problema, los detalles del modelo se pueden refinar a través de experimentación.
   </p>
   <p>
-  El modelo de aprendizaje de Sinestes.IA debe ser capaz de analizar el baile desde una perspectiva espacial como temporal, debido a que son secuencias de imágenes. Además de esto, debe ser capaz de responder a las imágenes de baile con acciones sonoras a interpretar. Este tipo de problemas es similar al usado en videojuegos, donde de entrada se alimenta con una secuencia de imágenes del videojuego, y el modelo responde con las acciones que debe tomar para continuar jugando. Es por esta razón que el modelo de inteligencia artificial de Sinestes.IA va a estar basado en un estudio denominado <i><a href="http://worldmodels.github.io">“World Models”</a></i> realizado por David Ha y Jürgen Schmidhuber. Este estudio se basa en el concepto de Modelos Mentales de Jay Wright Forrester descritos por él como
+		El modelo de aprendizaje de Sinestes.IA debe ser capaz de analizar el baile desde una perspectiva espacial como temporal, debido a que son secuencias de imágenes. Además de esto, debe ser capaz de responder a las imágenes de baile con acciones sonoras a interpretar. Este tipo de problemas es similar al usado en videojuegos, donde de entrada se alimenta con una secuencia de imágenes del videojuego, y el modelo responde con las acciones que debe tomar para continuar jugando. Es por esta razón que el modelo de inteligencia artificial de Sinestes.IA va a estar basado en un estudio denominado “World Models” realizado por David Ha et. al. Este estudio se basa en el concepto de Modelos Mentales de Jay Wright Forrester descritos por él como:
   </p>
   <blockquote>
   “La imagen del mundo a nuestro alrededor, que llevamos en nuestra cabeza, es solo un modelo. Nadie se imagina en su cabeza todo el planeta, gobierna o país. Solo se tiene una cantidad selecta de conceptos, y relaciones entre ellos, y usamos estos para representar el sistema real” (J.W. Forrester, 1971, t.d.a)
   </blockquote>
   <p>
-  En resumen, el modelo busca generar una comprensión simplista de los datos entrantes y su comportamiento, para a partir de esto actuar en el ambiente. Esto implica que es necesario separar el modelo en dos partes: el modelo del mundo, y el modelo de acciones. El modelo del mundo debe ser capaz de comprender una secuencia de imágenes, lo que implica que debe consistir de una red neuronal convolucional y una red neuronal recurrente, para así poder lidiar con el comportamiento espacial y temporal del baile. Es debido a esto que la estructura macro del proyecto consistirá en estas secciones.
+		Esto implica que es necesario separar el modelo en dos partes: el modelo del mundo, y el modelo de acciones. El modelo del mundo debe ser capaz de comprender una secuencia de imágenes, lo que implica que debe consistir de una red neuronal convolucional y una red neuronal recurrente, para así poder lidiar con el comportamiento espacial y temporal del baile. Es debido a esto que la estructura macro del proyecto consistirá de un modelo de comprensión espacial, un modelo de comprensión temporal y un modelo de acción.
   </p>
-  <ol>
-    <ol class="alt prefix five-three">
-      <li><a href="#five-three-one" class="scrolly">Modelo de comprensión espacial</a></li>
-      <li><a href="#five-three-two" class="scrolly">Modelo de comprensión temporal</a></li>
-      <li><a href="#five-three-three" class="scrolly">Modelo de acción</a></li>
-    </ol>
-  </ol>
   <p>
-  De esta manera, el flujo de información iniciaría con la secuencia de imágenes entrando al modelo de comprensión espacial, para luego transmitir el resultado de dicha comprensión al modelo temporal. Con esto, la inteligencia artificial sacará una conclusión de lo que está ocurriendo en el baile, y esa conclusión la enviará al modelo de acción, donde generará una hipótesis de los sonidos que deberían acompañar el baile.
+		De esta manera, el flujo de información iniciaría con la secuencia de imágenes entrando al modelo de comprensión espacial, para luego transmitir el resultado de dicha comprensión al modelo temporal. Con esto, la inteligencia artificial sacará una conclusión de lo que está ocurriendo en el baile, y esa conclusión la enviará al modelo de acción, donde generará una hipótesis de los sonidos que deberían acompañar el baile.
   </p>
   <span class="image fit">
     <img src="http://localhost:4000/SinestesIA/images/modelflow.png" alt="" />
@@ -602,23 +568,23 @@
     <p><a href="#index" class="scrolly">Volver al inicio</a></p>
   </header>
   <p>
-  Como ha sido mencionado anteriormente, el análisis de imágenes suele realizarse con una arquitectura de red neuronal convolucional. Estos modelos suelen recibir la imagen y entrenarse a partir de lo que se desee obtener de ellas. El problema actual es que se desconoce el resultado que se espera obtener de esta sección. Este tipo de problemas se conoce como aprendizaje no supervisado, ya que son problemas en los que el resultado deseado no está previamente definido.
+		Como ha sido mencionado anteriormente, el análisis de imágenes suele realizarse con una arquitectura de red neuronal convolucional. Estos modelos suelen recibir la imagen y entrenarse a partir de lo que se desee obtener de ellas. El problema actual es que se desconoce el resultado que se espera obtener de esta sección. Este tipo de problemas se conoce como aprendizaje no supervisado, ya que son problemas en los que el resultado deseado no está previamente definido.
   </p>
   <p>
-  El sistema que se usa en el estudio de “World Models”, y que también será usado en este proyecto, se denomina como Autoencoder. Los autoencoders tienen la labor de codificar y decodificar la información entrante, buscando generar en la salida la misma información que en la entrada. De esta manera, el entrenamiento consiste en evaluar la similitud de los datos entrantes con los generados por el algoritmo.
+		El sistema que se usa en el estudio de <i><em>World Models</em></i>, y que también será usado en este proyecto, se denomina como Autoencoder. Los autoencoders tienen la labor de codificar y decodificar la información entrante, buscando generar en la salida la misma información que en la entrada. De esta manera, el entrenamiento consiste en evaluar la similitud de los datos entrantes con los generados por el algoritmo.
   </p>
   <p>
-  Ahora bien, lo que hace estos modelos especiales, es que en el proceso obligan al modelo a tener que representar los datos en un espacio menor al de la información de entrada. A esto se le llama compresión, y es lo que a nosotros realmente nos interesa de este proceso.
+		Ahora bien, lo que hace estos modelos especiales, es que en el proceso obligan al modelo a tener que representar los datos en un espacio menor al de la información de entrada.
   </p>
   <span class="image fit">
     <img src="http://localhost:4000/SinestesIA/images/cae.png" alt="" />
     <p><i>Imagen obtenida de <a href="https://www.edureka.co/blog/autoencoders-tutorial/">https://www.edureka.co/blog/autoencoders-tutorial/</a>. Acá la imagén del número 2 (izquierda) se comprime en la capa h (centro), y de esta capa se trata de reconstruir la imagen  original (derecha).</i></p>
   </span>
   <p>
-  Como analogía, consideremos la labor de resumir toda una película en un solo párrafo de 500 palabras, de tal forma que luego se pueda usar ese resumen para regrabar toda la película lo más fiel a la original. Ahora consideremos que no solo debe reconstruir una película, sino una gran variedad de películas usando la misma estructura, y solo cambiando algunas cuantas palabras. Si esta tarea se realiza, obliga que cada palabra sea crucial para la reconstrucción de la (o las) películas, y ninguna palabra será malgastada.
+		Como analogía, consideremos la labor de resumir toda una película en un solo párrafo de 500 palabras, de tal forma que luego se pueda usar ese resumen para regrabar toda la película lo más fiel a la original. Ahora consideremos que no solo debe reconstruir una película, sino una gran variedad de películas usando la misma estructura. Si esta tarea se realiza, obliga que cada palabra sea crucial para la reconstrucción de la (o las) películas, y ninguna palabra será malgastada.
   </p>
   <p>
-  Este proceso logra reducir la información visual de las imágenes a características relevantes de las mismas, al igual que comprime la cantidad de datos que entran al sistema, facilitando el aprendizaje para las próximas capas del sistema. Este proceso logra capturar el comportamiento espacial del baile, pero no tiene conciencia de cómo el baile se desarrolla en el tiempo.
+		Este proceso logra reducir la información visual de las imágenes a características relevantes de las mismas, al igual que comprime la cantidad de datos que entran al sistema, facilitando el aprendizaje para las próximas capas del sistema.
   </p>
   <span class="image fit">
     <img src="http://localhost:4000/SinestesIA/images/sinestesia-cae.png" alt="convolutional autoencoder" />
@@ -629,14 +595,14 @@
     <p><a href="#index" class="scrolly">Volver al inicio</a></p>
   </header>
   <p>
-  Obtenida la versión comprimida de las imágenes, es posible usar esta representación para analizar la evolución del baile en el tiempo. Para lograr esto, el modelo debe tener algún tipo de memoria para recordar la información pasada. Es debido a esto que se utilizará una red neuronal recurrente, que además de recibir la imagen comprimida, recibe información de los procesos anteriores. En este caso específico, se utilizará la arquitectura LSTM (Long Short Term Memory), que ha demostrado ser buena para considerar información tanto cercana como lejana temporalmente. Para generar la comprensión temporal se entrena a la red neuronal a predecir lo que ocurrirá en el futuro según la información pasada. De esta manera, si el algoritmo predice correctamente y de manera consistente, implica que comprende el comportamiento temporal de los datos.
+		Obtenida la versión comprimida de las imágenes, es posible usar esta representación para analizar la evolución del baile en el tiempo. Para lograr esto, el modelo debe tener algún tipo de memoria para recordar la información pasada. Es debido a esto que se utilizará una red neuronal recurrente, que además de recibir la imagen comprimida, recibe información de los procesos anteriores. En este caso específico, se utilizará la arquitectura LSTM (Long Short Term Memory), que ha demostrado ser buena para considerar información tanto cercana como lejana temporalmente. Para generar la comprensión temporal se entrena a la red neuronal a predecir lo que ocurrirá en el futuro según la información pasada. De esta manera, si el algoritmo predice correctamente y de manera consistente, implica que comprende el comportamiento temporal de los datos.
   </p>
   <span class="image fit">
     <img src="http://localhost:4000/SinestesIA/images/sinestesia-lstm.png" alt="lstm" />
     <p><i>Demostración de la segunda etapa de Sinestes.IA. Se puede observar cómo se procesa una secuencia de imágenes individualmente (flujo vertical), mientras que cada capa comparte información de los procesos anteriores (flujo horizontal).</i></p>
   </span>
   <p>
-  De esta capa nos interesa más la salida intermedia de la red neuronal, ya que es la que representa la comprensión temporal del baile. Una vez obtenido esto, es posible usar esta información como entrada para el modelo de acción.
+		De esta capa nos interesa más la salida intermedia de la red neuronal, ya que es la que representa la comprensión temporal del baile. Una vez obtenido esto, es posible usar esta información como entrada para el modelo de acción.
   </p>
   <header>
     <h3 id="five-three-three">5.3.3.Modelo de acción</h3>
@@ -650,15 +616,15 @@
     <p><a href="#index" class="scrolly">Volver al inicio</a></p>
   </header>
   <p>
-  Para entrenar los modelos anteriores se usaron los datos capturados necesarios en cada etapa, empezando por el modelo de comprensión espacial, para luego entrenar el modelo de comprensión temporal y por último entrenar el modelo de acción. Esto es debido a que cada modelo consecuente se entena a partir de los resultados del anterior, por lo que un entrenamiento continuo de todas las etapas no era producente.
+		Para entrenar los modelos anteriores se usaron los datos capturados necesarios en cada etapa, empezando por el modelo de comprensión espacial, para luego entrenar el modelo de comprensión temporal y por último entrenar el modelo de acción. Esto es debido a que cada modelo consecuente se entrena a partir de los resultados del anterior, por lo que un entrenamiento continuo de todas las etapas no era producente.
   </p>
   <p>
-  Aunque se tiene una arquitectura base del modelo, los detalles se definen en el momento de entrenamiento a través de experimentación constante. Se busca elegir los detalles que generen el mejor resultado en cada etapa, por lo que el proceso consiste en entrenar varias veces cada modelo con parámetros distintos, y observar el desempeño en cada labor específica. Una vez obtenido el mejor resultado, se guardan estos parámetros para continuar con la siguiente etapa.
+		Aunque se tiene una arquitectura base del modelo, los detalles se definen en el momento de entrenamiento a través de experimentación constante. Se busca elegir los detalles que generen el mejor resultado en cada etapa, por lo que el proceso consiste en entrenar varias veces cada modelo con parámetros distintos, y observar el desempeño en cada labor específica. Una vez obtenido el mejor resultado, se guardan estos parámetros para continuar con la siguiente etapa.
   </p>
 
 
 <!--
-  
+
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">h5py</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
@@ -705,28 +671,57 @@
     <h3 id="six">6.Resultados</h3>
     <p><a href="#index" class="scrolly">Volver al inicio</a></p>
   </header>
-  <div class="box alt">
-  		<div class="row 50% uniform">
-  			<div class="4u"><span class="image fit"><img src="http://localhost:4000/SinestesIA/images/pic02.jpg" alt="" /></span></div>
-  			<div class="4u"><span class="image fit"><img src="http://localhost:4000/SinestesIA/images/pic03.jpg" alt="" /></span></div>
-  			<div class="4u$"><span class="image fit"><img src="http://localhost:4000/SinestesIA/images/pic01.jpg" alt="" /></span></div>
-  			<!-- Break -->
-  			<div class="4u"><span class="image fit"><img src="http://localhost:4000/SinestesIA/images/pic04.jpg" alt="" /></span></div>
-  			<div class="4u"><span class="image fit"><img src="http://localhost:4000/SinestesIA/images/pic05.jpg" alt="" /></span></div>
-  			<div class="4u$"><span class="image fit"><img src="http://localhost:4000/SinestesIA/images/pic01.jpg" alt="" /></span></div>
-  			<!-- Break -->
-  			<div class="4u"><span class="image fit"><img src="http://localhost:4000/SinestesIA/images/pic02.jpg" alt="" /></span></div>
-  			<div class="4u"><span class="image fit"><img src="http://localhost:4000/SinestesIA/images/pic04.jpg" alt="" /></span></div>
-  			<div class="4u$"><span class="image fit"><img src="http://localhost:4000/SinestesIA/images/pic03.jpg" alt="" /></span></div>
-  		</div>
-  	</div>  
-    <a href="#" class="button special fit">Generar nuevas imágenes</a>
-    <p>
-    Morbi leo urna molestie at elementum eu facilisis sed odio. In tellus integer feugiat scelerisque varius morbi. Neque egestas congue quisque egestas diam in arcu cursus. Turpis massa sed elementum tempus egestas sed sed risus pretium. Id eu nisl nunc mi ipsum faucibus vitae. Nulla posuere sollicitudin aliquam ultrices sagittis orci a. Bibendum est ultricies integer quis. Massa tempor nec feugiat nisl. Augue mauris augue neque gravida. Massa eget egestas purus viverra accumsan. Enim neque volutpat ac tincidunt vitae semper.
-    </p>
-    <p>
-    Non nisi est sit amet facilisis. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Odio facilisis mauris sit amet massa vitae tortor. Tincidunt dui ut ornare lectus. Neque viverra justo nec ultrices dui. Aliquet risus feugiat in ante metus dictum. Risus pretium quam vulputate dignissim suspendisse in est ante. Id eu nisl nunc mi ipsum faucibus vitae. Diam ut venenatis tellus in metus vulputate eu. Et malesuada fames ac turpis egestas sed tempus urna. Mauris augue neque gravida in fermentum et. Risus in hendrerit gravida rutrum quisque non tellus orci ac. Amet nisl suscipit adipiscing bibendum est. Sit amet facilisis magna etiam tempor. Ultricies lacus sed turpis tincidunt id aliquet. Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus.
-    </p>
+	<p>
+		Debido a que Sinestes.IA consiste en múltiples modelos de aprendizaje individuales, se analizarán los resultados de estas partes al igual que el resultado final.
+	</p>
+  <header>
+    <h3 id="six-one">6.1.Modelo de comprensión espacial</h3>
+    <p><a href="#index" class="scrolly">Volver al inicio</a></p>
+  </header>
+	<p>
+		Luego de 25 experimentos en esta sección específica, se lograron comprimir todas las imágenes del baile, cuyo tamaño es de 128x128 pixeles a imágenes de 8x4, con cuatro canales de color (RGBA). Esto representa una compresión de 16384 valores a 128 totales. Con esta compresión se logran reconstruir todas las posiciones del baile representadas en los datos, al igual que posiciones no conocidas por el modelo, en un nivel significativo.
+	</p>
+  <span class="image fit">
+    <img id="randimg" src="http://localhost:4000/SinestesIA/images/0.png" alt="lstm" />
+    <p><i>Ejemplos de los resultados de la capa de comprensión visual. A la izquierda está la captura de imagen desde la cámara. En el centro está la codificación de la imagen. En la izquierda está la decodificación de la imagen.</i></p>
+  </span>
+  <button id="randclick" class="button special fit" onclick="show_random_img();">Generar nueva imagen</button>
+	<p>
+		Uno de los problemas principales que se encontró en esta etapa fue la reconstrucción de los brazos. Debido a que los brazos representaban una porción muy pequeña de la silueta, y que variaban significativamente en cada posición en contraste con el resto de la figura, el modelo presentó dificultades para representar esta información de manera eficiente. Es por esto que en la mayoría de los casos la figura no tiene brazos o se ve acompañado de manchas borrosas en donde deberían mostrarse estos.
+	</p>
+	<header>
+		<h3 id="six-two">6.2.Modelo de comprensión temporal</h3>
+		<p><a href="#index" class="scrolly">Volver al inicio</a></p>
+	</header>
+	<p>
+		Una manera de observar el rendimiento de un modelo secuencial predictivo como este, es ponerlo a generar secuencias de longitud indefinida. A esto se le suele llamar generar sueños, y permite observar qué comportamientos temporales captura el modelo tanto a corto plazo como a largo plazo.
+	</p>
+	<p>
+		Analizando el método anterior, se puede observar que el modelo temporal sabe cómo se desarrolla el baile a corto plazo a partir de posiciones iniciales aleatorias. Pero, al momento de generar secuencias largas las predicciones tienden a estancarse en una posición estándar. Esto demuestra que el modelo toma en consideración una cantidad muy reducida de información en el pasado, mientras que ignora el desarrollo del baile ocurrido mucho antes.
+	</p>
+	<header>
+		<h3 id="six-three">6.3.Modelo de acción</h3>
+		<p><a href="#index" class="scrolly">Volver al inicio</a></p>
+	</header>
+	<p>
+		Una vez entrenada esta última etapa, se observó su rendimiento haciendo uso tanto de los sueños generados en la etapa anterior como de la captura de imagen en tiempo real. Los sonidos generados demuestran una gran habilidad por parte del algoritmo de hacer uso de las sonoridades encontradas dentro de la base de datos, y relacionarlas con posiciones o gestos específicos del movimiento. Además, se puede observar que el modelo de inteligencia artificial relacionó satisfactoriamente el silencio con el reposo o quietud.
+	</p>
+	<p>
+		Una de las limitaciones encontradas al final del proceso, fue la incapacidad de combinar instrumentos que no habían sido combinados previamente en los datos de entrenamiento. Esto significa que el modelo no se encontró en capacidad de reproducir sonidos percutidos con sonidos armónicos, debido a que esta conjunción no se presenta en los datos. Una manera de poder solucionar esto es transformando el modelo de acción en seis modelos independientes, cada uno encargado de un instrumento específico. Esta solución tiene el inconveniente de eliminar toda relación existente entre los instrumentos, lo que implica que el concepto de armonías o texturas sería ignorado por el algoritmo final.
+	</p>
+	<header>
+		<h3 id="six-four">6.4.Resultado final</h3>
+		<p><a href="#index" class="scrolly">Volver al inicio</a></p>
+	</header>
+	<p>
+		Para estudiar los resultados del sistema, se realizó una exploración exhaustiva de la relación movimiento-música, buscando comprender la manera en que el algoritmo interpreta los movimientos y los representaba en sonidos. Esta exploración reveló cierta relación entre uso de instrumentos y sonoridades con ubicaciones espaciales de la figura, de tal forma que dependiendo del lugar en el que uno se encuentra parado se obtendrían distintos timbres y comportamientos temporales del sonido. Se observó, además, que los sonidos percutivos suelen estar relacionados con el cambio abrupto de ubicación, lo cual demuestra cierta coherencia con el carácter súbito y enérgico de <i><em>Golpear</em></i>. Adicional a esto, los movimientos leves dentro de una misma posición suelen estar acompañados de sonidos agudos y largos, reminiscentes de los esfuerzos con temporalidades sostenidas y pesos ligeros.
+	</p>
+	<p>
+		Ahora bien, al momento de observar los resultados, se evidenció la influencia de las limitaciones obtenidas en cada etapa del modelo. La falta de detalle y la reconstrucción parcial de las posiciones de baile, por parte del modelo de comprensión visual, limitan la variedad de movimientos que pueden afectar el sonido generado. Por otro lado, la inhabilidad del modelo de comprensión temporal para recordar secuencias a largo plazo afectan directamente la temporalidad de la música, ya que ésta tampoco tendrá la capacidad de encadenar secuencias melódicas o armónicas extensas.
+	</p>
+	<p>
+		Si bien los resultados no demuestran una capacidad compositiva compleja  por parte del sistema, su utilidad como instrumento de exploración musical es clara. La aproximación sin prejuicios por parte de terceros reveló comportamientos sonoros interesantes al momento de investigar movimientos o posiciones no representados en los datos, tales como tapar la cámara con la mano, o la exploración constante en los límites de percepción del sensor, causaron que el sistema reaccionara con hipótesis sonoras por fuera de lo que se entrenó.
+	</p>
   <!-- /RESULTS -->
   <!-- CONCLUSION -->
   <header>
@@ -734,8 +729,14 @@
     <p><a href="#index" class="scrolly">Volver al inicio</a></p>
   </header>
   <p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquet sagittis id consectetur purus ut. Faucibus interdum posuere lorem ipsum dolor. Est ante in nibh mauris cursus mattis molestie a iaculis. Netus et malesuada fames ac. Sapien pellentesque habitant morbi tristique senectus et netus et. Tempor id eu nisl nunc mi ipsum faucibus vitae. Vitae sapien pellentesque habitant morbi tristique senectus et netus et. Consectetur lorem donec massa sapien. Accumsan in nisl nisi scelerisque eu. Eget felis eget nunc lobortis mattis aliquam faucibus. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Donec ultrices tincidunt arcu non. Commodo quis imperdiet massa tincidunt. Et tortor consequat id porta nibh venenatis cras sed felis. Diam phasellus vestibulum lorem sed risus ultricies tristique nulla aliquet. Aliquam sem et tortor consequat id porta nibh venenatis.
+		Si bien el experimento realizado a través de Sinestes.IA no demostró capacidades musicales complejas a nivel de armonía y desarrollo en el tiempo, se evidenciaron las posibilidades que la inteligencia artificial ofrece para generar herramientas que puedan transformar medios de expresión en otros. Con los suficientes recursos, tiempo y conocimiento, es posible alcanzar mejores resultados a través de la obtención de más datos y la construcción de modelos más complejos.
   </p>
+	<p>
+		Algo que cabe resaltar de este experimento es el manejo de control sobre el resultado final. Sinestes.IA es un proyecto que combina el arte interactivo con el arte algorítmico, lo que implica que hay 3 agentes independientes con cierto nivel de control sobre pieza: El diseñador del algoritmo, el algoritmo y el usuario o intérprete. Este fue un proyecto concebido con la idea de entregar el mayor grado de libertad al algoritmo, y se refleja claramente en los resultados, donde tanto el intérprete como el diseñador se aproximan al algoritmo con la intención de entenderlo, mas no de controlarlo. Esto es debido a como fue conceptualizado y a que este no se reajusta al momento de ser usado. Una aproximación interesante al problema del control es haciendo uso de sistemas de aprendizaje constante, también denominados aprendizaje reforzado. David Rokeby señala a estos sistemas como la posición extrema a la entrega de control, ya que pueden ser diseñados para aprender constantemente del usuario y así aportar mayor dirección al intérprete sobre el resultado.
+	</p>
+	<p>
+		Por último, Sinestes.IA es tan solo una primera aproximación a la idea de construir herramientas artísticas que se adapten al usuario. Alcanzar este objetivo, como se menciona anteriormente, requiere una gran cantidad de experimentación, y este proyecto ha logrado revelar tanto las complicaciones como las posibilidades de la inteligencia artificial como herramienta de apoyo creativo. De este proyecto surgirán nuevas aproximaciones al problema, y servirá como referencia inicial a los procesos y resultados que se pueden obtener y superar para proyectos posteriores.
+	</p>
   <!-- /CONCLUSION -->
   <!-- BIBLIOGRAPHY -->
   <header>
@@ -744,10 +745,17 @@
   </header>
   <!-- /BIBLIOGRAPHY -->
   <ul>
-    <li><a href="https://www.yamaha.com/en/news_release/2018/18013101/
-" target="_blank">Peters, G. (2012). The philosophy of improvisation. Chicago, IL: University of Chicago Press.</a></li>
     <li>Ternaux, J. (2003). Synesthesia: A Multimodal Combination of Senses. Leonardo, 36(4), 321-322. doi:10.1162/002409403322258790</li>
-    <li><a target="_blank" href="https://alessiaspadaccini.com/wp-content/uploads/2015/05/Wassily-Kandinsky-y-la-Música-Visual.pdf">Di Marco, P., &amp; Spadaccini, A. (2015). Wassily Kandinsky y la sinestesia que lo condujo a la música visual. 25-33. Retrieved April 6, 2019.</a></li>
+		<li><a target="_blank" href="https://alessiaspadaccini.com/wp-content/uploads/2015/05/Wassily-Kandinsky-y-la-Música-Visual.pdf">Di Marco, P., &amp; Spadaccini, A. (2015). Wassily Kandinsky y la Sinestesia que lo condujo a la Música Visual. 2-27. Retrieved April 6, 2019.</a></li>
+    <li>Dean, R. T. (2011). The Oxford handbook of computer music. Oxford: Oxford University Press.</li>
+    <li><a target="_blank" href="https://www.coursera.org/learn/machine-learning">Ng, A. (n.d.). Machine Learning. Retrieved 2017.</a></li>
+    <li><a target="_blank" href="https://www.coursera.org/specializations/deep-learning">Ng, A. (n.d.). Deep Learning. Retrieved January 14, 2018.</a></li>
+    <li><a target="_blank" href="http://www.jstor.org.ezproxy.javeriana.edu.co:2048/stable/1568111">Dörr, E., &amp; Lantz, L. (2003). Rudolf von Laban: The "Founding Father" of Expressionist Dance. Dance Chronicle, 26(1), 1-29.</a></li>
+    <li>Gualdrón Ordoñez, D. (2013). Las Ventajas De Aprender Técnica De Dirección Por Medio Del Análisis De Movimiento Laban: Una comparación entre la terminología tradicional y Laban. University of Washington.</li>
+    <li>Ha, D., &amp; Schmidhuber, J. (2018). World Models. ArXiv, 1803(10122), 4th ser., 1-10. doi:10.5281/zenodo.1207631</li>
+    <li>Forrester, J.W. (1971). Counterintuitive Behavior of Social Systems.</li>
+    <li><a target="_blank" href="http://www.davidrokeby.com/mirrorsart.html">Rokeby, D. (1996, July 3). Transforming Mirrors: Interaction in the context of Art. Retrieved May 12, 2019</a></li>
+    <!--<li><a target="_blank" href="https://www.yamaha.com/en/news_release/2018/18013101/" target="_blank">Peters, G. (2012). The philosophy of improvisation. Chicago, IL: University of Chicago Press.</a></li>-->
   </ul>
 </article>
 
