@@ -1,8 +1,15 @@
+---
+---
 /*
 	Massively by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+
+function show_random_img() {
+	index = Math.floor(Math.random()*236);
+	$('#randimg').attr('src', '{{ "/images/" | absolute_url }}' + index.toString(10) + '.png')
+}
 
 (function($) {
 
@@ -126,6 +133,8 @@
 						content: $(this).data("tip"),
 					})
 				});
+				show_random_img();
+				$('#randclick').click(show_random_img());
 			});
 
 		// Prioritize "important" elements on medium.
