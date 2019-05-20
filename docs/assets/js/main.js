@@ -8,7 +8,7 @@
 
 function show_random_img() {
 	index = Math.floor(Math.random()*236);
-	$('#randimg').attr('src', '{{ "/images/" | absolute_url }}' + index.toString(10) + '.png')
+	$('#randimg').attr('src', "{{ '/images/' | absolute_url }}" + index.toString(10) + '.png')
 }
 
 (function($) {
@@ -123,6 +123,14 @@ function show_random_img() {
 					$body.removeClass('is-loading');
 				}, 100);
 				const players = Plyr.setup('.js-player');
+				for (var i in players) {
+					var $video = $(players[i].media)
+					if ($video.is(".autoloop")) {
+						video = players[i];
+						video.play();
+						video.on("ended", () => video.play());
+					}
+				}
 				$('.tooltip').each(function(){
 					tippy(this, {
 						arrow: true,
