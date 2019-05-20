@@ -88,7 +88,7 @@ sitemap:
   Se han realizado diversos estudios, con el objetivo de comprender las razones por las que este tipo de fenómenos se dan, y en qué manera se expresan; y si bien se han llegado a conclusiones sobre la causa física, los mecanismos cerebrales relacionadas a su expresión siguen siendo desconocidos (Ternaux, 2003, p. 2, t.d.a). Uno de los esfuerzos más reconocibles de comprender la asociación artística entre percepciones en un artista ha sido con Kandinsky, quien logró especificar una teoría bajo la cual su percepción musical se relacionaba con su expresividad visual. Por desgracia, esta descripción es bastante subjetiva y única, no extendiéndose a una generalidad del fenómeno.
   </p>
   <span class="image fit">
-    <img src="http://localhost:4000/SinestesIA/images/kandinsky-01.jpg" alt="" />
+    <img src="{{ '/images/kandinsky-01.jpg' | absolute_url }}" alt="Composición V - Wassily Kandinsky" />
     <p><i>Composición V, pieza sinestética realizada por Wassily Kandinsky (Di Marco &amp; Spadaccini, 2015, p. 33).</i></p>
   </span>
   <blockquote>
@@ -147,9 +147,9 @@ sitemap:
     </div>
   </span>
   Ahora bien, el uso de inteligencia artificial en áreas creativas como el arte y la música también ha sido ampliamente explorado. Entre estos experimentos se destaca la extracción y adición de estilos artísticos en imágenes y pinturas, permitiendo al usuario visualizar cómo una imagen, foto y dibujo se verían bajo el estilo de distintos artistas. Algoritmos como estos le permiten a cualquier persona explorar estilos artísticos al igual que variar su intensidad o relevancia en la composición final de la imagen, y hoy en día se ha demostrado la aplicabilidad de estos algoritmos en áreas de diseño y creación.
-  &lt;/p&gt;
+
   <span class="image fit">
-    <img src="http://localhost:4000/SinestesIA/images/styletransfer.png" alt="" />
+    <img src="{{ '/images/styletransfer.png' | absolute_url }}" alt="Style Transfer examples" />
     <p><i>Figura adaptada de L. Gatys et al. "<a href="https://arxiv.org/abs/1508.06576">A Neural Algorithm of Artistic Style</a>" (2015)</i></p>
   </span>
   <p>
@@ -204,7 +204,7 @@ sitemap:
   Estas son las redes neuronales más básicas y comunes. Suelen funcionar bastante bien para casos sencillos de aprendizaje, pero no son muy eficientes al momento de analizar imágenes o datos secuenciales, comparado a otras arquitecturas.
   </p>
   <span class="image fit">
-    <img src="http://localhost:4000/SinestesIA/images/neuralnetwork.gif" alt="" />
+    <img src="{{ '/images/neuralnetwork.gif' | absolute_url }}" alt="densely connected neural network" />
     <p><i>Imagen tomada de <a>https://www.analyticsindiamag.com/how-to-create-your-first-artificial-neural-network-in-python/</a></i></p>
   </span>
   <header>
@@ -215,7 +215,7 @@ sitemap:
   Este tipo de redes neuronales son ampliamente usadas en el contexto de análisis de imágenes, ya que tienen la característica de poder analizar cada pixel en su contexto, a diferencia de las redes neuronales completamente conectadas, que consideran cada pixel un dato independiente. Este es el tipo de red neuronal que se suele usar en aplicaciones como reconocimiento facial o generación de imágenes.
   </p>
   <span class="image fit">
-    <img src="http://localhost:4000/SinestesIA/images/convnetwork.png" alt="" />
+    <img src="{{ '/images/convnetwork.png' | absolute_url }}" alt="convolutional network" />
     <p><i>Imagen tomada de <a>https://devblogs.nvidia.com/accelerate-machine-learning-cudnn-deep-neural-network-library/</a></i></p>
   </span>
   <header>
@@ -226,7 +226,7 @@ sitemap:
   Esta arquitectura fue especialmente diseñada para tratar con datos secuenciales, tales como sonido o video. Lo que las diferencia del resto es la capacidad de retener memoria, lo cual les permite usar información pasada para tomar decisiones en el futuro. Estas redes neuronales son usadas en herramientas como en análisis de voz, comprensión del lenguaje natural, o en generación de texto, audio y video.
   </p>
   <span class="image fit">
-    <img src="http://localhost:4000/SinestesIA/images/recnetwork.jpg" alt="" />
+    <img src="{{ '/images/recnetwork.jpg' | absolute_url }}" alt="reccurent neural network" />
     <p><i>Imagen tomada de <a>http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/</a></i></p>
   </span>
   <header>
@@ -399,7 +399,7 @@ sitemap:
   Con el objetivo de simplificar el aprendizaje y reducir los tiempos de procesamiento las imágenes obtenidas del Kinect consistirán únicamente de la captura de profundidad, y el tamaño de las imágenes será de 128x128.
   </p>
   <span class="image fit">
-    <img src="http://localhost:4000/SinestesIA/images/videodata.png" alt="" />
+    <img src="{{ '/images/videodata.png' | absolute_url }}" alt="" />
     <p><i>Ejemplos de las imágenes capturadas para el proyecto</i></p>
   </span>
   <header>
@@ -432,21 +432,21 @@ sitemap:
     <h4>Deslizar</h4>
     <p style="margin: 0;">Tiempo sostenido, Peso ligero, espacio directo</p>
     <audio class="js-player" controls="" preload="">
-      <source src="http://localhost:4000/SinestesIA/audios/deslizar.mp3" />
+      <source src="{{ '/audios/deslizar.mp3' | absolute_url }}" />
     </audio>
   </header>
   <header>
     <h4>Retorcer</h4>
     <p style="margin: 0;">Tiempo sostenido, Peso enérgico, espacio indirecto</p>
     <audio class="js-player" controls="" preload="">
-      <source src="http://localhost:4000/SinestesIA/audios/retorcer.mp3" />
+      <source src="{{ '/audios/retorcer.mp3' | absolute_url }}" />
     </audio>
   </header>
   <header>
     <h4>Golpear</h4>
     <p style="margin: 0;">Tiempo súbito, Peso enérgico, espacio directo</p>
     <audio class="js-player" controls="" preload="">
-      <source src="http://localhost:4000/SinestesIA/audios/golpear.mp3" />
+      <source src="{{ '/audios/golpear.mp3' | absolute_url }}" />
     </audio>
   </header>
   <header>
@@ -485,7 +485,7 @@ sitemap:
 		De esta manera, el flujo de información iniciaría con la secuencia de imágenes entrando al modelo de comprensión espacial, para luego transmitir el resultado de dicha comprensión al modelo temporal. Con esto, la inteligencia artificial sacará una conclusión de lo que está ocurriendo en el baile, y esa conclusión la enviará al modelo de acción, donde generará una hipótesis de los sonidos que deberían acompañar el baile.
   </p>
   <span class="image fit">
-    <img src="http://localhost:4000/SinestesIA/images/modelflow.png" alt="" />
+    <img src="{{ '/images/modelflow.png' | absolute_url }}" alt="flujo de información de Sinestes.IA" />
     <p><i>Flujo y estructura del modelo de aprendizaje</i></p>
   </span>
   <header>
@@ -502,7 +502,7 @@ sitemap:
 		Ahora bien, lo que hace estos modelos especiales, es que en el proceso obligan al modelo a tener que representar los datos en un espacio menor al de la información de entrada.
   </p>
   <span class="image fit">
-    <img src="http://localhost:4000/SinestesIA/images/cae.png" alt="" />
+    <img src="{{ '/images/cae.png' | absolute_url }}" alt="Ejemplo CAE" />
     <p><i>Imagen obtenida de <a href="https://www.edureka.co/blog/autoencoders-tutorial/">https://www.edureka.co/blog/autoencoders-tutorial/</a>. Acá la imagén del número 2 (izquierda) se comprime en la capa h (centro), y de esta capa se trata de reconstruir la imagen  original (derecha).</i></p>
   </span>
   <p>
@@ -512,7 +512,7 @@ sitemap:
 		Este proceso logra reducir la información visual de las imágenes a características relevantes de las mismas, al igual que comprime la cantidad de datos que entran al sistema, facilitando el aprendizaje para las próximas capas del sistema.
   </p>
   <span class="image fit">
-    <img src="http://localhost:4000/SinestesIA/images/sinestesia-cae.png" alt="convolutional autoencoder" />
+    <img src="{{ '/images/sinestesia-cae.png' | absolute_url }}" alt="convolutional autoencoder" />
     <p><i>Demostración de la primera etapa de Sinestes.IA. En este caso la imagen original es comprimida a 128 datos (8x4x4).</i></p>
   </span>
   <header>
@@ -523,7 +523,7 @@ sitemap:
 		Obtenida la versión comprimida de las imágenes, es posible usar esta representación para analizar la evolución del baile en el tiempo. Para lograr esto, el modelo debe tener algún tipo de memoria para recordar la información pasada. Es debido a esto que se utilizará una red neuronal recurrente, que además de recibir la imagen comprimida, recibe información de los procesos anteriores. En este caso específico, se utilizará la arquitectura LSTM (Long Short Term Memory), que ha demostrado ser buena para considerar información tanto cercana como lejana temporalmente. Para generar la comprensión temporal se entrena a la red neuronal a predecir lo que ocurrirá en el futuro según la información pasada. De esta manera, si el algoritmo predice correctamente y de manera consistente, implica que comprende el comportamiento temporal de los datos.
   </p>
   <span class="image fit">
-    <img src="http://localhost:4000/SinestesIA/images/sinestesia-lstm.png" alt="lstm" />
+    <img src="{{ '/images/sinestesia-lstm.png' | absolute_url }}" alt="lstm" />
     <p><i>Demostración de la segunda etapa de Sinestes.IA. Se puede observar cómo se procesa una secuencia de imágenes individualmente (flujo vertical), mientras que cada capa comparte información de los procesos anteriores (flujo horizontal).</i></p>
   </span>
   <p>
@@ -546,50 +546,6 @@ sitemap:
   <p>
 		Aunque se tiene una arquitectura base del modelo, los detalles se definen en el momento de entrenamiento a través de experimentación constante. Se busca elegir los detalles que generen el mejor resultado en cada etapa, por lo que el proceso consiste en entrenar varias veces cada modelo con parámetros distintos, y observar el desempeño en cada labor específica. Una vez obtenido el mejor resultado, se guardan estos parámetros para continuar con la siguiente etapa.
   </p>
-
-
-<!--
-
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">h5py</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-
-<span class="k">class</span> <span class="nc">CAEData</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">config</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">thresh</span> <span class="o">=</span> <span class="mi">8</span>
-        <span class="n">location</span> <span class="o">=</span> <span class="s">'/Volumes/TOSHIBA/TESIS/runtime/data/'</span>
-        <span class="n">f</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">location</span> <span class="o">+</span> <span class="s">'video_dataset.hdf5'</span><span class="p">,</span><span class="s">'r'</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cv_input</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">'test_data'</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="nb">input</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">'train_data'</span><span class="p">]</span>
-        <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">location</span> <span class="o">+</span> <span class="s">'background.jpg'</span><span class="p">)</span>
-        <span class="n">background</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">im</span><span class="p">)</span><span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">background_percent</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">background</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">background</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">state_size</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">next_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
-        <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">batch_size</span><span class="p">)</span>
-        <span class="n">batch_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="nb">input</span><span class="p">[</span><span class="n">idx</span><span class="p">:</span><span class="n">idx</span><span class="o">+</span><span class="n">batch_size</span><span class="p">]</span>
-        <span class="n">batch_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rollaxis</span><span class="p">(</span><span class="n">batch_x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-        <span class="c"># Remove background and normalize data</span>
-        <span class="n">batch_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(((</span><span class="n">batch_x</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">background</span><span class="p">)</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">thresh</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">255</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">thresh</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">batch_x</span> <span class="o">=</span> <span class="n">batch_x</span><span class="o">/</span><span class="mi">255</span>
-        <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,((</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
-        <span class="n">noise_bool</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,((</span><span class="n">batch_size</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
-        <span class="n">batch_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">((</span><span class="n">batch_x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">noise_percent</span><span class="o">*</span><span class="n">noise_bool</span><span class="o">*</span><span class="n">noise</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">yield</span> <span class="n">batch_x</span><span class="p">,</span> <span class="n">batch_y</span>
-
-    <span class="k">def</span> <span class="nf">cv_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cv_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">batch_size</span><span class="p">)</span>
-        <span class="n">batch_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv_input</span><span class="p">[</span><span class="n">idx</span><span class="p">:</span><span class="n">idx</span><span class="o">+</span><span class="n">batch_size</span><span class="p">]</span>
-        <span class="n">batch_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rollaxis</span><span class="p">(</span><span class="n">batch_x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-        <span class="n">batch_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(((</span><span class="n">batch_x</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">background</span><span class="p">)</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">thresh</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">255</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">thresh</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">batch_x</span> <span class="o">=</span> <span class="n">batch_x</span><span class="o">/</span><span class="mi">255</span>
-        <span class="k">yield</span> <span class="n">batch_x</span><span class="p">,</span> <span class="n">batch_y</span>
-  </code></pre></figure>
-
-  <p>
-  Placerat in egestas erat imperdiet sed euismod nisi porta lorem. Amet volutpat consequat mauris nunc congue nisi vitae suscipit. Ultrices vitae auctor eu augue ut. Id nibh tortor id aliquet lectus proin. Malesuada fames ac turpis egestas maecenas pharetra. Aliquam malesuada bibendum arcu vitae elementum curabitur. Ipsum dolor sit amet consectetur. Nibh sed pulvinar proin gravida hendrerit lectus. Nunc sed augue lacus viverra vitae congue eu consequat. Et pharetra pharetra massa massa ultricies. Ut tellus elementum sagittis vitae et leo. Egestas congue quisque egestas diam in. Congue mauris rhoncus aenean vel elit scelerisque mauris. Ullamcorper malesuada proin libero nunc consequat interdum varius. Eu consequat ac felis donec et odio pellentesque diam volutpat. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu.
-  </p>
   <!-- /METHODOLOGY -->
   <!-- RESULTS -->
   <header>
@@ -607,7 +563,7 @@ sitemap:
 		Luego de 25 experimentos en esta sección específica, se lograron comprimir todas las imágenes del baile, cuyo tamaño es de 128x128 pixeles a imágenes de 8x4, con cuatro canales de color (RGBA). Esto representa una compresión de 16384 valores a 128 totales. Con esta compresión se logran reconstruir todas las posiciones del baile representadas en los datos, al igual que posiciones no conocidas por el modelo, en un nivel significativo.
 	</p>
   <span class="image fit">
-    <img id="randimg" src="http://localhost:4000/SinestesIA/images/0.png" alt="cae results" />
+    <img id="randimg" src="{{ '/images/0.png' | absolute_url }}" alt="cae results" />
     <p><i>Ejemplos de los resultados de la capa de comprensión visual. A la izquierda está la captura de imagen desde la cámara. En el centro está la codificación de la imagen. En la izquierda está la decodificación de la imagen.</i></p>
   </span>
   <button id="randclick" class="button special fit" onclick="show_random_img();">Generar nueva imagen</button>
