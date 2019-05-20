@@ -607,7 +607,7 @@ sitemap:
 		Luego de 25 experimentos en esta sección específica, se lograron comprimir todas las imágenes del baile, cuyo tamaño es de 128x128 pixeles a imágenes de 8x4, con cuatro canales de color (RGBA). Esto representa una compresión de 16384 valores a 128 totales. Con esta compresión se logran reconstruir todas las posiciones del baile representadas en los datos, al igual que posiciones no conocidas por el modelo, en un nivel significativo.
 	</p>
   <span class="image fit">
-    <img id="randimg" src="http://localhost:4000/SinestesIA/images/0.png" alt="lstm" />
+    <img id="randimg" src="http://localhost:4000/SinestesIA/images/0.png" alt="cae results" />
     <p><i>Ejemplos de los resultados de la capa de comprensión visual. A la izquierda está la captura de imagen desde la cámara. En el centro está la codificación de la imagen. En la izquierda está la decodificación de la imagen.</i></p>
   </span>
   <button id="randclick" class="button special fit" onclick="show_random_img();">Generar nueva imagen</button>
@@ -621,6 +621,11 @@ sitemap:
 	<p>
 		Una manera de observar el rendimiento de un modelo secuencial predictivo como este, es ponerlo a generar secuencias de longitud indefinida. A esto se le suele llamar generar sueños, y permite observar qué comportamientos temporales captura el modelo tanto a corto plazo como a largo plazo.
 	</p>
+  <span class="image fit">
+    <video class="js-player autoloop" playsinline controls>
+      <source src="{{ '/videos/noaudiodream.mp4' | absolute_url }}" type="video/mp4" />
+    </video>
+  </span>
 	<p>
 		Analizando el método anterior, se puede observar que el modelo temporal sabe cómo se desarrolla el baile a corto plazo a partir de posiciones iniciales aleatorias. Pero, al momento de generar secuencias largas las predicciones tienden a estancarse en una posición estándar. Esto demuestra que el modelo toma en consideración una cantidad muy reducida de información en el pasado, mientras que ignora el desarrollo del baile ocurrido mucho antes.
 	</p>
