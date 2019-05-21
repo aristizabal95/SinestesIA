@@ -6,6 +6,7 @@
 
 /* Button */
 
+
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
@@ -31,6 +32,11 @@
 		text-decoration: none;
 		text-transform: uppercase;
 		white-space: nowrap;
+
+		&.action {
+			height: 4.5em;
+			padding-top: .4em;
+		}
 
 		&.icon {
 			&:before {

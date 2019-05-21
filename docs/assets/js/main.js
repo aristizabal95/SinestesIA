@@ -127,7 +127,7 @@ function show_random_img() {
 					var $video = $(players[i].media)
 					if ($video.is(".autoloop")) {
 						video = players[i];
-						video.play();
+						video.on("ready", () => video.play());
 						video.on("ended", () => video.play());
 					}
 				}

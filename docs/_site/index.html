@@ -35,6 +35,7 @@
 <!-- CSS -->
 <link rel="stylesheet" href="http://localhost:4000/SinestesIA/assets/css/main.css" />
 <link rel="stylesheet" href="https://cdn.plyr.io/3.5.3/plyr.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <noscript><link rel="stylesheet" href="http://localhost:4000/SinestesIA/assets/css/noscript.css" /></noscript>
 
 
@@ -89,6 +90,16 @@
     <h2 id="title"><a href="/SinestesIA/">Sinestes<span>.IA</span></a></h2>
 		<p style="margin: 0"><i>"El baile puede revelar todo el misterio que la música concede."</i></p>
     <p>Charles Baudelaire</p>
+    <!-- ACTIONS -->
+    <div class="row">
+      <div class="6u 12u$(small)">
+        <a class="button fit action" target="_blank" href="https://github.com/aristizabal95/SinestesIA"><i class="fab fa-github"></i>Ver on Github</a>
+      </div>
+      <div class="6u$ 12u$(small)">
+        <a class="button fit action" target="_blank" href="http://localhost:4000/SinestesIA/files/Sinestes.IA%20-%20Alejandro%20Aristiz%C3%A1bal%20Medina.pdf"><i class="far fa-file-pdf"></i>Ver en PDF</a>
+      </div>
+    </div>
+    <!-- /ACTIONS -->
 	</header>
 	<a href="#intro" class="image main scrolly"><img src="http://localhost:4000/SinestesIA/images/main.png" alt="" /></a>
 	<h3 id="index">Índice</h3>
@@ -639,7 +650,7 @@
 	</p>
   <span class="image fit">
     <img id="randimg" src="http://localhost:4000/SinestesIA/images/0.png" alt="cae results" />
-    <p><i>Ejemplos de los resultados de la capa de comprensión visual. A la izquierda está la captura de imagen desde la cámara. En el centro está la codificación de la imagen. En la izquierda está la decodificación de la imagen.</i></p>
+    <p><i>Ejemplos de los resultados de la capa de comprensión visual. A la izquierda está la captura de imagen desde la cámara. En el centro está la codificación de la imagen. En la derecha está la decodificación de la imagen.</i></p>
   </span>
   <button id="randclick" class="button special fit" onclick="show_random_img();">Generar nueva imagen</button>
 	<p>
@@ -656,6 +667,7 @@
     <video class="js-player autoloop" playsinline="" controls="">
       <source src="http://localhost:4000/SinestesIA/videos/noaudiodream.mp4" type="video/mp4" />
     </video>
+    <p><i>Varias secuencias generadas completamente por el computador</i></p>
   </span>
 	<p>
 		Analizando el método anterior, se puede observar que el modelo temporal sabe cómo se desarrolla el baile a corto plazo a partir de posiciones iniciales aleatorias. Pero, al momento de generar secuencias largas las predicciones tienden a estancarse en una posición estándar. Esto demuestra que el modelo toma en consideración una cantidad muy reducida de información en el pasado, mientras que ignora el desarrollo del baile ocurrido mucho antes.
