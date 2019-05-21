@@ -20,7 +20,7 @@ sitemap:
         <a class="button fit action" target="_blank" href="https://github.com/aristizabal95/SinestesIA"><i class="fab fa-github"></i>Ver on Github</a>
       </div>
       <div class="6u$ 12u$(small)">
-        <a class="button fit action" target="_blank" href="{{ '/files/Sinestes.IA - Alejandro Aristizábal Medina.pdf' | absolute_url}}"><i class="far fa-file-pdf"></i>Ver en PDF</a>
+        <a class="button fit action" target="_blank" href="{{ '/files/SinestesIA - Alejandro Aristizábal Medina.pdf' | absolute_url}}"><i class="far fa-file-pdf"></i>Ver en PDF</a>
       </div>
     </div>
     <!-- /ACTIONS -->
