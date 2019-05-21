@@ -12,6 +12,8 @@ class ActionsModel(BaseModel):
         self.is_training = tf.placeholder(tf.bool, name="training")
         self.mean = tf.get_variable("mean", shape=(self.config.input_size), trainable=False)
         self.stdev = tf.get_variable("stdev", shape=(self.config.input_size), trainable=False)
+        self.o_mean = tf.get_variable("o_mean", shape=(self.config.output_size), trainable=False)
+        self.o_stdev = tf.get_variable("o_stdev", shape=(self.config.output_size), trainable=False)
 
         self.x = tf.placeholder(tf.float32, shape=[None] + self.config.input_size, name="X")
         self.y = tf.placeholder(tf.float32, shape=[None] + self.config.output_size, name="Y")
@@ -26,7 +28,9 @@ class ActionsModel(BaseModel):
             layer = tf.nn.dropout(layer, keep_prob=self.config.keep_prob)
         logits = tf.contrib.layers.fully_connected(layer, self.config.output_size[0], activation_fn=None)
         # compress the results into values between -1 and 1
-        self.prediction = logits
+        self.norm_pred = tf.tanh(logits)
+        # scale the results to valid output ranges
+        self.prediction = self.norm_pred*self.o_stdev + self.o_mean
 
 
 

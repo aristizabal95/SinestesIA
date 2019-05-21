@@ -32,5 +32,11 @@ def get_args():
         default='None',
         help='The length of each dream sequence'
     )
+    argparser.add_argument(
+        '-r', '--random',
+        metavar='R',
+        default='True',
+        help='Whether to add randomness to dream sequence'
+    )
     args = argparser.parse_args()
     return args
