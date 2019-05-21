@@ -14,6 +14,16 @@ sitemap:
     <h2 id="title"><a href="{{site.baseurl}}/">{{site.title}}<span>{{site.alt_title}}</span></a></h2>
 		<p style="margin: 0"><i>"El baile puede revelar todo el misterio que la música concede."</i></p>
     <p>Charles Baudelaire</p>
+    <!-- ACTIONS -->
+    <div class="row">
+      <div class="6u 12u$(small)">
+        <a class="button fit action" target="_blank" href="https://github.com/aristizabal95/SinestesIA"><i class="fab fa-github"></i>Ver on Github</a>
+      </div>
+      <div class="6u$ 12u$(small)">
+        <a class="button fit action" target="_blank" href="{{ '/files/Sinestes.IA - Alejandro Aristizábal Medina.pdf' | absolute_url}}"><i class="far fa-file-pdf"></i>Ver en PDF</a>
+      </div>
+    </div>
+    <!-- /ACTIONS -->
 	</header>
 	<a href="#intro" class="image main scrolly"><img src="{{ "/images/main.png" | absolute_url }}" alt="" /></a>
 	<h3 id="index">Índice</h3>
@@ -564,7 +574,7 @@ sitemap:
 	</p>
   <span class="image fit">
     <img id="randimg" src="{{ '/images/0.png' | absolute_url }}" alt="cae results" />
-    <p><i>Ejemplos de los resultados de la capa de comprensión visual. A la izquierda está la captura de imagen desde la cámara. En el centro está la codificación de la imagen. En la izquierda está la decodificación de la imagen.</i></p>
+    <p><i>Ejemplos de los resultados de la capa de comprensión visual. A la izquierda está la captura de imagen desde la cámara. En el centro está la codificación de la imagen. En la derecha está la decodificación de la imagen.</i></p>
   </span>
   <button id="randclick" class="button special fit" onclick="show_random_img();">Generar nueva imagen</button>
 	<p>
@@ -581,6 +591,7 @@ sitemap:
     <video class="js-player autoloop" playsinline controls>
       <source src="{{ '/videos/noaudiodream.mp4' | absolute_url }}" type="video/mp4" />
     </video>
+    <p><i>Varias secuencias generadas completamente por el computador</i></p>
   </span>
 	<p>
 		Analizando el método anterior, se puede observar que el modelo temporal sabe cómo se desarrolla el baile a corto plazo a partir de posiciones iniciales aleatorias. Pero, al momento de generar secuencias largas las predicciones tienden a estancarse en una posición estándar. Esto demuestra que el modelo toma en consideración una cantidad muy reducida de información en el pasado, mientras que ignora el desarrollo del baile ocurrido mucho antes.
