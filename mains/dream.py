@@ -3,8 +3,8 @@ import numpy as np
 import utils.pure_data as pd
 import time
 
-from models.dance_rnn_model import RNNModel
-from models.cae_l_high import CAEModel
+from models.rnn_model import RNNModel
+from models.cae_model import CAEModel
 from models.actions_model import ActionsModel
 from utils.config import process_config
 from utils.utils import get_args

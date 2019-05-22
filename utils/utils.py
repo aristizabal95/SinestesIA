@@ -11,31 +11,31 @@ def get_args():
     argparser.add_argument(
         '--caeconfig',
         metavar='CAE',
-        default='None',
+        default='configs/cae_config.json',
         help='The configuration file for CAE model'
     )
     argparser.add_argument(
         '--rnnconfig',
         metavar='RNN',
-        default='None',
+        default='configs/rnn_config.json',
         help='The configuration file for RNN model'
     )
     argparser.add_argument(
         '--actionsconfig',
         metavar='Actions',
-        default='None',
+        default='configs/actions_config.json',
         help='The configuration file for the Actions Model'
     )
     argparser.add_argument(
         '-l', '--length',
         metavar='L',
-        default='None',
+        default='150',
         help='The length of each dream sequence'
     )
     argparser.add_argument(
         '-r', '--random',
         metavar='R',
-        default='True',
+        default='1',
         help='Whether to add randomness to dream sequence'
     )
     args = argparser.parse_args()
