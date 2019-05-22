@@ -17,7 +17,7 @@ sitemap:
     <!-- ACTIONS -->
     <div class="row">
       <div class="6u 12u$(small)">
-        <a class="button fit action" target="_blank" href="https://github.com/aristizabal95/SinestesIA"><i class="fab fa-github"></i>Ver on Github</a>
+        <a class="button fit action" target="_blank" href="https://github.com/aristizabal95/SinestesIA"><i class="fab fa-github"></i>Ver en Github</a>
       </div>
       <div class="6u$ 12u$(small)">
         <a class="button fit action" target="_blank" href="{{ '/files/SinestesIA - Alejandro Aristizábal Medina.pdf' | absolute_url}}"><i class="far fa-file-pdf"></i>Ver en PDF</a>
@@ -26,6 +26,19 @@ sitemap:
     <!-- /ACTIONS -->
 	</header>
 	<a href="#intro" class="image main scrolly"><img src="{{ "/images/main.png" | absolute_url }}" alt="" /></a>
+  <header>
+    <h3>Abstract</h3>
+  </header>
+  <div class="box">
+  <p>
+  <i>Sinestes.IA</i> es un proyecto de creación que explora el uso de <i>Algoritmos de aprendizaje profundo</i> como herramientas interactivas y creativas. Inspirado en el fenómeno de la <i>Sinestesia</i>, este proyecto busca traducir, en tiempo real, los movimientos corporales en música. Con esto en mente, se indaga la relación existente entre la música y la danza, desarrollando un sistema de composición a partir de los <i>esfuerzo-acciones</i> de la <i>teoría Laban</i>. Por otro lado, se hace uso del concepto de <i>Modelos del Mundo</i> como guía para el algoritmo de aprendizaje. Por esta razón, <i>Sinestes.IA</i> es capaz de comprender el baile, tanto visual como temporalmente,  y de responder a este con instrucciones musicales. Este proyecto demuestra las capacidades, posibilidades y limitaciones que se pueden presentar al momento de desarrollar herramientas de creación interactivas e inteligentes, y propone distintas maneras para obtener mejores resultados.
+  </p>
+  <p><h5>Palabras clave:</h5><i>Inteligencia Artificial, Aprendizaje de Máquina, Aprendizaje Profundo, Modelos del mundo, Sinestesia, Teoría Laban, Esfuerzo-acciones, Música Algorítmica, Música Interactiva.</i></p>
+  <p>
+  <i>Sinestes.IA</i> is a creative project that explores the usage of <i>Deep Learning Algorithms</i> as creative and interactive tools. Inspired in the psychological phenomenon of <i>Synesthesia</i>, this projects aims to translate, in real time, body movements into music. With this in mind, the existing relation between dance and music is examined, developing a composition system based on the <i>Action-Efforts</i> described in <i>Laban’s method</i>. On the other hand, the concept of <i>World Models</i> is used as a guideline for the learning algorithm. Because of this, <i>Sinestes.IA</i> is capable of understanding movement, both visually and temporarily, and is able to respond to this with musical instructions. This project showcases the capabilities, possibilities, and limitations that may be present when developing smart and interactive tools in the creative means, and proposes different ways for obtaining better results.
+  </p>
+  <p><h5>Keywords:</h5><i>Artificial Intelligence, Machine Learning, Deep Learning, World Models, Synesthesia, Laban’s Theory, Action-efforts, Algorithmic Music, Interactive Music.</i></p>
+  </div>
 	<h3 id="index">Índice</h3>
 	<ol class="alt">
 		<li><a href="#one" class="scrolly">Introducción</a></li>
@@ -393,7 +406,7 @@ sitemap:
     <p><a href="#index" class="scrolly">Volver al inicio</a></p>
   </header>
   <p>
-  Para un proyecto de aprendizaje de máquina, la obtención de las bases de datos es el requerimiento más relevante, debido a que es con base en esto que el algoritmo podrá aprender. Para el problema que Sinestes.IA busca explorar, la base de datos debe consistir en ejemplos de la información que el programa recibirá, al igual que el resultado que se espera de dichos datos. Como ejemplo, si se desea entrenar una red neuronal para predecir los precios de apartamentos, la base de datos debe consistir de las características del apartamento como elementos de entrada, al igual que el precio de dicho apartamento como salida. Es a partir de estos datos que el algoritmo podrá comprender la relación entre la información entrante y el resultado deseado.
+  Para un proyecto de aprendizaje de máquina, la obtención de las bases de datos es el requerimiento más relevante, debido a que es con base en esto que el algoritmo podrá aprender. Para el problema que Sinestes.IA busca explorar, la base de datos debe consistir en ejemplos de la información que el programa recibirá, al igual que el resultado que se espera de dichos datos. Como ejemplo, si se desea entrenar una red neuronal para predecir los precios de apartamentos, la base de datos debe consistir de las características del apartamento como elementos de entrada, al igual que el precio de dicho apartamento como salida.
   </p>
   <p>
   Como fue señalado en la definición del problema, Sinestes.IA manejará como datos de entrada una sucesión de imágenes, y de salida sonidos. Ambos tipos de datos deben tener correspondencia, lo que significa que por cada imagen debe haber un dato sonoro, y que cada dato sonoro debe reflejar lo que está ocurriendo en la imagen. Para poder obtener estos datos es necesario plantear varios puntos a resolver:
@@ -406,7 +419,7 @@ sitemap:
   La captura de video se realizará usando el sensor Kinect, desarrollado para la consola de videojuegos Xbox 360. Se ha escogido esta herramienta debido a que fue diseñado con el objetivo de capturar los movimientos e interactuar con entornos virtuales, para lo que se le incorporó un sensor de profundidad.
   </p>
   <p>
-  Con el objetivo de simplificar el aprendizaje y reducir los tiempos de procesamiento las imágenes obtenidas del Kinect consistirán únicamente de la captura de profundidad, y el tamaño de las imágenes será de 128x128.
+  Con el objetivo de simplificar el aprendizaje y reducir los tiempos de procesamiento, las imágenes obtenidas del Kinect consistirán únicamente de la captura de profundidad, y el tamaño de las imágenes será de 128x128.
   </p>
   <span class="image fit">
     <img src="{{ '/images/videodata.png' | absolute_url }}" alt="" />
@@ -430,7 +443,7 @@ sitemap:
 		Siendo que el objetivo del proyecto es generar música en relación a la danza, dicha relación debe estar representada en los datos de entrenamiento. Para lograr esto es necesario parametrizar la música, de tal forma que pueda ser fielmente representada en la danza al momento de capturar la información. Dicha parametrización no es sencilla, debido a que no existe una relación objetiva entre el movimiento y la música, de tal manera que se pueda expresar un solo sonido específico con un solo tipo de movimiento <i><em>(Gualdrón, 2013)</em></i>.
   </p>
   <p>
-		Aún así, se ha observado que conocimientos en lenguaje corporal suelen facilitar la expresividad de carácter y dinámica en estudiantes de dirección. Trabajos como Las Ventajas de Aprender Técnica de Dirección por Medio del Análisis de Movimiento Laban de Deyanira Gualdrón exploran cómo los esfuerzo-acciones de Rudolf Von Laban pueden ejemplificar ciertos tipos de características musicales al ser usados en un ambiente de dirección. Además, la carencia de una relación directa entre la danza y la música abre la posibilidad a la creatividad, permitiendo definir un estilo propio para establecer una conexión entre ambos tipos de arte. Es debido a esto que se usarán los esfuerzo-acciones de Laban como guía para definir un estilo musical en coherencia con el movimiento.
+		Aún así, se ha observado que conocimientos en lenguaje corporal suelen facilitar la expresividad de carácter y dinámica en estudiantes de dirección. Trabajos como <i><em>Las Ventajas de Aprender Técnica de Dirección por Medio del Análisis de Movimiento Laban</em></i> de Deyanira Gualdrón exploran cómo los esfuerzo-acciones de Rudolf Von Laban pueden ejemplificar ciertos tipos de características musicales al ser usados en un ambiente de dirección. Además, la carencia de una relación directa entre la danza y la música abre la posibilidad a la creatividad, permitiendo definir un estilo propio para establecer una conexión entre ambos tipos de arte. Es debido a esto que se usarán los esfuerzo-acciones de Laban como guía para definir un estilo musical en coherencia con el movimiento.
   </p>
   <p>
 		Para establecer el estilo y su conexión con los esfuerzo-acciones, se relacionarán los aspectos del movimiento (espacio, tiempo y peso) con características sonoras y musicales, para así guiar tanto la síntesis como la composición. Esta parametrización es subjetiva, pero fue pensada para mantener cierta generalidad, a través de opiniones tanto de compositores como de bailarines. Como ejemplo, el aspecto del peso en el movimiento suele verse relacionado con la altura y el timbre de los sonidos, de tal forma que sonidos agudos y redondos se ven reflejados por movimientos ligeros, mientras que sonidos estridentes y bajos se reflejan con movimientos enérgicos.
@@ -470,7 +483,7 @@ sitemap:
 		La velocidad de captura depende de la frecuencia máxima de la información a grabar, y según el teorema de Nyquist la frecuencia de muestreo debe estar por encima del doble de la frecuencia máxima de los datos. La frecuencia para video estándar para reproducción es de 24fps (frames por segundo), siendo 16fps el mínimo considerado para la percepción de movimiento continuo.
   </p>
   <p>
-		En cuanto a los datos sonoros, es necesario establecer una velocidad máxima de acciones para establecer la frecuencia de muestreo necesaria. El estudio de Justin London denominado “Restricciones cognitivas en sistemas métricos” examina la velocidad máxima de impulsos sonoros independientes que el oído humano puede percibir, y establece que una distancia entre impulsos de 50ms (20Hz) es la velocidad teórica máxima de percepción, debido a que este es el límite mínimo de percepción de tonos en la escucha humana. A partir de esto, se puede definir la velocidad de muestreo de las acciones sonoras como 40Hz, y usar esta velocidad para la grabación tanto de sonido como de video en este proyecto.
+		En cuanto a los datos sonoros, es necesario establecer una velocidad máxima de acciones para establecer la frecuencia de muestreo necesaria. El estudio de Justin London denominado <i><em>Cognitive Constraints in Metric Systems</em></i> examina la velocidad máxima de impulsos sonoros independientes que el oído humano puede percibir, y establece que una distancia entre impulsos de 50ms (20Hz) es la velocidad teórica máxima de percepción, debido a que este es el límite mínimo de percepción de tonos en la escucha humana. A partir de esto, se puede definir la velocidad de muestreo de las acciones sonoras como 40Hz, y usar esta velocidad para la grabación tanto de sonido como de video en este proyecto.
   </p>
   <p>
 		Ahora bien, al momento de capturar los datos, se trabajó con 7 bailarines para realizar múltiples grabaciones de cada composición. Se requirieron múltiples bailarines para tener variedad de estilos de danza y facilidad de coordinación de tiempos con cada bailarín. Debido a las diferencias de tiempo, las piezas más cortas fueron grabadas más veces para compensar su duración. Una vez finalizadas las grabaciones se obtuvo una cantidad de 240 capturas individuales, que si bien son pocas para un proyecto de aprendizaje profundo, son suficientes para obtener resultados interesantes para este proyecto.
@@ -483,7 +496,7 @@ sitemap:
 		El diseño del modelo de aprendizaje se basa sustancialmente en el comportamiento de los datos. Siendo que existen tantas arquitecturas y tantas investigaciones realizadas para distintas aplicaciones, es necesario definir algún sistema inicial para evaluar su rendimiento e iterar según los requerimientos del proyecto. Esto significa que si bien es importante tener claro cómo aproximarse al problema, los detalles del modelo se pueden refinar a través de experimentación.
   </p>
   <p>
-		El modelo de aprendizaje de Sinestes.IA debe ser capaz de analizar el baile desde una perspectiva espacial como temporal, debido a que son secuencias de imágenes. Además de esto, debe ser capaz de responder a las imágenes de baile con acciones sonoras a interpretar. Este tipo de problemas es similar al usado en videojuegos, donde de entrada se alimenta con una secuencia de imágenes del videojuego, y el modelo responde con las acciones que debe tomar para continuar jugando. Es por esta razón que el modelo de inteligencia artificial de Sinestes.IA va a estar basado en un estudio denominado “World Models” realizado por David Ha et. al. Este estudio se basa en el concepto de Modelos Mentales de Jay Wright Forrester descritos por él como:
+		El modelo de aprendizaje de Sinestes.IA debe ser capaz de analizar el baile desde una perspectiva espacial como temporal, debido a que son secuencias de imágenes. Además de esto, debe ser capaz de responder a las imágenes de baile con acciones sonoras a interpretar. Este tipo de problemas es similar al usado en videojuegos, donde de entrada se alimenta con una secuencia de imágenes del videojuego, y el modelo responde con las acciones que debe tomar para continuar jugando. Es por esta razón que el modelo de inteligencia artificial de Sinestes.IA va a estar basado en un estudio denominado <i><em>World Models</em></i> realizado por David Ha et. al. Este estudio se basa en el concepto de Modelos Mentales de Jay Wright Forrester descrito por él como:
   </p>
   <blockquote>
   “La imagen del mundo a nuestro alrededor, que llevamos en nuestra cabeza, es solo un modelo. Nadie se imagina en su cabeza todo el planeta, gobierna o país. Solo se tiene una cantidad selecta de conceptos, y relaciones entre ellos, y usamos estos para representar el sistema real” (J.W. Forrester, 1971, t.d.a)
@@ -506,7 +519,7 @@ sitemap:
 		Como ha sido mencionado anteriormente, el análisis de imágenes suele realizarse con una arquitectura de red neuronal convolucional. Estos modelos suelen recibir la imagen y entrenarse a partir de lo que se desee obtener de ellas. El problema actual es que se desconoce el resultado que se espera obtener de esta sección. Este tipo de problemas se conoce como aprendizaje no supervisado, ya que son problemas en los que el resultado deseado no está previamente definido.
   </p>
   <p>
-		El sistema que se usa en el estudio de <i><em>World Models</em></i>, y que también será usado en este proyecto, se denomina como Autoencoder. Los autoencoders tienen la labor de codificar y decodificar la información entrante, buscando generar en la salida la misma información que en la entrada. De esta manera, el entrenamiento consiste en evaluar la similitud de los datos entrantes con los generados por el algoritmo.
+		El sistema que se usa en el estudio de <i><em>World Models</em></i>, y que también será usado en este proyecto, se denomina como <i><em>Autoencoder</em></i>. Los autoencoders tienen la labor de codificar y decodificar la información entrante, buscando generar en la salida la misma información que en la entrada. De esta manera, el entrenamiento consiste en evaluar la similitud de los datos entrantes con los generados por el algoritmo.
   </p>
   <p>
 		Ahora bien, lo que hace estos modelos especiales, es que en el proceso obligan al modelo a tener que representar los datos en un espacio menor al de la información de entrada.
