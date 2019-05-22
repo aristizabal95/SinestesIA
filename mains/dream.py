@@ -3,8 +3,8 @@ import numpy as np
 import utils.pure_data as pd
 import time
 
-from models.dance_rnn_model import RNNModel
-from models.cae_l_high import CAEModel
+from models.rnn_model import RNNModel
+from models.cae_model import CAEModel
 from models.actions_model import ActionsModel
 from utils.config import process_config
 from utils.utils import get_args
@@ -42,10 +42,8 @@ def load_models(c_c, r_c, a_c):
     return cae, c_s, rnn, r_s, actions, a_s
 
 def dream(cae, c_s, rnn, r_s, actions, a_s, pred=np.zeros((1,1,128)), state=np.zeros((2,2,1,512)), length=300, randomize=True):
-    img = None
     prediction = np.copy(pred)
     init_state = np.copy(state)
-    print("Dreaming")
     while True:
         rythm = np.random.randint(length-1)+1
         for i in range(length):
@@ -86,6 +84,7 @@ def main():
         r_c = process_config(args.rnnconfig)
         a_c = process_config(args.actionsconfig)
         length = int(args.length)
+        random = int(args.random)
     except:
         print("Missing or invalid arguments")
         exit(0)
@@ -93,7 +92,7 @@ def main():
     cae, c_s, rnn, r_s, actions, a_s = load_models(c_c, r_c, a_c)
     pred = np.random.rand(1,1,128)*0.7
     state = np.random.rand(2,2,1,512)*5
-    dream(cae,c_s,rnn,r_s,actions,a_s,pred,state,length)
+    dream(cae,c_s,rnn,r_s,actions,a_s,pred,state,length, random)
 
 if __name__ == '__main__':
     main()

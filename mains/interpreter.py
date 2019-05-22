@@ -2,8 +2,8 @@ from multiprocessing import Process
 import subprocess as sp
 import tensorflow as tf
 import utils.pure_data as pd
-from models.dance_rnn_model import RNNModel
-from models.cae_l_high import CAEModel
+from models.rnn_model import RNNModel
+from models.cae_model import CAEModel
 from models.actions_model import ActionsModel
 from utils.config import process_config
 from utils.utils import get_args
@@ -18,7 +18,7 @@ class Interpreter:
     # ATTRIBUTES
     # self.current_frame = None
 
-    def __init__(self, cc_path='configs/cae_remade.json', rc_path='configs/dance_rnn_prod.json', ac_path='configs/actions_config.json'):
+    def __init__(self, cc_path, rc_path, ac_path):
         # Here comes all the initialization required
         # Initialize the models
         self.cc = process_config(cc_path)
@@ -114,5 +114,11 @@ class Interpreter:
             time.sleep(0.01)
 
 if __name__ == "__main__":
-    i = Interpreter()
+    try:
+        args = get_args()
+    except Exception as e:
+        print(e)
+        print("Missing or invalid arguments")
+        exit(0)
+    i = Interpreter(args.caeconfig, args.rnnconfig, args.actionsconfig)
     i.run()

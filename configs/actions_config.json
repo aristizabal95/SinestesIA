@@ -1,13 +1,13 @@
 {
-  "exp_name": "actions_robust",
-  "num_epochs": 1000,
-  "num_iter_per_epoch": 2000,
-  "learning_rate": 0.001,
+  "exp_name": "actions_norm_smaller",
+  "num_epochs": 10000,
+  "num_iter_per_epoch": 1000,
+  "learning_rate": 0.000003,
   "reg_constant": 0,
   "keep_prob": 1,
   "batch_size": 1,
   "input_size": [2048],
   "output_size": [174],
-  "layers": [2048, 1024, 1024, 1024],
+  "layers": [2048, 1024, 512, 256],
   "max_to_keep": 5
 }
