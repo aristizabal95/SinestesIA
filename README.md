@@ -1,39 +1,44 @@
-# ImprovAI
+# Sinestes.IA
 Music Generation through interactive dancing with Deep Learning.
 
 # Requirements:
   # Hardware Requirements:
-  ImprovAI Is been designed to run on two separate systems, although it can be modified to run on just one. First a server streaming all Kinect Data as well as receiving Hardware Commands. In the current state, this server is running in a Raspberry Pi 3 B. On the other side, there's a client intended to do the heavy work with the data received from the server. This can run on the same system.
-  Over all, the hardware requirements are:
-  - Server system (Rpi3B)
   - Kinect (v1)
-  - Client system
   
   # Dependencies:
-  This project currently depends on:
-  Server Side
+  The dependencies considerer here are only for running the pre-trained models both through `Interpreter.py` and `dream.py`:
   - Ffmpeg
   - Pthread (`sudo apt-get install libpthread-stubs0-dev`)
   - [Libfreenect](https://github.com/OpenKinect/libfreenect)
-  
-  Client Side
   - Python3.4+
-  - Ffmpeg
   - Numpy
-  - OpenCV2
   - Tensorflow
-  - Pure Data
-  - H5Py (for training only)
-  - [pypng](https://github.com/drj11/pypng)
+  - OpenCV2
+  - Pure Data Extended
 
 # Installation
 
-First clone this repo:
-`git clone https://github.com/aristizabal95/M.O.N.I.K.A.git`
+First clone this repo, get and unzip the trained data, and `cd` to the project:
+```
+git clone https://github.com/aristizabal95/SinestesIA.git
+wget LINK_TO_FILES
+unzip experiments.zip
+cd SinestesIA
+```
+# Build
+This step is only necessary if `interpreter.py` is to be used
+simply run `gcc -Wall -o bin/main src/*.c -lpthread -lfreenect` to compile the program
 
-For the server side, you must compile the source code
-`cd ImprovAI`
-`gcc -Wall -o -I/LIBFREENECT/HEADER/LIBRARY/DIR bin/main src/*.c -lpthread -lfreenect -lm`
+# Running the Interpreter
+The Interpreter takes data from the Kinect in real-time, and generates sound instructions to be sent to Pure Data. To run this script you must
+1. Open `pd/performer.pd` with Pure Data
+2. Have the Kinect running with `./bin/main`
+3. Start the Interpreter with `python3 mains/interpreter.py`
 
-For the client side, there's no need to compile any C code, and just use the python programs inside the `client-side` folder
-`python3 client-side/main.py`
+# Running the dream generation
+The `mains/dream.py` script generates sequences of dance and music. To run it you must
+1. Open `pd/performer.pd` with Pure Data
+2. Start the Dream generation with `python3 mains/dream.py`
+3. Optionally, set the duration of each dream with the argument `-l` (default: 150) and use `-r` to specify wether the program should add random influences to the dream generation or not (default: 0)
+Example:
+`python3 mains/dream -l 300 -r 1 # Make the length of each dream 300 and allow for randomness in the dreams`
