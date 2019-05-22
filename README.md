@@ -1,11 +1,11 @@
 # Sinestes.IA
 Music Generation through interactive dancing with Deep Learning.
 
-# Requirements:
-  # Hardware Requirements:
+## Requirements:
+  ### Hardware Requirements:
   - Kinect (v1)
   
-  # Dependencies:
+  ### Dependencies:
   The dependencies considerer here are only for running the pre-trained models both through `Interpreter.py` and `dream.py`:
   - Ffmpeg
   - Pthread (`sudo apt-get install libpthread-stubs0-dev`)
@@ -16,7 +16,7 @@ Music Generation through interactive dancing with Deep Learning.
   - OpenCV2
   - Pure Data Extended
 
-# Installation
+## Installation
 
 First clone this repo, get and unzip the trained data, and `cd` to the project:
 ```
@@ -25,17 +25,17 @@ wget LINK_TO_FILES
 unzip experiments.zip
 cd SinestesIA
 ```
-# Build
+### Build
 This step is only necessary if `interpreter.py` is to be used
 simply run `gcc -Wall -o bin/main src/*.c -lpthread -lfreenect` to compile the program
 
-# Running the Interpreter
+## Running the Interpreter
 The Interpreter takes data from the Kinect in real-time, and generates sound instructions to be sent to Pure Data. To run this script you must
 1. Open `pd/performer.pd` with Pure Data
 2. Have the Kinect running with `./bin/main`
 3. Start the Interpreter with `python3 mains/interpreter.py`
 
-# Running the dream generation
+## Running the dream generation
 The `mains/dream.py` script generates sequences of dance and music. To run it you must
 1. Open `pd/performer.pd` with Pure Data
 2. Start the Dream generation with `python3 mains/dream.py`
