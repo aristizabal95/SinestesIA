@@ -17,7 +17,7 @@ Music Generation through interactive dancing with Deep Learning.
   - Pure Data Extended
 
 ## Installation
-First get the trained data from [here](https://livejaverianaedu-my.sharepoint.com/:u:/g/personal/a_aristizabalm_javeriana_edu_co/EV0mkW_-nBdKuJlwmywlya4B844Jt_S-8yd5d8IIxPbrYQ?e=zyvNuk)
+First get the trained data from [here](https://livejaverianaedu-my.sharepoint.com/:u:/g/personal/a_aristizabalm_javeriana_edu_co/EV0mkW_-nBdKuJlwmywlya4B844Jt_S-8yd5d8IIxPbrYQ?e=EAVMwy)
 
 Then clone this repo, unzip the trained data and `cd` to the project:
 ```
